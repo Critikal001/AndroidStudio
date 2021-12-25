@@ -3,15 +3,15 @@ package com.example.rentmycar.data.api
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import .Retrofit
-import .converter.gson.GsonConverterFactory
+
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ServiceBuilder {
-    // the Base adresse
-    private const val BASE_URL = "https://autolib-dz.herokuapp.com/"
 
-    val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+
+    private val interceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     //Create Okhttp Client
     private val okHttp: OkHttpClient = OkHttpClient.Builder()
@@ -24,8 +24,8 @@ class ServiceBuilder {
         .setLenient()
         .create()
 
-
     // Create Retrofit Builder
+
     private val builder : Retrofit.Builder = Retrofit.Builder()
         .client(okHttp)
         .baseUrl(BASE_URL)
@@ -37,5 +37,10 @@ class ServiceBuilder {
 
     fun <T> buildService(serviceProvider : Class<T>) :T {
         return retrofit.create(serviceProvider)
+    }
+
+    companion object {
+        // the Base adresse
+        private const val BASE_URL = "https://autolib-dz.herokuapp.com/"
     }
 }
