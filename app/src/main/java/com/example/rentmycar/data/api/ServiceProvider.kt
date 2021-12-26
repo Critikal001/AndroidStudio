@@ -6,15 +6,57 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ServiceProvider {
-    // Getting all bornes of our system
+    // All getters from the api
     @GET("api/bornes/all")
     fun getAllBornes(@Header("authorization") token:String): Call<List< >>
 
-//    //authentification locataire
-//    @POST("api/auth/locataire")
-//    fun userLogin(
-//        @Body info: SignInBody
-//    ):Call<LoginUser>
+    //All deletes from the api
+    
+
+    //All posts from the api
+    //authentification locataire
+    @POST("car/create-car")
+    fun userLogin(
+        @Body info: SignInBody
+    ):Call<LoginUser>
+
+    //authentification locataire
+    @POST("car/update-car")
+
+    //authentification locataire
+    @POST("customer/create-customer")
+
+    //authentification locataire
+    @POST("customer/update-customer")
+
+    //authentification locataire
+    @POST("engine/create-engine")
+
+    //authentification locataire
+    @POST("engine/create-enginespec")
+
+    //authentification locataire
+    @POST("location/create-location")
+
+    //authentification locataire
+    @POST("provider/create-provider")
+
+    //authentification locataire
+    @POST("provider/update-provider")
+
+    //authentification locataire
+    @POST("rental/create-rental")
+
+    //authentification locataire
+    @POST("rental/update-rental")
+
+    //authentification locataire
+    @POST("runningRental/rent-car")
+
+    //authentification locataire
+    @POST("user/create-user")
+
+
 //
 //    //add new  Locataire
 //    @POST("api/locataire/createLocataire")
