@@ -41,6 +41,6 @@ class ServiceBuilder {
 
     companion object {
         // the Base adresse
-        private const val BASE_URL = "https://autolib-dz.herokuapp.com/"
+        private const val BASE_URL = "http://10.0.2.2:8080/"
     }
 }

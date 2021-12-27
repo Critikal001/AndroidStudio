@@ -7,11 +7,29 @@ import retrofit2.http.*
 
 interface ServiceProvider {
     // All getters from the api
-    @GET("api/bornes/all")
+    @GET("location/get-locationbyid/all")
+    fun getAllBornes(@Header("authorization") token:String): Call<List< >>
+
+    @GET("rental/get-by-location")
+    fun getAllBornes(@Header("authorization") token:String): Call<List< >>
+
+    @GET("rental/get-by-provider")
+    fun getAllBornes(@Header("authorization") token:String): Call<List< >>
+
+    @GET("rental/get-rental-by-car")
     fun getAllBornes(@Header("authorization") token:String): Call<List< >>
 
     //All deletes from the api
-    
+    @DELETE("car/delete-car/")
+    fun deleteCar()
+
+    @DELETE("customer/delete-customer/")
+    fun deleteCustomer()
+
+    @DELETE("provider/delete-provider/")
+    fun deleteProvider()
+
+ //there need to come more deletes
 
     //All posts from the api
     //authentification locataire
