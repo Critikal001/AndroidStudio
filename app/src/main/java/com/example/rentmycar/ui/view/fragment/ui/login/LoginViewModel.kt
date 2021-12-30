@@ -1,13 +1,17 @@
-package com.example.rentmycar.ui.viewmodels.login
+package com.example.rentmycar.ui.view.fragment.ui.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
+import com.example.rentmycar.R
+import com.example.rentmycar.data.model.login.LoggedInUserView
+import com.example.rentmycar.data.model.login.LoginFormState
+import com.example.rentmycar.data.model.login.LoginResult
 import com.example.rentmycar.data.repositories.LoginRepository
-import com.example.rentmycar.data.model.Result
+import com.example.rentmycar.data.repositories.Result
 
-import com.example.rentmycar.ui.views.R
+
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -41,7 +45,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     // A placeholder username validation check
     private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains('@')) {
+        return if (username.contains("@")) {
             Patterns.EMAIL_ADDRESS.matcher(username).matches()
         } else {
             username.isNotBlank()

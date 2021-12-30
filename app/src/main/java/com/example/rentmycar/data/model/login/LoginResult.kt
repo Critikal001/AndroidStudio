@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.viewmodels.login
+package com.example.rentmycar.data.model.login
 
 /**
  * Authentication result : success (user details) or error message.

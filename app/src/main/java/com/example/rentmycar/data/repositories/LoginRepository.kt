@@ -1,7 +1,6 @@
 package com.example.rentmycar.data.repositories
 
-import com.example.rentmycar.data.model.Result
-import com.example.rentmycar.data.model.LoggedInUser
+import com.example.rentmycar.ui.view.fragment.data.model.LoggedInUser
 
 /**
  * Class that requests authentication and user information from the remote data source and

@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.viewmodels.login
+package com.example.rentmycar.data.model.login
 
 /**
  * Data validation state of the login form.

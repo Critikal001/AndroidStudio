@@ -1,4 +1,4 @@
-package com.example.rentmycar.data.model
+package com.example.rentmycar.data.repositories
 
 /**
  * A generic class that holds a value with its loading status.

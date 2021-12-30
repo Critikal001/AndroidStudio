@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.viewmodels.login
+package com.example.rentmycar.ui.view.fragment.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
