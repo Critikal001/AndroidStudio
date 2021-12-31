@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.view.fragment.ui.login
+package com.example.rentmycar.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

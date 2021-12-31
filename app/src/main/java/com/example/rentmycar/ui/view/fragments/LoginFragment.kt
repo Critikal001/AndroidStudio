@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.view.fragment
+package com.example.rentmycar.ui.view.fragments
 
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,8 +16,8 @@ import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.databinding.FragmentLoginBinding
 import com.example.rentmycar.data.model.login.LoggedInUserView
-import com.example.rentmycar.ui.view.fragment.ui.login.LoginViewModel
-import com.example.rentmycar.ui.view.fragment.ui.login.LoginViewModelFactory
+import com.example.rentmycar.ui.viewmodel.LoginViewModel
+import com.example.rentmycar.ui.viewmodel.LoginViewModelFactory
 
 
 class LoginFragment : Fragment() {
