@@ -1,8 +1,8 @@
 package com.example.rentmycar
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toolbar
+import androidx.appcompat.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager
 import com.example.rentmycar.ui.adapter.ViewPagerAdapter
 import com.example.rentmycar.ui.view.fragments.LoginFragment
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         // so when we run this project then this activity doesn't
         // show title. And for this reason, we need to run
         // setSupportActionBar method
-        setSupportActionBar(tab_toolbar)
+//        setSupportActionBar(tab_toolbar)
         setupViewPager(tab_viewpager)
 
         // If we dont use setupWithViewPager() method then
