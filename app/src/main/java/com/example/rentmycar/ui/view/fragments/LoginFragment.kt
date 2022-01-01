@@ -20,7 +20,7 @@ import com.example.rentmycar.ui.viewmodel.LoginViewModel
 import com.example.rentmycar.ui.viewmodel.LoginViewModelFactory
 
 
-class LoginFragment : Fragment() {
+class  LoginFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
     private var _binding: FragmentLoginBinding? = null
