@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui
+package com.example.rentmycar.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 

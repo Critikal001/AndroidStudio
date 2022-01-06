@@ -1,12 +1,35 @@
 package com.example.rentmycar.data.api
-//
-//import com.example.rentmycar.data.model.*
-//import okhttp3.ResponseBody
-//import retrofit2.Call
-//import retrofit2.http.*
-//
+
+import com.example.rentmycar.data.model.api.EngineSpec
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
+
+import retrofit2.http.Body
+import retrofit2.http.POST
+
+private const val BASE_URL =
+    "http://10.0.26.2:8080/"
+//    "http://10.0.26.2:8080/"
+
+// For parsing the json result: add a Moshi builder
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+private val retrofit = Retrofit.Builder()
+    // A converter for strings and both primitives and their boxed types to text/plain bodies.
+//    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
+    .baseUrl(BASE_URL)
+    .build()
+
+// Here we define how Retrofit interacts with the webservice
+// we create 'suspend' fun, so we can call the function from a coroutine scope
+
 interface ServiceProvider {
-//    // All getters from the api
+    //    // All getters from the api
 //    @GET("location/get-locationbyid/all")
 //    fun getAllBornes(@Header("authorization") token:String): Call<List< >>
 //
@@ -50,9 +73,11 @@ interface ServiceProvider {
 //    //authentification locataire
 //    @POST("engine/create-engine")
 //
-//    //authentification locataire
-//    @POST("engine/create-enginespec")
-//
+    //authentification locataire
+    @POST("engine/create-enginespec")
+    suspend fun createEngineSpec(@Body engineSpec: EngineSpec): EngineSpec
+
+    //
 //    //authentification locataire
 //    @POST("location/create-location")
 //
@@ -139,4 +164,9 @@ interface ServiceProvider {
 ////    //get user's stripe transactions
 ////    @GET("api/trajet/getTrajetByReservation/{id}")
 ////    fun getTrajetByReservation(@Path("id") idReservation: Int): Call<Trajet>
+    object TodoApi {
+        val retrofitService: ServiceProvider by lazy {
+            retrofit.create(ServiceProvider::class.java)
+        }
+    }
 }

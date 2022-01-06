@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rentmycar.R
-import com.example.rentmycar.ui.RentalViewModel
+import com.example.rentmycar.ui.viewmodel.RentalViewModel
 
 class RentalFragment : Fragment() {
 
