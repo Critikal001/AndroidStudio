@@ -5,8 +5,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.example.rentmycar.ui.adapter.ViewPagerAdapter
-import com.example.rentmycar.ui.view.fragments.LoginFragment
-import com.example.rentmycar.ui.view.fragments.SignUpFragment
+import com.example.rentmycar.ui.view.fragment.LoginFragment
+import com.example.rentmycar.ui.view.fragment.SignUpFragment
 import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {

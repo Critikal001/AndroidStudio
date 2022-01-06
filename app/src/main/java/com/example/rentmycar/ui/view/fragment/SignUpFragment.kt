@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.view.fragments
+package com.example.rentmycar.ui.view.fragment
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -21,7 +21,7 @@ class SignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.sign_up_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_sign_up, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

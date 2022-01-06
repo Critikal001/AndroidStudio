@@ -5,7 +5,7 @@ package com.example.rentmycar.data.api
 //import retrofit2.Call
 //import retrofit2.http.*
 //
-//interface ServiceProvider {
+interface ServiceProvider {
 //    // All getters from the api
 //    @GET("location/get-locationbyid/all")
 //    fun getAllBornes(@Header("authorization") token:String): Call<List< >>
@@ -139,4 +139,4 @@ package com.example.rentmycar.data.api
 ////    //get user's stripe transactions
 ////    @GET("api/trajet/getTrajetByReservation/{id}")
 ////    fun getTrajetByReservation(@Path("id") idReservation: Int): Call<Trajet>
-//}
+}
