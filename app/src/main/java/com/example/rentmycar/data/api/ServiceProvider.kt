@@ -7,6 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 private const val BASE_URL =
@@ -30,6 +31,9 @@ private val retrofit = Retrofit.Builder()
 
 interface ServiceProvider {
     //    // All getters from the api
+    @GET("location/get-locationbyid/all")
+    fun getEngineSpec(): String
+
 //    @GET("location/get-locationbyid/all")
 //    fun getAllBornes(@Header("authorization") token:String): Call<List< >>
 //

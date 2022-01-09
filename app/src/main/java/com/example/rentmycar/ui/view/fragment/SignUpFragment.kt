@@ -19,15 +19,13 @@ class SignUpFragment : Fragment() {
         fun newInstance() = SignUpFragment()
     }
 
-    private lateinit var viewModel: SignUpViewModel
+    private var viewModel: SignUpViewModel = SignUpViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val engineSpec = EngineSpec(engineSpecId = "1", EngineType.BEVEngine, fuelType = "bezine", fuelPrice = 123.0, fuelUsePerKm = 123.0, costEngineType = 178.0,pricePerKm = 25.0)
-        viewModel.createEngineSpec(engineSpec)
 
         return inflater.inflate(R.layout.fragment_sign_up, container, false)
 
