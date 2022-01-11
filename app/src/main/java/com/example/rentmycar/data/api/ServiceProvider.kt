@@ -5,14 +5,15 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 
 private const val BASE_URL =
-    "http://10.0.26.2:8080/"
-//    "http://10.0.26.2:8080/"
+    "http://10.0.2.2:8080/"
+//    "http://10.0.2.2:8080/"
 
 // For parsing the json result: add a Moshi builder
 private val moshi = Moshi.Builder()
@@ -21,7 +22,7 @@ private val moshi = Moshi.Builder()
 
 private val retrofit = Retrofit.Builder()
     // A converter for strings and both primitives and their boxed types to text/plain bodies.
-//    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(ScalarsConverterFactory.create())
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
@@ -31,8 +32,8 @@ private val retrofit = Retrofit.Builder()
 
 interface ServiceProvider {
     //    // All getters from the api
-    @GET("location/get-locationbyid/all")
-    fun getEngineSpec(): String
+    @GET("engine/get-engine-spec")
+    suspend fun getEngineSpec(): String
 
 //    @GET("location/get-locationbyid/all")
 //    fun getAllBornes(@Header("authorization") token:String): Call<List< >>

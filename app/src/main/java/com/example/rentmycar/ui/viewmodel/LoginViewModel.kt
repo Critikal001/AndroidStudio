@@ -9,8 +9,6 @@ import com.example.rentmycar.data.model.login.LoggedInUserView
 import com.example.rentmycar.data.model.login.LoginFormState
 import com.example.rentmycar.data.model.login.LoginResult
 import com.example.rentmycar.data.repositories.LoginRepository
-import com.example.rentmycar.data.repositories.Result
-
 
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {

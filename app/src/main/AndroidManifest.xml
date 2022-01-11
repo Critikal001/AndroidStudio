@@ -14,7 +14,11 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-
+        <activity
+            android:name=".ui.view.activities.LoginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

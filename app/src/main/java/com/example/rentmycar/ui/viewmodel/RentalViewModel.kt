@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 class RentalViewModel : ViewModel() {
     private val _todoResponse: MutableLiveData<String> = MutableLiveData()
 
-    val todoResponse: LiveData<String> // todo: voor demo String, later List<TodoItem>
+    val todoResponse: MutableLiveData<String> // todo: voor demo String, later List<TodoItem>
         get() = _todoResponse
 
     fun createEngineSpec(engineSpec: EngineSpec) {
@@ -29,6 +29,14 @@ class RentalViewModel : ViewModel() {
     }
 
     fun getEngineSpec(){
-        ServiceProvider.TodoApi.retrofitService.getEngineSpec()
+        viewModelScope.launch {
+            try {
+                Log.i(TAG, "getTodoItems: launch started")
+                _todoResponse.value = ServiceProvider.TodoApi.retrofitService.getEngineSpec()
+            } catch (e: Exception) {
+                _todoResponse.value = e.message.toString()
+            }
+        }
+
     }
 }
