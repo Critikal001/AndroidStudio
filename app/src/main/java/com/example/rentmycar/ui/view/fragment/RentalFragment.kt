@@ -50,7 +50,7 @@ class RentalFragment : Fragment() {
 //
 //        // todo: introduce Moshi converter
         binding.post.setOnClickListener {
-            val engineSpec = EngineSpec(engineSpecId = "11", EngineType.BEVEngine, fuelType = "bezine", fuelPrice = 123.0,  costEngineType = 178.0, pricePerKm = 25.0)
+            val engineSpec = EngineSpec(engineSpecId = "11", EngineType.BEVEngine, fuelType = "bezine", fuelUsePerKm = 32.0,fuelPrice = 123.0,  costEngineType = 178.0, pricePerKm = 25.0)
             model.createEngineSpec(engineSpec)
 
         }
