@@ -1,4 +1,4 @@
-package com.example.rentmycar.ui.view.activities
+package com.example.rentmycar.ui.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

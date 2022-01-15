@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/rental">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/rental_list"
+                    android:title="@string/rental_list_fragment"
+                    android:icon="@drawable/create_rental"/>
+                <item android:id="@+id/reservation_overview"
+                    android:title="@string/reservations"
+                    android:icon="@drawable/ic_home"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/settings">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/dashboard_customer"
+                    android:title="@string/dashboard_customer"
+                    android:icon="@drawable/ic_user"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:id="@+id/logout"
+        android:title="@string/logout"
+        android:icon="@drawable/logout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</menu>

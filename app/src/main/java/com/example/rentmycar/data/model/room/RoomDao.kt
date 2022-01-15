@@ -1,4 +1,4 @@
-package com.example.rentmycar.data.repositories.room
+package com.example.rentmycar.data.model.room
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

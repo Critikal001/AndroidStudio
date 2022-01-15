@@ -3,6 +3,7 @@ package com.example.rentmycar.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.rentmycar.data.repositories.LoginRepository
+import com.example.rentmycar.data.repositories.room.LoginDataSource
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

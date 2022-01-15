@@ -14,6 +14,7 @@ import android.view.inputmethod.EditorInfo
 
 import android.widget.Toast
 import com.example.rentmycar.R
+import com.example.rentmycar.data.model.login.LoggedInUserView
 import com.example.rentmycar.databinding.FragmentLoginBinding
 
 import com.example.rentmycar.ui.viewmodel.LoginViewModel

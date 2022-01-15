@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/rental">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/create_rental"
+                    android:title="@string/create_rental"
+                    android:icon="@drawable/create_rental"/>
+                <item android:id="@+id/rental_location"
+                    android:title="@string/rental_location"
+                    android:icon="@drawable/location"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/settings">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/dashboard_provider"
+                    android:title="@string/provider_dashboard"
+                    android:icon="@drawable/ic_user"/>
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:id="@+id/logout"
+        android:title="@string/logout"
+        android:icon="@drawable/logout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+</menu>

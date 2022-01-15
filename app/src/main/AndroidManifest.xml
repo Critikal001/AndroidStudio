@@ -15,13 +15,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m" >
         <activity
-            android:name=".ui.view.activities.HomeProviderActivity"
+            android:name=".ui.view.activity.HomeProviderActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.activities.HomeCustomerActivity"
+            android:name=".ui.view.activity.HomeCustomerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.activities.LoginActivity"
+            android:name=".ui.view.activity.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar.NoActionBar" />

@@ -3,6 +3,9 @@ package com.example.rentmycar.data.model.api
 import com.squareup.moshi.Json
 
 data class Rental(
+    @Json(name = "name")
+    val name: String,
+
     @Json(name = "price")
     val price: String,
 

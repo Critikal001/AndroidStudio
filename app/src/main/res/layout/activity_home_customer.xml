@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_home_provider"
+        app:navGraph="@navigation/nav_home_customer"
         app:defaultNavHost="true" />
 
     <com.google.android.material.navigation.NavigationView
@@ -26,6 +26,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/menu_provider_layout"
+        app:menu="@menu/menu_customer_layout"
         />
+
 </androidx.drawerlayout.widget.DrawerLayout>

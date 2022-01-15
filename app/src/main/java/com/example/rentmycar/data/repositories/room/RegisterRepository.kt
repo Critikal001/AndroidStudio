@@ -1,8 +1,9 @@
 package com.example.rentmycar.data.repositories.room
 
 import com.example.rentmycar.data.model.room.RegisterEntity
+import com.example.rentmycar.data.model.room.RoomDao
 
-    class RegisterRepository(private val dao: RoomDao) {
+class RegisterRepository(private val dao: RoomDao) {
 
         val users = dao.getAllUsers()
 

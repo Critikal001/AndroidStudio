@@ -1,13 +1,8 @@
-package com.example.rentmycar.ui.view.activities
+package com.example.rentmycar.ui.view.activity
 
 import android.os.Bundle
 import android.widget.Toolbar
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.viewpager.widget.ViewPager
 import com.example.rentmycar.R
 import com.example.rentmycar.ui.adapter.ViewPagerAdapter
@@ -36,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         // show title. And for this reason, we need to run
         // setSupportActionBar method
 //        setSupportActionBar(tab_toolbar)
+
         setupViewPager(tab_viewpager)
 
         // If we dont use setupWithViewPager() method then
