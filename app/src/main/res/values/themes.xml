@@ -38,4 +38,7 @@
     <style name="AppTheme.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="FontStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/gothamblack</item>
+    </style>
 </resources>

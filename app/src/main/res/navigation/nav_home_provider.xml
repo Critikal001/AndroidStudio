@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_home_provider">
+    android:id="@+id/nav_home_provider"
+    app:startDestination="@id/rentalListFragment">
 
+    <fragment
+        android:id="@+id/rentalListFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.RentalListFragment"
+        android:label="RentalListFragment" />
 </navigation>

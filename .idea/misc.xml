@@ -12,9 +12,14 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/logout.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/person.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/activity_home.xml" value="0.14628623188405798" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/activity_home_customer.xml" value="0.15489130434782608" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/activity_home_provider.xml" value="0.22" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/activity_main.xml" value="0.2554347826086957" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/app_bar_customer.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/app_bar_home.xml" value="0.22" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/app_bar_provider.xml" value="0.18614130434782608" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/content_customer_layout.xml" value="0.18614130434782608" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/content_provider_layout.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_sign_up.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_fragment.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_list_fragment.xml" value="0.17806484295845998" />

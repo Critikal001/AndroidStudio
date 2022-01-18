@@ -18,7 +18,7 @@ import com.example.rentmycar.data.model.login.LoggedInUserView
 import com.example.rentmycar.databinding.FragmentLoginBinding
 
 import com.example.rentmycar.ui.viewmodel.LoginViewModel
-import com.example.rentmycar.ui.viewmodel.LoginViewModelFactory
+import com.example.rentmycar.ui.viewmodel.factory.LoginViewModelFactory
 
 
 class  LoginFragment : Fragment() {

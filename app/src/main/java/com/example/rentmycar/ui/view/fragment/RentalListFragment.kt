@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rentmycar.R
-import com.example.rentmycar.ui.viewmodel.RentalListViewModel
+import com.example.rentmycar.ui.viewmodel.RentalViewModel
+
 
 class RentalListFragment : Fragment() {
 
@@ -15,7 +16,7 @@ class RentalListFragment : Fragment() {
         fun newInstance() = RentalListFragment()
     }
 
-    private lateinit var viewModel: RentalListViewModel
+    private lateinit var viewModel: RentalViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +27,7 @@ class RentalListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RentalListViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RentalViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

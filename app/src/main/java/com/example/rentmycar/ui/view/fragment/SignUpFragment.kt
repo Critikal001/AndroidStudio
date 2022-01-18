@@ -11,15 +11,11 @@ import com.example.rentmycar.MainActivity
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.EngineSpec
 import com.example.rentmycar.data.model.api.EngineType
-import com.example.rentmycar.ui.viewmodel.SignUpViewModel
+import com.example.rentmycar.ui.viewmodel.LoginViewModel
+
 
 class SignUpFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
-
-    private var viewModel: SignUpViewModel = SignUpViewModel()
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +29,7 @@ class SignUpFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
