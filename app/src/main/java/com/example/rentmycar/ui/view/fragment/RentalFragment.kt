@@ -8,8 +8,8 @@ import android.view.ViewGroup
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.rentmycar.data.model.api.EngineSpec
-import com.example.rentmycar.data.model.api.EngineType
+import com.example.rentmycar.data.model.api.post.EngineSpec
+import com.example.rentmycar.data.model.api.post.EngineType
 
 
 import com.example.rentmycar.databinding.RentalFragmentBinding

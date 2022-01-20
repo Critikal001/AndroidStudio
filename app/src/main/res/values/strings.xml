@@ -18,6 +18,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    |<string name="rental_name">Rental name</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -31,6 +32,8 @@
     <string name="create_rental">Create Rental</string>
     <string name="rental_location">Locations of Rentals</string>
     <string name="provider_dashboard">Dashboard provider</string>
+    <string name="reserve">Reserve</string>
+    <string name="details">Details</string>
 
     // strings for Customer
     <string name="rental_list_fragment">Rental list</string>

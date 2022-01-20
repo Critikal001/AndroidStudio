@@ -2,12 +2,11 @@ package com.example.rentmycar.ui.viewmodel
 
 import android.content.ContentValues.TAG
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rentmycar.data.api.ServiceProvider
-import com.example.rentmycar.data.model.api.EngineSpec
+import com.example.rentmycar.data.model.api.post.EngineSpec
 import kotlinx.coroutines.launch
 
 class RentalViewModel : ViewModel() {

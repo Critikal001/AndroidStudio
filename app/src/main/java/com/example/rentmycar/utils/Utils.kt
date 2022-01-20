@@ -1,9 +1,13 @@
 package com.example.rentmycar.utils
 
 import android.content.Context
-import android.content.SharedPreferences
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
+import android.widget.EditText
+import android.widget.ImageView
 import androidx.lifecycle.MutableLiveData
-import com.example.rentmycar.data.model.api.RunningRental
+import com.example.rentmycar.R
+import com.example.rentmycar.data.model.api.post.RunningRental
 
 var idReservation:Int = 0
 var userToken :String =""
@@ -14,46 +18,20 @@ var reservations = MutableLiveData<List<RunningRental>>()
 var valide: Int? = 2
 
 class Utils(context: Context) {
-    val PREFERENCE_NAME = "SharedPreference"
-    val PREFERENCE_TOKEN = "AccessToken"
-    val PREFERENCE_FIRST_NAME = "firstName"
-    val PREFERENCE_LAST_NAME = "lastName"
-    val PREFERENCE_USER_ID  = "userId"
-
-    private val preference: SharedPreferences = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
-    fun getToken() : String? {
-        return preference.getString(PREFERENCE_TOKEN, "token")
-    }
-
-    fun setToken(token: String?) {
-        preference.edit().putString(PREFERENCE_TOKEN, token).apply()
-    }
-
-    fun getFirstName() : String? {
-        return preference.getString(PREFERENCE_FIRST_NAME, "")
-    }
-
-    fun setFirstName(firstName: String?) {
-        preference.edit().putString(PREFERENCE_FIRST_NAME, firstName).apply()
-    }
-
-    fun getLastName() : String? {
-        return preference.getString(PREFERENCE_LAST_NAME, "")
-    }
-
-    fun setLastName(lastName: String?) {
-        preference.edit().putString(PREFERENCE_LAST_NAME, lastName).apply()
-    }
-
-    fun getUserId() : Int {
-        return preference.getInt(PREFERENCE_USER_ID, 0)
-    }
-
-    fun setUserId(userId: Int) {
-        preference.edit().putInt(PREFERENCE_USER_ID, userId).apply()
-    }
-
-    fun clearPreferences() {
-        preference.edit().clear().apply()
+    companion object {
+        //méthode pour show and hide passwords
+        fun showPassword(a: EditText, b: ImageView, isShow: Boolean) {
+            if (isShow) {
+                // To show the password
+                a.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                b.setImageResource(R.drawable.ic_show_password)
+            } else {
+                // To hide the password
+                a.transformationMethod = PasswordTransformationMethod.getInstance()
+                b.setImageResource(R.drawable.ic_show_password)
+            }
+            // This line of code to put the pointer at the end of the password string
+            a.setSelection(a.text.toString().length)
+        }
     }
 }

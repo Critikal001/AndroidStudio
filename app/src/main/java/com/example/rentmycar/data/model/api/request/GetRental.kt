@@ -1,8 +1,14 @@
-package com.example.rentmycar.data.model.api
+package com.example.rentmycar.data.model.api.request
 
+import com.example.rentmycar.data.model.api.post.Car
+import com.example.rentmycar.data.model.api.post.Location
+import com.example.rentmycar.data.model.api.post.Provider
 import com.squareup.moshi.Json
 
-data class Rental(
+data class GetRental(
+    @Json(name= "rentalId")
+    val rentalId: String,
+
     @Json(name = "name")
     val name: String,
 
