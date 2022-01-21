@@ -8,9 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.rentmycar.R
+import com.example.rentmycar.data.room.RoomService
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
 import com.example.rentmycar.ui.view.activity.MyDrawerController
 import com.example.rentmycar.ui.viewmodel.RentalViewModel
+import com.example.rentmycar.utils.sharedPrefFile
 
 
 class RentalListFragment : Fragment() {

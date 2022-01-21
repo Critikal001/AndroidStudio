@@ -67,7 +67,7 @@ class RentalListAdapter(
 //            Log.i("VehiculeAdapter","distanceEstime"+resViewModel.distanceEstime.toString() )
 //            Log.i("VehiculeAdapter","distanceEstime"+resViewModel.tempsEstimeEnSecondes.toString())
 //            vmRes.distanceEstime = resViewModel.distanceEstime
-            holder.detailsButton.findNavController().navigate(R.id.action_listeVehiculeFragment_to_detailsVehiculeFragment)
+//            holder.detailsButton.findNavController().navigate(R.id.action_listeVehiculeFragment_to_detailsVehiculeFragment)
         }
         holder.reserverButton.setOnClickListener{
             reservationModel.rentalId = rental[position].rentalId
@@ -84,7 +84,7 @@ class RentalListAdapter(
 //            Log.i("VehiculeAdapter","distanceEstime"+resViewModel.distanceEstime.toString() )
 //            Log.i("VehiculeAdapter","tempsEstimeEnSecondes"+resViewModel.tempsEstimeEnSecondes.toString())
 //            vmRes.distanceEstime = resViewModel.distanceEstime
-            holder.reserverButton.findNavController().navigate(R.id.action_listeVehiculeFragment_to_infosReservationFragment)
+//            holder.reserverButton.findNavController().navigate(R.id.action_listeVehiculeFragment_to_infosReservationFragment)
         }
 
 
