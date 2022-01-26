@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Response
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.Car
 import com.example.rentmycar.data.model.api.post.Engine
@@ -23,16 +24,12 @@ import com.example.rentmycar.ui.viewmodel.ReservationDetails
 class RentalListAdapter(
     val context: Context,
     var rental: List<GetRental>,
-    var car: List<Car>,
-    var engine: List<Engine>,
-    var engineSpec: List<EngineSpec>,
     var rentalModel: RentalDetails,
     var reservationModel: ReservationDetails,
-//    var resViewModel: Reservation
 ): RecyclerView.Adapter<MyViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(LayoutInflater.from(context).inflate(-R.layout.rental_layout, parent, false))
+        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.rental_layout, parent, false))
 
     }
 
@@ -45,16 +42,15 @@ class RentalListAdapter(
 //        Glide.with(context).load(this!!.data!![position].secureUrl).into(holder.imageVehicule)
 
         holder.detailsButton.setOnClickListener{
-            rentalModel.constructionYear = car[position].constructionYear
-            rentalModel.mileage =  car[position].mileage
-            rentalModel.model = car[position].model
-            rentalModel.motorNumber = engine[position].motorNumber
-            rentalModel.power = engine[position].power
-            rentalModel.engineType = engineSpec[position].engineType
-            rentalModel.fuelType = engineSpec[position].fuelType
-            rentalModel.fuelUsePerKm =engineSpec[position].fuelUsePerKm
-            rentalModel.fuelPrice =engineSpec[position].fuelPrice
-            rentalModel.pricePerKm =engineSpec[position].pricePerKm
+            rentalModel.constructionYear = rental[position].car.constructionYear
+            rentalModel.mileage =  rental[position].car.mileage
+            rentalModel.model = rental[position].car.model
+            rentalModel.power = rental[position].car.engine.power
+            rentalModel.engineType = rental[position].car.engine.engineSpec.engineType
+            rentalModel.fuelType = rental[position].car.engine.engineSpec.fuelType
+            rentalModel.fuelUsePerKm =rental[position].car.engine.engineSpec.fuelUsePerKm
+            rentalModel.fuelPrice =rental[position].car.engine.engineSpec.fuelPrice
+            rentalModel.pricePerKm =rental[position].car.engine.engineSpec.pricePerKm
 //            vm.etat = data[position].etat
 //            vm.limiteurVitesse =  data[position].limiteurVitesse
 //            vm.secureUrl = data[position].secureUrl

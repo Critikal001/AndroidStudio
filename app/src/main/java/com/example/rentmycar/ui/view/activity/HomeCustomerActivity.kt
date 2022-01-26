@@ -49,7 +49,7 @@ class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
 
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.rental_list, R.id.reservation_overview, R.id.dashboard_customer, R.id.logout
+                    R.id.rental_list, R.id.reservation_overview, R.id.rental_location, R.id.dashboard_customer, R.id.logout
                 )
             )
             navView.setupWithNavController(navController)

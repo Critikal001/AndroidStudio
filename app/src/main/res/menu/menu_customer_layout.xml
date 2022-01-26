@@ -9,6 +9,9 @@
                 <item android:id="@+id/reservation_overview"
                     android:title="@string/reservations"
                     android:icon="@drawable/ic_home"/>
+                <item android:id="@+id/rental_location"
+                    android:title="@string/rental_location"
+                    android:icon="@drawable/location"/>
             </group>
         </menu>
     </item>

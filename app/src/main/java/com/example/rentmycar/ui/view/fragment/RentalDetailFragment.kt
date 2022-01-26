@@ -14,7 +14,7 @@ class RentalDetailFragment : Fragment() {
         fun newInstance() = RentalDetailFragment()
     }
 
-    private lateinit var viewModel: RentalDetailViewModel
+    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +25,7 @@ class RentalDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(RentalDetailViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 

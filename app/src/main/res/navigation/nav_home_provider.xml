@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home_provider"
-    app:startDestination="@id/rentalListFragment">
+    app:startDestination="@id/createRentalFragment">
+
 
     <fragment
-        android:id="@+id/rentalListFragment"
-        android:name="com.example.rentmycar.ui.view.fragment.RentalListFragment"
-        android:label="RentalListFragment" />
+        android:id="@+id/createRentalFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateRentalFragment"
+        android:label="fragment_create_rental"
+        tools:layout="@layout/fragment_create_rental" >
+        <action
+            android:id="@+id/create_rental_to_car"
+            app:destination="@id/providerDashboardFragment" />
+        <action
+            android:id="@+id/finish_rental"
+            app:destination="@id/createCarFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createCarFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateCarFragment"
+        android:label="fragment_create_car"
+        tools:layout="@layout/fragment_create_car" >
+        <action
+            android:id="@+id/create_car_to_engine"
+            app:destination="@id/createEngineFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/createEngineFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateEngineFragment"
+        android:label="fragment_create_engine"
+        tools:layout="@layout/fragment_create_engine" >
+        <action
+            android:id="@+id/create_engine_to_enginespec"
+            app:destination="@id/createEngineSpecFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createEngineSpecFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateEngineSpecFragment"
+        android:label="fragment_create_engine_spec"
+        tools:layout="@layout/fragment_create_engine_spec" />
+
+
+    <fragment
+        android:id="@+id/providerDashboardFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.ProviderDashboardFragment"
+        android:label="fragment_provider_dashboard"
+        tools:layout="@layout/fragment_provider_dashboard" />
+
+    <fragment
+        android:id="@+id/rentalOverview"
+        android:name="com.example.rentmycar.ui.view.fragment.RentalViewFragment"
+        android:label="fragment_rental_view"
+        tools:layout="@layout/fragment_rental_view" />
+
+
 </navigation>

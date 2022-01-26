@@ -18,7 +18,7 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-    |
+    <string name="finish">Finish</string>
     <string name="rental_name">Rental name</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
@@ -32,12 +32,26 @@
     <string name="rental">Rentals</string>
     <string name="create_rental">Create Rental</string>
     <string name="rental_location">Locations of Rentals</string>
-    <string name="provider_dashboard">Dashboard provider</string>
+    <string name="provider_dashboard">Dashboard</string>
     <string name="reserve">Reserve</string>
     <string name="details">Details</string>
+    <string name="details_car">Details car</string>
+    <string name="details_rental">Details rental</string>
+    <string name="construction_year">Construction Year</string>
+    <string name="mileage">Mileage</string>
+    <string name="model">Model</string>
+    <string name="price">Price</string>
+    <string name="power">Power</string>
+    <string name="engine_type">Engine type</string>
+    <string name="fuel_type">Fuel type</string>
+    <string name="fuel_use_per_km">Fuel Use</string>
+    <string name="fuel_price">Fuel price</string>
+    <string name="bev_engine">BEV engine</string>
+    <string name="fcev_engine">FCEV Engine</string>
+    <string name="ice_engine">ICE Engine</string>
 
     // strings for Customer
-    <string name="rental_list_fragment">Rental list</string>
+    <string name="rental_list_fragment">Rentals</string>
     <string name="reservations">Reservations</string>
     <string name="dashboard_customer">Dashboard customer</string>
     <string name="rental_picture">Rental picture</string>

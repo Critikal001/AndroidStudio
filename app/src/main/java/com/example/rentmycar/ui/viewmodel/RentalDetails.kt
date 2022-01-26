@@ -4,6 +4,12 @@ import androidx.lifecycle.ViewModel
 import com.example.rentmycar.data.model.api.post.EngineType
 
 class RentalDetails: ViewModel() {
+    // Rental
+
+    var name = ""
+    var price =""
+    var mileageRental= 0
+
     //Car
     var constructionYear=0
     var mileage=0

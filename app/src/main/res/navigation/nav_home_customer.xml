@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_home_customer">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home_customer"
+    app:startDestination="@id/customerDashboardFragment">
 
+    <fragment
+        android:id="@+id/customerDashboardFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.CustomerDashboardFragment"
+        android:label="fragment_customer_dashboard"
+        tools:layout="@layout/fragment_customer_dashboard" />
+    <fragment
+        android:id="@+id/reservationListFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.ReservationListFragment"
+        android:label="fragment_reservation_list"
+        tools:layout="@layout/fragment_reservation_list" />
+    <fragment
+        android:id="@+id/rentalDetailFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.RentalDetailFragment"
+        android:label="rental_detail_fragment"
+        tools:layout="@layout/rental_detail_fragment" />
+    <fragment
+        android:id="@+id/rentalListFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.RentalListFragment"
+        android:label="rental_list_fragment"
+        tools:layout="@layout/rental_list_fragment" />
 </navigation>

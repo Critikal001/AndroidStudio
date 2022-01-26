@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <item android:title="@string/rental">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/create_rental"
+                <item android:id="@+id/createRentalFragment"
                     android:title="@string/create_rental"
-                    android:icon="@drawable/create_rental"/>
-                <item android:id="@+id/rental_location"
-                    android:title="@string/rental_location"
-                    android:icon="@drawable/location"/>
+                    android:icon="@drawable/create_rental"
+                    tools:layout="@layout/fragment_create_rental"/>
+                <item android:id="@+id/rentalOverview"
+                    android:title="@string/reservations"
+                    android:icon="@drawable/ic_home"
+                    tools:layout="@layout/fragment_rental_view"/>
             </group>
         </menu>
     </item>
@@ -16,10 +19,10 @@
     <item android:title="@string/settings">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/dashboard_provider"
+                <item android:id="@+id/providerDashboardFragment"
                     android:title="@string/provider_dashboard"
-                    android:icon="@drawable/ic_user"/>
-
+                    android:icon="@drawable/ic_user"
+                    tools:layout="@layout/fragment_provider_dashboard"/>
             </group>
         </menu>
     </item>
