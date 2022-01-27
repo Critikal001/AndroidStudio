@@ -211,7 +211,7 @@
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="45dp"
-                android:hint="@string/mileage"
+                android:hint="@string/model"
                 android:textColor="@color/black"
                 android:inputType="text"
                 android:padding="10dp"
@@ -396,7 +396,7 @@
 
 
                     <Button
-                        android:id="@+id/finish_create_rental"
+                        android:id="@+id/btn_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gothambold"

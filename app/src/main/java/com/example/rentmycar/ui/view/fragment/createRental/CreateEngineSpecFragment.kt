@@ -9,8 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.EngineType
-import com.example.rentmycar.databinding.FragmentCreateEngineSpecBinding
-import com.example.rentmycar.databinding.FragmentCreateRentalBinding
+
 import com.example.rentmycar.ui.viewmodel.RentalDetails
 import kotlinx.android.synthetic.main.fragment_create_engine_spec.*
 import kotlinx.android.synthetic.main.fragment_create_rental.*

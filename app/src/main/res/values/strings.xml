@@ -49,6 +49,8 @@
     <string name="bev_engine">BEV engine</string>
     <string name="fcev_engine">FCEV Engine</string>
     <string name="ice_engine">ICE Engine</string>
+    <string name="no_database_connection">Error to reach database</string>
+    <string name="created">Created</string>
 
     // strings for Customer
     <string name="rental_list_fragment">Rentals</string>

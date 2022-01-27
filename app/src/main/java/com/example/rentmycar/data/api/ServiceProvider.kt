@@ -4,6 +4,7 @@ import com.example.rentmycar.data.model.api.post.*
 import com.example.rentmycar.data.model.api.request.GetRental
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Response
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -21,7 +22,7 @@ private val moshi = Moshi.Builder()
 
 private val retrofit = Retrofit.Builder()
     // A converter for strings and both primitives and their boxed types to text/plain bodies.
-    .addConverterFactory(ScalarsConverterFactory.create())
+
     .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
@@ -47,7 +48,7 @@ interface ServiceProvider {
     fun getRentalByCar(): List<GetRental>
 
     @GET("rental/get-rental")
-    fun getRentalList(): List<GetRental>
+    fun getRentalList(): Response<List<GetRental>>
 
     //All deletes from the api
     @DELETE("car/delete-car/{id}")               
@@ -72,7 +73,7 @@ interface ServiceProvider {
     @POST("car/create-car")
     fun createCar(
         @Body car: Car
-    ):Car
+    ):Response<Car>
 
     
     @POST("car/update-car")
@@ -96,25 +97,25 @@ interface ServiceProvider {
     @POST("engine/create-engine")
     fun createEngine(
         @Body engine: Engine
-    ) :Engine
+    ) :Response<Engine>
     
     
     @POST("engine/create-enginespec")
     fun createEngineSpec(
-        @Body engineSpec: EngineSpec): EngineSpec
+        @Body engineSpec: EngineSpec): Response<EngineSpec>
 
 
     
     @POST("location/create-location")
     fun createLocation(
         @Body location: Location
-    ) :Location
+    ) :Response<Location>
     
     
     @POST("provider/create-provider")
     fun createProvider(
         @Body provider: Provider
-    ) :Provider
+    ) :Response<Provider>
     
     
     @POST("provider/update-provider")
@@ -126,7 +127,7 @@ interface ServiceProvider {
     @POST("rental/create-rental")
     fun createRental(
         @Body rental: Rental
-    ) :Rental
+    ) :Response<Rental>
     
     
     @POST("rental/update-rental")
@@ -144,11 +145,12 @@ interface ServiceProvider {
     @POST("user/create-user")
     fun createUser(
         @Body user: User
-    ) : User
+    ) : Response<User>
     
-    object TodoApi {
+    object RentalApi {
         val retrofitService: ServiceProvider by lazy {
             retrofit.create(ServiceProvider::class.java)
         }
+        val rentalClient = RentalClient(retrofitService)
     }
 }

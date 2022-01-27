@@ -1,49 +1,89 @@
 package com.example.rentmycar.data.repositories
 
 
+import android.content.Context
+import android.widget.Toast
+import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
+import com.example.rentmycar.data.api.SimpleResponse
 import com.example.rentmycar.data.model.api.post.*
 import com.example.rentmycar.data.model.api.request.GetRental
+import com.example.rentmycar.data.room.RoomService
+import com.example.rentmycar.data.room.RoomService.context
+import com.example.rentmycar.ui.view.activity.HomeProviderActivity
 import retrofit2.Response
 
 
 class RentalRepository {
+        private fun client() = ServiceProvider.RentalApi
 
-    companion object {
-        lateinit var api: ServiceProvider.TodoApi
-
-        fun getRentalList(): List<GetRental> {
-            return api.retrofitService.getRentalList()
+        fun getRentalList(): List<GetRental>? {
+            val request =  client().retrofitService.getRentalList()
+            return request.body()
         }
 
-        fun createRental(rental: Rental): Rental{
-            return api.retrofitService.createRental(rental)
+        suspend fun createRental(context: Context, rental: Rental) {
+            val request = client().rentalClient.createRental(rental)
+            if (!request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+
+            }
+            Toast.makeText(RoomService.context, RoomService.context.getString(R.string.created), Toast.LENGTH_LONG).show()
+
         }
 
-        fun createCar(car: Car): Car{
-            return api.retrofitService.createCar(car)
+        suspend fun createCar(car: Car) {
+            val request = client().rentalClient.createCar(car)
+            if (!request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+
+            }
+            Toast.makeText(context, context.getString(R.string.created), Toast.LENGTH_LONG).show()
         }
 
-        fun createEngine(engine:Engine): Engine{
-            return api.retrofitService.createEngine(engine)
+        suspend fun createEngine(engine:Engine) {
+            val request = client().rentalClient.createEngine(engine)
+            if (!request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+
+            }
+            Toast.makeText(context, context.getString(R.string.created), Toast.LENGTH_LONG).show()
         }
 
-        fun createEngineSpec(engineSpec: EngineSpec): EngineSpec {
-            return api.retrofitService.createEngineSpec(engineSpec)
+        suspend fun createEngineSpec(engineSpec: EngineSpec) {
+            val request = client().rentalClient.createEngineSpec(engineSpec)
+            if (!request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+            }
+            Toast.makeText(context, context.getString(R.string.created), Toast.LENGTH_LONG).show()
         }
-        fun createUser(user: User):User{
-            return api.retrofitService.createUser(user)
+        suspend fun createUser(user: User) {
+            val request = client().rentalClient.createUser(user)
+            if (!request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+            }
+            Toast.makeText(context, context.getString(R.string.created), Toast.LENGTH_LONG).show()
         }
 
-        fun createProvider(provider: Provider): Provider {
-            return api.retrofitService.createProvider(provider)
+        suspend fun createProvider(provider: Provider) {
+            val request = client().rentalClient.createProvider(provider)
+            if (!request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+
+            }
+            Toast.makeText(context, context.getString(R.string.created), Toast.LENGTH_LONG).show()
         }
-        fun createLocation(location: Location) :Location{
-            return api.retrofitService.createLocation(location)
+        suspend fun createLocation(location: Location)  {
+            val request = client().rentalClient.createLocation(location)
+            if (request.failed || !request.isSuccessful) {
+                Toast.makeText(context, context.getString(R.string.no_database_connection), Toast.LENGTH_LONG).show()
+
+            }
+            Toast.makeText(context, context.getString(R.string.created), Toast.LENGTH_LONG).show()
         }
 
 
 
-    }
+
 
 }

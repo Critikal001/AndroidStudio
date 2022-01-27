@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.*
-
+import androidx.navigation.fragment.navArgs
 import com.example.rentmycar.ui.viewmodel.RentalDetails
 import com.example.rentmycar.ui.viewmodel.RentalViewModel
 import kotlinx.android.synthetic.main.fragment_create_car.*
-
 import kotlinx.android.synthetic.main.fragment_create_engine.*
 import kotlinx.android.synthetic.main.fragment_create_rental.*
 
@@ -52,7 +52,7 @@ class CreateRentalFragment : Fragment() {
 //            }
 
 
-            finish_create_rental.setOnClickListener{
+            btn_next.setOnClickListener{
 //                Rental
                 val rentalName = input_rental_name.editText?.text?.trim { it <= ' ' }.toString()
                 val mileageRental = input_mileage_rental.editText?.text?.trim { it <= ' ' }.toString().toInt()
@@ -78,11 +78,10 @@ class CreateRentalFragment : Fragment() {
                 val provider = Provider(user)
                 val rental = Rental(rentalName,price, mileageRental, false, car, location, provider)
 
-                try {
-                    viewmodel.createRental(engineSpec,engine,car,location,user,provider, rental)
-                } catch (e :Exception){
 
-                }
+                viewmodel.createRental(requireContext(),engineSpec,engine,car,location,user,provider, rental)
+
+                btn_next.findNavController().navigate(R.id.create_rental_to_car)
 
 //                finish_create_rental.findNavController().navigate(R.id.create_rental_to_car)
 

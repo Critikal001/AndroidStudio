@@ -1,17 +1,21 @@
 package com.example.rentmycar.ui.viewmodel
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.rentmycar.data.model.api.post.*
 import com.example.rentmycar.data.model.api.request.GetRental
 import com.example.rentmycar.data.repositories.RentalRepository
+import kotlinx.coroutines.launch
 
 import retrofit2.Response
 
 class RentalViewModel : ViewModel() {
 
+    private val rentalRepository = RentalRepository()
     private val _rentalData = MutableLiveData<Rental>()
     val rentalLiveData: LiveData<Rental?> = _rentalData
 
@@ -24,9 +28,9 @@ class RentalViewModel : ViewModel() {
     private val _engineSpecLiveData = MutableLiveData<EngineSpec>()
     val engineSpecLiveData: LiveData<EngineSpec?> = _engineSpecLiveData
 
-    fun  getRentalList(): List<GetRental> {
-        val rentaLList: List<GetRental>
-        val request = RentalRepository.getRentalList()
+    fun  getRentalList(): List<GetRental>? {
+        val rentaLList: List<GetRental>?
+        val request = rentalRepository.getRentalList()
         try {
             rentaLList = request
             return rentaLList
@@ -37,15 +41,16 @@ class RentalViewModel : ViewModel() {
         }
     }
 
-    fun createRental(engineSpec: EngineSpec, engine: Engine, car: Car, location: Location, user: User, provider: Provider, rental: Rental): Rental {
-        RentalRepository.createEngineSpec(engineSpec)
-        RentalRepository.createEngine(engine)
-        RentalRepository.createCar(car)
-        RentalRepository.createUser(user)
-        RentalRepository.createProvider(provider)
-        RentalRepository.createLocation(location)
-        return RentalRepository.createRental(rental)
-
+    fun createRental(context: Context, engineSpec: EngineSpec, engine: Engine, car: Car, location: Location, user: User, provider: Provider, rental: Rental) {
+        viewModelScope.launch {
+            rentalRepository.createEngineSpec(engineSpec)
+            rentalRepository.createEngine(engine)
+            rentalRepository.createCar(car)
+            rentalRepository.createUser(user)
+            rentalRepository.createProvider(provider)
+            rentalRepository.createLocation(location)
+            rentalRepository.createRental(context, rental)
+        }
     }
 
 
