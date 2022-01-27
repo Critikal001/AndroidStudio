@@ -51,6 +51,9 @@
     <string name="ice_engine">ICE Engine</string>
     <string name="no_database_connection">Error to reach database</string>
     <string name="created">Created</string>
+    <string name="login">Login</string>
+    <string name="provider_activity">Provider Activity</string>
+    <string name="customer_activity">customer Activity</string>
 
     // strings for Customer
     <string name="rental_list_fragment">Rentals</string>

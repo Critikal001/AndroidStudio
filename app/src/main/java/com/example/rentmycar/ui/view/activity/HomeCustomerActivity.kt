@@ -21,6 +21,9 @@ import com.example.rentmycar.databinding.ActivityHomeProviderBinding
 import com.example.rentmycar.utils.Utils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_home_customer.*
+import kotlinx.android.synthetic.main.app_bar_customer.view.*
+
 class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityHomeCustomerBinding
@@ -36,7 +39,7 @@ class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
 
         setContentView(binding.root)
 
-        menuButton = binding.appBarHome.menuCustomerButton
+        menuButton = app_bar_home.menu_customer_button
         drawerLayout = binding.customerDrawerLayout
 
         menuButton.setOnClickListener {
@@ -45,11 +48,11 @@ class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
             else drawerLayout.closeDrawer(GravityCompat.END);
 
             val navView: NavigationView = binding.customerNavView
-            val navController = findNavController(R.id.nav_host_fragment_content_provider)
+            val navController = findNavController(R.id.nav_host_fragment_content_customer)
 
             appBarConfiguration = AppBarConfiguration(
                 setOf(
-                    R.id.rental_list, R.id.reservation_overview, R.id.rental_location, R.id.dashboard_customer, R.id.logout
+                    R.id.rentalListFragment, R.id.reservationListFragment, R.id.locationListFragment, R.id.customerDashboardFragment, R.id.logout
                 )
             )
             navView.setupWithNavController(navController)

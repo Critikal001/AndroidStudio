@@ -3,13 +3,13 @@
     <item android:title="@string/rental">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/rental_list"
+                <item android:id="@+id/rentalListFragment"
                     android:title="@string/rental_list_fragment"
                     android:icon="@drawable/create_rental"/>
-                <item android:id="@+id/reservation_overview"
+                <item android:id="@+id/reservationListFragment"
                     android:title="@string/reservations"
                     android:icon="@drawable/ic_home"/>
-                <item android:id="@+id/rental_location"
+                <item android:id="@+id/locationListFragment"
                     android:title="@string/rental_location"
                     android:icon="@drawable/location"/>
             </group>
@@ -19,7 +19,7 @@
     <item android:title="@string/settings">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/dashboard_customer"
+                <item android:id="@+id/customerDashboardFragment"
                     android:title="@string/dashboard_customer"
                     android:icon="@drawable/ic_user"/>
             </group>
