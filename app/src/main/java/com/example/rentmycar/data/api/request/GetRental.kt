@@ -1,4 +1,4 @@
-package com.example.rentmycar.data.model.api.request
+package com.example.rentmycar.data.api.request
 
 import com.example.rentmycar.data.model.api.post.Car
 import com.example.rentmycar.data.model.api.post.Location

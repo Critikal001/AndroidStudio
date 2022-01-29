@@ -7,11 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.model.api.request.GetRental
+import com.example.rentmycar.data.api.request.GetRental
 import com.example.rentmycar.data.repositories.RentalRepository
 import kotlinx.coroutines.launch
-
-import retrofit2.Response
 
 class RentalViewModel : ViewModel() {
 

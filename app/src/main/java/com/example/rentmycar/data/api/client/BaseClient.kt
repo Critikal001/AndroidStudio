@@ -1,5 +1,6 @@
-package com.example.rentmycar.data.api
+package com.example.rentmycar.data.api.client
 
+import com.example.rentmycar.data.api.request.SimpleResponse
 import retrofit2.Response
 
 abstract class BaseClient {

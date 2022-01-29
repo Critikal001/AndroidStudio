@@ -1,14 +1,14 @@
 package com.example.rentmycar.data.api
 
+import com.example.rentmycar.data.api.client.RentalClient
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.model.api.request.GetRental
+import com.example.rentmycar.data.api.request.GetRental
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Response
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.*
 
 private const val BASE_URL =

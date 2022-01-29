@@ -2,22 +2,15 @@ package com.example.rentmycar.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Response
 import com.example.rentmycar.R
-import com.example.rentmycar.data.model.api.post.Car
-import com.example.rentmycar.data.model.api.post.Engine
-import com.example.rentmycar.data.model.api.post.EngineSpec
-import com.example.rentmycar.data.model.api.post.Rental
-import com.example.rentmycar.data.model.api.request.GetRental
+import com.example.rentmycar.data.api.request.GetRental
 import com.example.rentmycar.ui.viewmodel.RentalDetails
 import com.example.rentmycar.ui.viewmodel.ReservationDetails
 

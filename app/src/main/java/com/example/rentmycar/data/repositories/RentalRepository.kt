@@ -5,13 +5,10 @@ import android.content.Context
 import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
-import com.example.rentmycar.data.api.SimpleResponse
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.model.api.request.GetRental
+import com.example.rentmycar.data.api.request.GetRental
 import com.example.rentmycar.data.room.RoomService
 import com.example.rentmycar.data.room.RoomService.context
-import com.example.rentmycar.ui.view.activity.HomeProviderActivity
-import retrofit2.Response
 
 
 class RentalRepository {

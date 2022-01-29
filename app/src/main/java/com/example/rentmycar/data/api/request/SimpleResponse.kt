@@ -1,4 +1,4 @@
-package com.example.rentmycar.data.api
+package com.example.rentmycar.data.api.request
 
 import retrofit2.Response
 import java.lang.Exception
