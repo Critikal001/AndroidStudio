@@ -10,13 +10,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rentmycar.R
-import com.example.rentmycar.data.api.request.GetRental
+import com.example.rentmycar.data.api.request.RentalRequest
 import com.example.rentmycar.ui.viewmodel.RentalDetails
 import com.example.rentmycar.ui.viewmodel.ReservationDetails
 
 class RentalListAdapter(
     val context: Context,
-    var rental: List<GetRental>,
+    var rental: List<RentalRequest>,
     var rentalModel: RentalDetails,
     var reservationModel: ReservationDetails,
 ): RecyclerView.Adapter<MyViewHolder>()

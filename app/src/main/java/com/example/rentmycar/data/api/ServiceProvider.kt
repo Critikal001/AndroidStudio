@@ -2,7 +2,7 @@ package com.example.rentmycar.data.api
 
 import com.example.rentmycar.data.api.client.RentalClient
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.api.request.GetRental
+import com.example.rentmycar.data.api.request.RentalRequest
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Response
@@ -39,16 +39,16 @@ interface ServiceProvider {
     fun getLocation(): List<Location>
 
     @GET("rental/get-by-location")
-    fun getRentalByLocation(): List<GetRental>
+    fun getRentalByLocation(): List<RentalRequest>
 
     @GET("rental/get-by-provider")
-    fun getRentalByProvider(): List<GetRental>
+    fun getRentalByProvider(): List<RentalRequest>
 
     @GET("rental/get-rental-by-car")
-    fun getRentalByCar(): List<GetRental>
+    fun getRentalByCar(): List<RentalRequest>
 
     @GET("rental/get-rental")
-    fun getRentalList(): Response<List<GetRental>>
+    fun getRentalList(): Response<List<RentalRequest>>
 
     //All deletes from the api
     @DELETE("car/delete-car/{id}")               

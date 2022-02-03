@@ -5,7 +5,7 @@ import com.example.rentmycar.data.model.api.post.Location
 import com.example.rentmycar.data.model.api.post.Provider
 import com.squareup.moshi.Json
 
-data class GetRental(
+data class RentalRequest(
     @Json(name= "rentalId")
     val rentalId: String,
 

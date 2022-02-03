@@ -6,15 +6,14 @@ import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.api.request.GetRental
-import com.example.rentmycar.data.room.RoomService
+import com.example.rentmycar.data.api.request.RentalRequest
 import com.example.rentmycar.data.room.RoomService.context
 
 
 class RentalRepository {
         private fun client() = ServiceProvider.RentalApi
 
-        fun getRentalList(): List<GetRental>? {
+        fun getRentalList(): List<RentalRequest>? {
             val request =  client().retrofitService.getRentalList()
             return request.body()
         }

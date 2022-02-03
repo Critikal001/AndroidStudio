@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.api.request.GetRental
+import com.example.rentmycar.data.api.request.RentalRequest
 import com.example.rentmycar.data.repositories.RentalRepository
 import kotlinx.coroutines.launch
 
@@ -26,8 +26,8 @@ class RentalViewModel : ViewModel() {
     private val _engineSpecLiveData = MutableLiveData<EngineSpec>()
     val engineSpecLiveData: LiveData<EngineSpec?> = _engineSpecLiveData
 
-    fun  getRentalList(): List<GetRental>? {
-        val rentaLList: List<GetRental>?
+    fun  getRentalList(): List<RentalRequest>? {
+        val rentaLList: List<RentalRequest>?
         val request = rentalRepository.getRentalList()
         try {
             rentaLList = request
