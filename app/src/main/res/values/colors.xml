@@ -6,7 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#80FFFFFF</color>
     <color name="colorPrimary">#FFBB86FC</color>
     <color name="colorPrimaryDark">#FF6200EE</color>
     <color name="colorAccent">#FF3700B3</color>
@@ -31,4 +31,23 @@
     <color name="textGray">#353535</color>
     <color name="redAlert">#F5365C</color>
     <color name="greenOk">#2DCE89</color>
+
+
+    <color name="indigo_200">#5C49C2</color>
+    <color name="indigo_500">#222091</color>
+    <color name="indigo_700">#000062</color>
+    <color name="teal_500">#4db6ac</color>
+    <color name="white_smoke">#F5F5F5</color>
+    <color name="button_blue">#222091</color>
+    <color name="lighter_blue">#D0CFF4</color>
+    <color name="black_60_opacity">#99000000</color>
+    <color name="grey">#BABABA</color>
+    <color name="hyperlink">#2ECDD0</color>
+    <color name="light_red">#FF3131</color>
+    <color name="light_green">#86DC3D</color>
+    <color name="background">#fafafa</color>
+    <color name="card_background">#f7eee1</color>
+    <color name="hyperlink_clicked">#FF018786</color>
+    <color name="text_field_background_gray">#e0e0e0</color>
+    <color name="btn_payment_green">#009400</color>
 </resources>

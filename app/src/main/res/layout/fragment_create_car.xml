@@ -1,165 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.fragment.createRental.CreateCarFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.view.fragment.createRental.CreateCarFragment"
+    android:background="@drawable/background_car">
 
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/constraintLayout"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="170dp"-->
-<!--        android:background="@color/palette_yellow"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/details_car"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="32dp"-->
-<!--            android:fontFamily="@font/gothammedium"-->
-<!--            android:text="@string/details_car"-->
-<!--            android:textColor="@color/palette_blue"-->
-<!--            android:textSize="16sp"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    <androidx.cardview.widget.CardView-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="540dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        android:layout_marginTop="90dp"-->
-<!--        android:layout_marginEnd="20dp"-->
-<!--        app:cardCornerRadius="12dp"-->
-<!--        app:cardElevation="12dp"-->
-
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/constraintLayout">-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/constraintLayout4"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/imageRental"-->
-<!--                android:layout_width="180dp"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:src="@drawable/ic_car"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/construction_year"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="52dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:fontFamily="@font/gothammedium"-->
-<!--                android:text="@string/construction_year"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/imageRental" />-->
-
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/input_cyear"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="45dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="45dp"-->
-<!--                android:hint="@string/construction_year"-->
-<!--                android:inputType="number"-->
-<!--                android:padding="10dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/construction_year" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/mileage"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="52dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:fontFamily="@font/gothammedium"-->
-<!--                android:text="@string/mileage"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/input_cyear" />-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/input_mileage"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="45dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="45dp"-->
-<!--                android:hint="@string/mileage"-->
-<!--                android:inputType="number"-->
-<!--                android:padding="10dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/mileage" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/model"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="52dp"-->
-<!--                android:layout_marginTop="16dp"-->
-<!--                android:fontFamily="@font/gothammedium"-->
-<!--                android:text="@string/model"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/input_mileage" />-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/input_model"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="45dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:layout_marginEnd="45dp"-->
-<!--                android:hint="@string/mileage"-->
-<!--                android:inputType="text"-->
-<!--                android:padding="10dp"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/model" />-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80000000"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
 
 
 
 
 
-<!--                    <Button-->
-<!--                        android:id="@+id/to_details_engine"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:fontFamily="@font/gothambold"-->
-<!--                        android:paddingLeft="10dp"-->
-<!--                        android:paddingTop="10dp"-->
-<!--                        android:text="@string/next"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@id/input_model"-->
-<!--                        app:layout_constraintVertical_bias="0.0" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </androidx.cardview.widget.CardView>-->
+        <TextView
+            android:id="@+id/details_rental"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="45dp"
+            android:background="@color/white"
+            android:fontFamily="@font/gothammedium"
+            android:text="@string/details_car"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+        <!--car-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_cyear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="45dp"
+            android:hint="@string/construction_year"
+            android:inputType="number"
+            android:background="@color/white"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/details_rental" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_mileage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:layout_marginEnd="45dp"
+            android:hint="@string/mileage"
+            android:inputType="number"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_cyear" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_model"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="45dp"
+            android:hint="@string/model"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_mileage" >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/car_to_engine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gothambold"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/input_model"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</ScrollView>

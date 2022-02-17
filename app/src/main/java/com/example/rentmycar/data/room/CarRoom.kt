@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.rentmycar.data.model.api.post.Engine
 import com.squareup.moshi.Json
 @Entity
-data class Car(
+data class CarRoom(
     @PrimaryKey
     @Json(name = "id")
     val id : Int,

@@ -1,8 +1,8 @@
 package com.example.rentmycar.data.api
 
 import com.example.rentmycar.data.api.client.RentalClient
+import com.example.rentmycar.data.api.request.*
 import com.example.rentmycar.data.model.api.post.*
-import com.example.rentmycar.data.api.request.RentalRequest
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Response
@@ -33,22 +33,25 @@ private val retrofit = Retrofit.Builder()
 interface ServiceProvider {
     //    // All getters from the api
     @GET("engine/get-engine-spec")
-    suspend fun getEngineSpec(): List<EngineSpec>
+    suspend fun getEngineSpec(): Response<List<EngineSpecRequest>>
 
     @GET("location/get-locationbyid/all")
-    fun getLocation(): List<Location>
+    fun getLocation(): Response<List<LocationRequest>>
 
     @GET("rental/get-by-location")
-    fun getRentalByLocation(): List<RentalRequest>
+    fun getRentalByLocation(): Response<List<RentalRequest>>
 
     @GET("rental/get-by-provider")
-    fun getRentalByProvider(): List<RentalRequest>
+    fun getRentalByProvider(): Response<List<RentalRequest>>
 
     @GET("rental/get-rental-by-car")
-    fun getRentalByCar(): List<RentalRequest>
+    fun getRentalByCar(): Response<List<RentalRequest>>
 
     @GET("rental/get-rental")
     fun getRentalList(): Response<List<RentalRequest>>
+
+    @GET("engine/get-engine")
+    fun getEngine(): Response<List<EngineRequest>>
 
     //All deletes from the api
     @DELETE("car/delete-car/{id}")               
@@ -73,79 +76,80 @@ interface ServiceProvider {
     @POST("car/create-car")
     fun createCar(
         @Body car: Car
-    ):Response<Car>
+    ):Response<CarRequest>
 
     
     @POST("car/update-car")
     fun updateCar(
         @Body car: Car
-    ): Car
+    ): Response<CarRequest>
 
     
     @POST("customer/create-customer")
     fun createCustomer(
         @Body customer: Customer
-    ) :Customer
+    ) :Response<CustomerRequest>
 
     
     @POST("customer/update-customer")
     fun updateCustomer(
         @Body customer: Customer
-    ) :Customer
+    ) :Response<CustomerRequest>
     
     
     @POST("engine/create-engine")
     fun createEngine(
         @Body engine: Engine
-    ) :Response<Engine>
+    ) :Response<EngineRequest>
     
     
     @POST("engine/create-enginespec")
     fun createEngineSpec(
-        @Body engineSpec: EngineSpec): Response<EngineSpec>
+        @Body engineSpec: EngineSpec): Response<EngineSpecRequest>
 
 
     
     @POST("location/create-location")
     fun createLocation(
         @Body location: Location
-    ) :Response<Location>
+    ) :Response<LocationRequest>
     
     
     @POST("provider/create-provider")
     fun createProvider(
         @Body provider: Provider
-    ) :Response<Provider>
+    ) :Response<ProviderRequest>
     
     
     @POST("provider/update-provider")
     fun updateProvider(
         @Body provider: Provider
-    ) :Provider
-    
-    
+    ) :Response<ProviderRequest>
+
     @POST("rental/create-rental")
     fun createRental(
         @Body rental: Rental
-    ) :Response<Rental>
+    ) :Response<RentalRequest>
     
     
     @POST("rental/update-rental")
     fun updateRental(
         @Body rental: Rental
-    ) :Rental
+    ) :Response<RentalRequest>
     
     
     @POST("runningRental/rent-car")
     fun createReservation(
         @Body runningRental: RunningRental
-    ) :RunningRental
-    
+    ) :Response<ReservationRequest>
+
+    @POST("runningRental/rent-car")
+    fun getRental() :Response<List<RentalRequest>>
     
     @POST("user/create-user")
     fun createUser(
         @Body user: User
-    ) : Response<User>
+    ) : Response<UserRequest>
     
     object RentalApi {
         val retrofitService: ServiceProvider by lazy {

@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.rentmycar.data.model.api.post.EngineType
 import com.squareup.moshi.Json
 @Entity
-data class EngineSpec(
+data class EngineSpecRoom(
     @PrimaryKey
     @Json(name = "id")
     val id: Int,
@@ -22,9 +22,5 @@ data class EngineSpec(
     @Json(name = "fuelPrice")
     val fuelPrice: Double,
 
-    @Json(name = "pricePerKm")
-    val pricePerKm: Double,
 
-    @Json(name = "costEngineType")
-    val costEngineType: Double,
 )

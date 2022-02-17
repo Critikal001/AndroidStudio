@@ -1,5 +1,6 @@
 package com.example.rentmycar.ui.view.activity
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -30,11 +31,14 @@ class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
     private lateinit var menuButton: FloatingActionButton
     private lateinit var  drawerLayout: DrawerLayout
 
+    companion object {
+        lateinit var context: Context
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val window: Window = this@HomeCustomerActivity.window
-
+        context = this
         binding = ActivityHomeCustomerBinding.inflate(layoutInflater)
 
         setContentView(binding.root)

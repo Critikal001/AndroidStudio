@@ -1,5 +1,6 @@
 package com.example.rentmycar.ui.view.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +14,13 @@ import com.google.android.material.tabs.TabLayout
 
 class LoginActivity : AppCompatActivity() {
 
+    companion object {
+        lateinit var context: Context
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        context = this
 
 //        Creating the login page and the registerpage
 

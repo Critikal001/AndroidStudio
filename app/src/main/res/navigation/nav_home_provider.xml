@@ -13,9 +13,6 @@
         tools:layout="@layout/fragment_create_rental" >
         <action
             android:id="@+id/create_rental_to_car"
-            app:destination="@id/providerDashboardFragment" />
-        <action
-            android:id="@+id/finish_rental"
             app:destination="@id/createCarFragment" />
     </fragment>
 
@@ -44,7 +41,11 @@
         android:id="@+id/createEngineSpecFragment"
         android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateEngineSpecFragment"
         android:label="fragment_create_engine_spec"
-        tools:layout="@layout/fragment_create_engine_spec" />
+        tools:layout="@layout/fragment_create_engine_spec">
+    <action
+        android:id="@+id/create_enginespec_to_car"
+        app:destination="@id/providerDashboardFragment" />
+    </fragment>
 
 
     <fragment

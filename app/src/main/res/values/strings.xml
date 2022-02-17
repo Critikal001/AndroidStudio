@@ -62,4 +62,17 @@
     <string name="rental_picture">Rental picture</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_put_engineSpec">Error engineSpec</string>
+    <string name="error_put_engine">Error engine</string>
+    <string name="error_put_car">Error car</string>
+    <string name="error_put_rental">Error rental</string>
+    <string name="error_put_location">Error location</string>
+    <string name="network_call_failed">Network error</string>
+    <string name="car_type">Engine type</string>
+
+    <string-array name="car_types">
+        <item>Verbrandingsmotor (ICE)</item>
+        <item>Volledig Elektrisch (BEV)</item>
+        <item>Waterstof Auto (FCEV)</item>
+    </string-array>
 </resources>

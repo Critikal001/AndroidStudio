@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 @Entity
-data class Location(
+data class LocationRoom(
     @PrimaryKey(autoGenerate = true)
     @Json(name = "id")
     val id : Int,

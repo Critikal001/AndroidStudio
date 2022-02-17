@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rentmycar.R
 import com.example.rentmycar.databinding.RentalListFragmentBinding
 import com.example.rentmycar.ui.adapter.RentalListAdapter
 import com.example.rentmycar.ui.view.activity.MyDrawerController
@@ -31,16 +32,7 @@ class RentalListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val sharedPref = RoomService.context.getSharedPreferences(
-            sharedPrefFile, Context.MODE_PRIVATE
-        )
-//        token = sharedPref.getString("token","defaultvalue").toString()
-//        userID = sharedPref.getString("userID", "defaultvalue").toString()
-
-
-
-        _binding = RentalListFragmentBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_create_car, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -50,14 +42,12 @@ class RentalListFragment : Fragment() {
         binding.recyclerViewRental.layoutManager = LinearLayoutManager(requireActivity())
     }
 
-    fun checkList() {
-        val data = viewModel.getRentalList()
-
-        val vm = ViewModelProvider(requireActivity())[RentalDetails::class.java]
-        val vmRes = ViewModelProvider(requireActivity())[ReservationDetails::class.java]
-        if(data != null){
-            binding.recyclerViewRental.adapter = RentalListAdapter(requireActivity() ,data,vm,vmRes)
-        }
-    }
+//    fun checkList() {
+//        val data = viewModel.getRentalList().
+//
+//        val vm = ViewModelProvider(requireActivity())[RentalDetails::class.java]
+//        val vmRes = ViewModelProvider(requireActivity())[ReservationDetails::class.java]
+//        binding.recyclerViewRental.adapter = RentalListAdapter(requireActivity(), data, vm, vmRes)
+//    }
 
 }

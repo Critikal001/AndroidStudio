@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
 @Entity
-data class Engine(
+data class EngineRoom(
     @PrimaryKey
     @Json(name = "id")
     val id: Int,

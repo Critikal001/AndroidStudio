@@ -22,9 +22,9 @@
         android:fitsSystemWindows="true"
         app:menu="@menu/menu_provider_layout"
         app:itemTextColor="@color/palette_blue"
-        app:itemIconTint="@color/palette_blue"
+        app:itemIconTint="@color/palette_blue"/>
 
-        app:itemTextAppearance="@style/FontStyle"/>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

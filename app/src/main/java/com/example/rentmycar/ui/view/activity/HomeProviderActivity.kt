@@ -1,6 +1,7 @@
 package com.example.rentmycar.ui.view.activity
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -25,10 +26,14 @@ class HomeProviderActivity : AppCompatActivity(), MyDrawerController {
     private lateinit var  drawerLayout: DrawerLayout
 
 
+    companion object {
+        lateinit var context: Context
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val window: Window = this@HomeProviderActivity.window
-
+        context = this
         binding = ActivityHomeProviderBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
