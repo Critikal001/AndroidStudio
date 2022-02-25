@@ -37,8 +37,8 @@ class CreateRentalFragment : Fragment() {
                     Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                     return@observe
                 }
-
-                findNavController().navigate(R.id.create_rental_to_car)
+                val directions = CreateRentalFragmentDirections.createRentalToCar(rentalId = rentalResult.toInt())
+                findNavController().navigate(directions)
             }
 
             return inflater.inflate(R.layout.fragment_create_rental, container, false)

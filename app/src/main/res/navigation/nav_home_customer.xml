@@ -24,10 +24,33 @@
         android:id="@+id/rentalListFragment"
         android:name="com.example.rentmycar.ui.view.fragment.RentalListFragment"
         android:label="rental_list_fragment"
-        tools:layout="@layout/rental_list_fragment" />
+        tools:layout="@layout/rental_list_fragment" >
+        <action
+            android:id="@+id/action_ListeVehiculeFragment_pop"
+            app:popUpTo="@id/rentalListFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_rentalListFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment" />
+        <action
+            android:id="@+id/action_rentalListFragment_to_rentalDetailFragment"
+            app:destination="@id/rentalDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/locationListFragment"
         android:name="com.example.rentmycar.ui.view.fragment.LocationListFragment"
         android:label="fragment_location_list"
         tools:layout="@layout/fragment_location_list" />
+    <fragment
+        android:id="@+id/carDetailFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.CarDetailFragment"
+        android:label="fragment_car_detail"
+        tools:layout="@layout/fragment_car_detail" >
+        <action
+            android:id="@+id/action_carDetailFragment_to_rentalDetailFragment"
+            app:destination="@id/rentalDetailFragment" />
+        <action
+            android:id="@+id/action_carDetailFragment_to_rentalListFragment"
+            app:destination="@id/rentalListFragment" />
+    </fragment>
 </navigation>

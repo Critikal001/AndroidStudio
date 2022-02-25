@@ -24,6 +24,9 @@
         <action
             android:id="@+id/create_car_to_engine"
             app:destination="@id/createEngineFragment" />
+        <argument
+            android:name="rentalId"
+            app:argType="integer" />
     </fragment>
 
 
@@ -35,6 +38,13 @@
         <action
             android:id="@+id/create_engine_to_enginespec"
             app:destination="@id/createEngineSpecFragment" />
+        <argument
+            android:name="rentalId"
+            app:argType="integer" />
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+
     </fragment>
 
     <fragment
@@ -43,8 +53,17 @@
         android:label="fragment_create_engine_spec"
         tools:layout="@layout/fragment_create_engine_spec">
     <action
-        android:id="@+id/create_enginespec_to_car"
-        app:destination="@id/providerDashboardFragment" />
+        android:id="@+id/create_enginespec_to_create_location"
+        app:destination="@id/createLocation" />
+        <argument
+            android:name="rentalId"
+            app:argType="integer" />
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+        <argument
+            android:name="engineId"
+            app:argType="integer"  />
     </fragment>
 
 
@@ -59,6 +78,53 @@
         android:name="com.example.rentmycar.ui.view.fragment.RentalViewFragment"
         android:label="fragment_rental_view"
         tools:layout="@layout/fragment_rental_view" />
+
+    <fragment
+        android:id="@+id/createLocation"
+        android:name="com.example.rentmycar.ui.view.fragment.CreateLocation"
+        android:label="fragment_create_location"
+        tools:layout="@layout/fragment_create_location">
+        <action
+            android:id="@+id/create_location_to_rental_overview"
+            app:destination="@id/createRentalOverview" />
+        <argument
+            android:name="rentalId"
+            app:argType="integer" />
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+        <argument
+            android:name="engineId"
+            app:argType="integer"  />
+        <argument
+            android:name="engineSpecId"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/createRentalOverview"
+        android:name="com.example.rentmycar.ui.view.fragment.CreateRentalOverview"
+        android:label="create_rental_overview_fragment"
+        tools:layout="@layout/create_rental_overview_fragment">
+        <action
+            android:id="@+id/create_rental_overview_to_dashboard"
+            app:destination="@id/providerDashboardFragment" />
+        <argument
+            android:name="rentalId"
+            app:argType="integer" />
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+        <argument
+            android:name="engineId"
+            app:argType="integer"  />
+        <argument
+            android:name="engineSpecId"
+            app:argType="integer" />
+        <argument
+            android:name="locationId"
+            app:argType="integer"/>
+    </fragment>
 
 
 </navigation>

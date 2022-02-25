@@ -15,11 +15,6 @@ data class EngineSpec(
     @Json(name = "fuelPrice")
     val fuelPrice: Double,
 
-    @Json(name = "pricePerKm")
-    val pricePerKm: Double,
-
-    @Json(name = "costEngineType")
-    val costEngineType: Double,
 
 
     )

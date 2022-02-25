@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Create the object of Toolbar, ViewPager and
         // TabLayout and use “findViewById()” method*/
-        var tab_toolbar = findViewById<Toolbar>(R.id.toolbar)
+//        var tab_toolbar = findViewById<Toolbar>(R.id.toolbar)
         var tab_viewpager = findViewById<ViewPager>(R.id.tab_viewpager)
         var tab_tablayout = findViewById<TabLayout>(R.id.tab_tablayout)
 

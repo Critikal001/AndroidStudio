@@ -1,5 +1,7 @@
 package com.example.rentmycar.ui.view.fragment
 
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.annotation.StringRes
@@ -16,117 +18,63 @@ import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.login.LoggedInUserView
 import com.example.rentmycar.databinding.FragmentLoginBinding
+import com.example.rentmycar.ui.view.activity.LoginActivity
 
 import com.example.rentmycar.ui.viewmodel.LoginViewModel
 import com.example.rentmycar.ui.viewmodel.factory.LoginViewModelFactory
+import com.example.rentmycar.utils.sharedPrefFile
+import com.example.rentmyuser.data.repositories.LoginRepository
+import kotlinx.android.synthetic.main.fragment_login.*
 
 
 class  LoginFragment : Fragment() {
-//
-//    private lateinit var loginViewModel: LoginViewModel
-//    private var _binding: FragmentLoginBinding? = null
-//
-//    // This property is only valid between onCreateView and
-//    // onDestroyView.
-//    private val binding get() = _binding!!
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//
-//        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-//        return binding.root
-//
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-//            .get(LoginViewModel::class.java)
-//
-//        val usernameEditText = binding.username
-//        val passwordEditText = binding.password
-//        val loginButton = binding.login
-//
-//
-//        loginViewModel.loginFormState.observe(viewLifecycleOwner,
-//            Observer { loginFormState ->
-//                if (loginFormState == null) {
-//                    return@Observer
-//                }
-//                loginButton.isEnabled = loginFormState.isDataValid
-//                loginFormState.usernameError?.let {
-//                    usernameEditText.error = getString(it)
-//                }
-//                loginFormState.passwordError?.let {
-//                    passwordEditText.error = getString(it)
-//                }
-//            })
-//
-//        loginViewModel.loginResult.observe(viewLifecycleOwner,
-//            Observer { loginResult ->
-//                loginResult ?: return@Observer
-//                loginResult.error?.let {
-//                    showLoginFailed(it)
-//                }
-//                loginResult.success?.let {
-//                    updateUiWithUser(it)
-//                }
-//            })
-//
-//        val afterTextChangedListener = object : TextWatcher {
-//            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-//                // ignore
-//            }
-//
-//            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-//                // ignore
-//            }
-//
-//            override fun afterTextChanged(s: Editable) {
-//                loginViewModel.loginDataChanged(
-//                    usernameEditText.text.toString(),
-//                    passwordEditText.text.toString()
-//                )
-//            }
-//        }
-//        usernameEditText.addTextChangedListener(afterTextChangedListener)
-//        passwordEditText.addTextChangedListener(afterTextChangedListener)
-//        passwordEditText.setOnEditorActionListener { _, actionId, _ ->
-//            if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                loginViewModel.login(
-//                    usernameEditText.text.toString(),
-//                    passwordEditText.text.toString()
-//                )
-//            }
-//            false
-//        }
-//
-//        loginButton.setOnClickListener {
-//
-//            loginViewModel.login(
-//                usernameEditText.text.toString(),
-//                passwordEditText.text.toString()
-//            )
-//        }
-//    }
-//
-//    private fun updateUiWithUser(model: LoggedInUserView) {
-//        val welcome = getString(R.string.welcome) + model.displayName
-//        // TODO : initiate successful logged in experience
-//        val appContext = context?.applicationContext ?: return
-//        Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
-//    }
-//
-//    private fun showLoginFailed(@StringRes errorString: Int) {
-//        val appContext = context?.applicationContext ?: return
-//        Toast.makeText(appContext, errorString, Toast.LENGTH_LONG).show()
-//    }
-//
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        _binding = null
-//    }
+    val repository: LoginRepository = LoginRepository()
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+       return inflater.inflate(R.layout.fragment_login, container, false)
+
+}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val sharedPref = requireActivity().getSharedPreferences(
+            sharedPrefFile, Context.MODE_PRIVATE
+        )
+
+        connectButton.setOnClickListener {
+
+            val userName = username.text.toString()
+            val passWord = password.text.toString()
+
+            if (userName.isEmpty()) {
+                username.error = "Email RequuserNameired"
+                username.requestFocus()
+
+            }
+            if (passWord.isEmpty()) {
+                password.error = "Password Required"
+                password.requestFocus()
+
+            }
+
+
+            repository.login(requireActivity(), userName, passWord)
+            // val intent = Intent(this, HomeActivity::class.java)
+            // startActivity(intent)
+
+        }
+
+        val con = sharedPref.getBoolean("connected",false)
+        if (con){
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
+    }
+
+
 }

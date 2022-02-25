@@ -38,8 +38,9 @@ interface ServiceProvider {
     @GET("location/get-locationbyid/all")
     fun getLocation(): Response<List<LocationRequest>>
 
-    @GET("rental/get-by-location")
-    fun getRentalByLocation(): Response<List<RentalRequest>>
+
+    @GET("user/get-user")
+    fun getUser(@Body userName: String): Response<UserRequest>
 
     @GET("rental/get-by-provider")
     fun getRentalByProvider(): Response<List<RentalRequest>>

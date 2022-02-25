@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.fragment.CarDetailFragment">
+
+    <TextView
+        android:id="@+id/detailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/gothambook"
+        android:text="Details"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+
+
+        app:layout_constraintBottom_toTopOf="@+id/image_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="0dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/vehiculeimg"
+        app:layout_constraintBottom_toTopOf="@+id/rental_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsTitle" />
+
+    <TextView
+        android:id="@+id/rental_name"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/gothambold"
+        android:textColor="@color/black"
+        android:text="Rental name"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:backgroundTint="@color/validate_color"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rental_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rental_name"
+        app:layout_constraintTop_toTopOf="@+id/rental_name">
+
+        <TextView
+            android:id="@+id/car"
+            android:layout_width="80dp"
+            android:textColor="@color/black"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/validate_color"
+            android:fontFamily="@font/gothambold"
+            android:paddingTop="4dp"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="11dp" />
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rental_name">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="77dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/constructionYearLayout"
+
+                    android:layout_width="0dp"
+                    android:layout_height="71dp"
+
+                    android:layout_marginEnd="32dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/numeroChassisLayoutD"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/numeroChassisLayoutD">
+
+                    <LinearLayout
+                        android:layout_width="139dp"
+                        android:layout_height="66dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/constructionYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/gothambold"
+                            android:text="constructionYear"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_constructionYear"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/gothambook"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textFontWeight="900" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/mileage_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="32dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="137dp"
+                        android:layout_height="65dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/mileage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:textColor="@color/black"
+
+                            android:text="mileage"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_mileage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/gothambook"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center"
+                            android:textFontWeight="900" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="5dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/model_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="65dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/model"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:text="Model"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_model"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/power_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/model_layout"
+                    app:layout_constraintEnd_toStartOf="@id/engine_type_layout"
+                    app:layout_constraintStart_toEndOf="@id/model_layout"
+                    app:layout_constraintTop_toTopOf="@id/model_layout">
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="65dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/power"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:text="Power"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_power"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/engine_type_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@id/power_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/power_layout">
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="65dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/engine_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:text="@string/engine_type"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_engine_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="5dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fuelType_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/fuelType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/gothambold"
+                            android:text="@string/fuel_type"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_fuel_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="10dp"
+                            android:text="TextView"
+                            android:textAlignment="center"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fuelUsePerKm_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/fuelType_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fuelType_layout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/fuelUsePerKm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:text="@string/fuel_use_per_km"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_fuel_use_per_km"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="5dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fuelPrice_layout"
+                    android:layout_width="172dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:textColor="@color/black"
+                            android:id="@+id/fuelPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:text="@string/fuelPrice"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/input_fuel_price"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/pressionPneuLayoutD"
+                    android:layout_width="172dp"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/fuelPrice_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fuelPrice_layout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/pressionPneuTextViewD"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:text="Pression pneu"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/pressionPneuD"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="5dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/niveauHMLayoutD"
+                    android:layout_width="172dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/niveauHMTextViewD"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:textColor="@color/black"
+                            android:text="Niveau minimum huile"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/niveauHMD"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/anomalieCLayoutD"
+                    android:layout_width="172dp"
+                    android:layout_height="62dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/niveauHMLayoutD"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/niveauHMLayoutD">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gothambold"
+                            android:textColor="@color/black"
+                            android:text="Anomalie circuit"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/anomalieCD"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/gothambook"
+                            android:paddingTop="15dp"
+                            android:text="TextView"
+                            android:textColor="@color/black"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/reseverButtonD"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/gothambold"
+        android:text="Réserver"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.555" />
+
+
+
+    <Button
+        android:id="@+id/goBackButtonDetailsVehicule"
+        android:layout_width="40dp"
+        android:layout_height="36dp"
+        android:backgroundTint="@color/grey_light"
+        android:fontFamily="@font/gothambook"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsTitle"
+        app:layout_constraintEnd_toStartOf="@+id/detailsTitle"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/detailsTitle"
+        app:layout_constraintVertical_bias="0.466"
+
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

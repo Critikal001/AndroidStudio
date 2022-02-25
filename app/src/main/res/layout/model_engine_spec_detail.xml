@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/card_background"
+    android:layout_marginHorizontal="8dp">
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/details_rental"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fuelType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingVertical="2dp"
+        android:text="@string/fuelType"
+        android:paddingHorizontal="8dp"
+        android:gravity="center"
+        app:drawableTint="@color/black"
+        android:drawablePadding="8dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fuelTypeLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center|end"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="2dp"
+        android:textColor="@color/black"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@id/fuelType"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="Rental fuelType" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fuelUsePerKm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fuelType"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:paddingVertical="2dp"
+        android:text="@string/fuelUsePerKm"
+        android:paddingHorizontal="8dp"
+        android:drawablePadding="8dp"
+        app:drawableTint="@color/black"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fuelUsePerKmLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center|end"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="3dp"
+        android:textColor="@color/black"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toEndOf="@id/fuelUsePerKm"
+        app:layout_constraintTop_toBottomOf="@id/fuelTypeLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="4500,00" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fuelPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fuelUsePerKm"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="@string/fuelPrice"
+        android:paddingHorizontal="8dp"
+        android:drawablePadding="8dp"
+        android:paddingVertical="2dp"
+        app:drawableTint="@color/black"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fuelPriceLine"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center|end"
+        android:paddingHorizontal="8dp"
+        android:textColor="@color/black"
+        android:paddingVertical="2dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/fuelPrice"
+        app:layout_constraintTop_toBottomOf="@id/fuelUsePerKmLine"
+        tools:text="112000" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

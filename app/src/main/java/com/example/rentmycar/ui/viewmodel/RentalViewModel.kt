@@ -16,8 +16,7 @@ import kotlinx.coroutines.launch
 
 class RentalViewModel : ViewModel() {
     private val rentalRepository = RentalRepository()
-
-    private val _rentalListLiveData = MutableLiveData<List<RentalRequest>?>()
+    val _rentalListLiveData = MutableLiveData<List<RentalRequest>?>()
     val rentalListLiveData: LiveData<List<RentalRequest>?> = _rentalListLiveData
 
     private val _rentalResult = MutableLiveData<Int>()

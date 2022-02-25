@@ -3,12 +3,18 @@ package com.example.rentmycar.data.api.request
 import com.squareup.moshi.Json
 
 data class UserRequest(
-    @Json(name = "userName")
+    val userId: String,
     val userName: String,
-
-    @Json(name = "lastName")
     val lastName: String,
-
-    @Json(name = "firstName")
-    val firstName: String
+    val firstName: String,
+    val street: String?,
+    val houseNumber: String?,
+    val postalCode: String?,
+    val city: String?,
+    val country: String?,
+    val phoneNumber: String?,
+    val iban: String?,
+    val passWord: String,
+    val email: String,
+    val userRole: Int
 )

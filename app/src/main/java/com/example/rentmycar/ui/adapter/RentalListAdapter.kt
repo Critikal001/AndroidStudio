@@ -43,7 +43,7 @@ class RentalListAdapter(
             rentalModel.fuelType = rental[position].car.engine.engineSpec.fuelType
             rentalModel.fuelUsePerKm =rental[position].car.engine.engineSpec.fuelUsePerKm
             rentalModel.fuelPrice =rental[position].car.engine.engineSpec.fuelPrice
-            rentalModel.pricePerKm =rental[position].car.engine.engineSpec.pricePerKm
+
 //            vm.etat = data[position].etat
 //            vm.limiteurVitesse =  data[position].limiteurVitesse
 //            vm.secureUrl = data[position].secureUrl

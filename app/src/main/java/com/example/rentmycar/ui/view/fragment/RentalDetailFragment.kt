@@ -10,9 +10,7 @@ import com.example.rentmycar.R
 
 class RentalDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = RentalDetailFragment()
-    }
+
 
     
 

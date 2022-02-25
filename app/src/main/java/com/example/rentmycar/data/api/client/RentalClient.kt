@@ -31,7 +31,7 @@ class RentalClient(private val serviceProvider: ServiceProvider): BaseClient() {
         return safeApiCall { serviceProvider.createProvider(provider) }
     }
 
-    suspend fun createUser(user: User): SimpleResponse<UserRequest>? {
+     fun createUser(user: User): SimpleResponse<UserRequest>? {
         return safeApiCall { serviceProvider.createUser(user) }
     }
 
@@ -43,13 +43,17 @@ class RentalClient(private val serviceProvider: ServiceProvider): BaseClient() {
         return safeApiCall { serviceProvider.getRental() }
     }
 
+    fun getUser(userName :String): SimpleResponse<UserRequest>?{
+        return safeApiCall { serviceProvider.getUser(userName) }
+    }
+
     fun getLocation(): SimpleResponse<List<LocationRequest>>? {
         return safeApiCall { serviceProvider.getLocation() }
     }
 
-    fun getRentalByLocation(): SimpleResponse<List<RentalRequest>>?{
-        return safeApiCall { serviceProvider.getRentalByLocation() }
-    }
+//    fun getRentalByLocation(): SimpleResponse<List<RentalRequest>>?{
+//        return safeApiCall { serviceProvider.get() }
+//    }
 
     fun getRentalByProvider(): SimpleResponse<List<RentalRequest>>?{
         return safeApiCall { serviceProvider.getRentalByProvider() }

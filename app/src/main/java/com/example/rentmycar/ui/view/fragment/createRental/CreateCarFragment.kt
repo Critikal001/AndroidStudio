@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.rentmycar.R
 import com.example.rentmycar.data.room.CarRoom
 import com.example.rentmycar.databinding.FragmentCreateCarBinding
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_create_rental.*
 class CreateCarFragment : Fragment() {
     private val viewModel : CarViewModel by lazy {
         ViewModelProvider(this)[CarViewModel::class.java] }
+    private val safeArgs: CreateCarFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +39,8 @@ class CreateCarFragment : Fragment() {
                 return@observe
             }
 
-            findNavController().navigate(R.id.create_car_to_engine)
+            val directions = CreateCarFragmentDirections.createCarToEngine(rentalId = safeArgs.rentalId, carId = carResult.toInt())
+            findNavController().navigate(directions)
         }
         return inflater.inflate(R.layout.fragment_create_car, container, false)
     }

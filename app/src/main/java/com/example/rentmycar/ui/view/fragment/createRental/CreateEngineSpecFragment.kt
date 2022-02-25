@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.EngineType
@@ -28,6 +29,8 @@ import kotlinx.android.synthetic.main.fragment_create_rental.*
 class CreateEngineSpecFragment : Fragment() {
     private  val viewModel: EngineSpecViewModel by lazy {
         ViewModelProvider(this)[EngineSpecViewModel::class.java]  }
+    private val safeArgs: CreateEngineSpecFragmentArgs by navArgs()
+
 
     override fun onResume() {
         super.onResume()
@@ -48,8 +51,9 @@ class CreateEngineSpecFragment : Fragment() {
                 Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
             }
-            
-            findNavController().navigate(R.id.create_enginespec_to_car)
+
+            val directions = CreateEngineSpecFragmentDirections.createEnginespecToCreateLocation(rentalId = safeArgs.rentalId, carId = safeArgs.carId, engineId = safeArgs.engineId, engineSpecId = engineSpecResult.toInt())
+            findNavController().navigate(directions)
         }
 
 
