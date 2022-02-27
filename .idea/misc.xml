@@ -44,6 +44,8 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_location_detail.xml" value="0.1" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_rental_detail.xml" value="0.22" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_reservation_create_buttons.xml" value="0.15353260869565216" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_reservation_create_header.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_reservation_create_payment_method.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_fragment.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_layout.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_list_fragment.xml" value="0.17806484295845998" />

@@ -30,21 +30,8 @@ import kotlinx.android.synthetic.main.fragment_login.*
 class  LoginFragment : Fragment() {
     val repository: LoginRepository = LoginRepository()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-       return inflater.inflate(R.layout.fragment_login, container, false)
-
-}
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val sharedPref = requireActivity().getSharedPreferences(
-            sharedPrefFile, Context.MODE_PRIVATE
-        )
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         connectButton.setOnClickListener {
 
             val userName = username.text.toString()
@@ -67,6 +54,23 @@ class  LoginFragment : Fragment() {
             // startActivity(intent)
 
         }
+    }
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+       return inflater.inflate(R.layout.fragment_login, container, false)
+
+}
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val sharedPref = requireActivity().getSharedPreferences(
+            sharedPrefFile, Context.MODE_PRIVATE
+        )
+
+
 
         val con = sharedPref.getBoolean("connected",false)
         if (con){
