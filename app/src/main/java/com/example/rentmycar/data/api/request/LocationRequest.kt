@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class LocationRequest(
     @Json(name = "locationId")
-    val locationId: String,
+    val locationId: Int,
 
     @Json(name = "city")
     val city: String,

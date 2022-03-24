@@ -1,7 +1,6 @@
 package com.example.rentmycar.ui.view.fragment.createRental
 
 import android.os.Bundle
-import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rentmycar.R
 import com.example.rentmycar.data.room.EngineRoom
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
-import com.example.rentmycar.ui.viewmodel.CarViewModel
 import com.example.rentmycar.ui.viewmodel.EngineViewModel
 
-import com.example.rentmycar.ui.viewmodel.RentalDetails
-import com.example.rentmycar.ui.viewmodel.RentalViewModel
 import kotlinx.android.synthetic.main.fragment_create_engine.*
 import kotlinx.android.synthetic.main.fragment_create_rental.*
 

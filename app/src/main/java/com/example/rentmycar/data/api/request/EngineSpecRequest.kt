@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 
 data class EngineSpecRequest(
     @Json(name = "engineSpecId")
-    val engineSpecId: String,
+    val engineSpecId: Int,
 
     @Json(name = "engineType")
     val engineType: EngineType,

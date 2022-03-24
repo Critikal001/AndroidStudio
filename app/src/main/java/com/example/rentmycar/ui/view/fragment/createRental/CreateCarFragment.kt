@@ -8,17 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.rentmycar.R
 import com.example.rentmycar.data.room.CarRoom
-import com.example.rentmycar.databinding.FragmentCreateCarBinding
-import com.example.rentmycar.databinding.FragmentCreateEngineBinding
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
 import com.example.rentmycar.ui.viewmodel.CarViewModel
-import com.example.rentmycar.ui.viewmodel.RentalDetails
-import com.example.rentmycar.ui.viewmodel.RentalViewModel
 import kotlinx.android.synthetic.main.fragment_create_car.*
 import kotlinx.android.synthetic.main.fragment_create_engine.*
 import kotlinx.android.synthetic.main.fragment_create_rental.*

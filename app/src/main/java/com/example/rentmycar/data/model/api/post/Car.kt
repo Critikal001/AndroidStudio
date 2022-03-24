@@ -3,6 +3,9 @@ package com.example.rentmycar.data.model.api.post
 import com.squareup.moshi.Json
 
 data class Car(
+    @Json(name = "registrationNr")
+    val registrationNr: Int?,
+
     @Json(name = "constructionYear")
     val constructionYear: Int,
 
@@ -13,7 +16,7 @@ data class Car(
     val model: String,
 
     @Json(name = "engine")
-    val engine: Engine
+    val engine: Engine?
 
 
 )

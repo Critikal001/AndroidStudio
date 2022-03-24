@@ -13,7 +13,7 @@ import com.example.rentmycar.data.room.CarRoom
 import kotlinx.coroutines.launch
 
 class CarViewModel :ViewModel() {
-    private val carRepository = CarRepository()
+
 
     private val _carListLiveData = MutableLiveData<List<CarRequest>?>()
     val carListLiveData: LiveData<List<CarRequest>?> = _carListLiveData
@@ -34,22 +34,24 @@ class CarViewModel :ViewModel() {
 
     fun saveCar(context: Context, carRoom: CarRoom) {
         viewModelScope.launch {
-            val response = carRepository.saveCar(context, carRoom)
+            val response = CarRepository.saveCar(context, carRoom)
             _carResult.value = response.toInt()
         }
     }
 
     fun getCar(context: Context, carId: Int) {
         viewModelScope.launch {
-            val response = carRepository.getCar(context, carId)
+            val response = CarRepository.getCar(context, carId)
             _carRoomLiveData.postValue(response)
         }
     }
 
     fun createCar(car: Car) {
         viewModelScope.launch {
-            val response = carRepository.createCar(car)
-            _carCreateResult.postValue(response)
+            val response = CarRepository.createCar(car){
+                _carCreateResult.postValue(it?.body())
+            }
+
         }
     }
 }

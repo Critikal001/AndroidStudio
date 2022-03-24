@@ -19,7 +19,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/details_rental"
+        android:text="@string/location_details"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="32sp"

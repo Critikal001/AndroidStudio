@@ -52,27 +52,13 @@ class CreateRentalOverview : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        return inflater.inflate(R.layout.create_rental_overview_fragment, container, false)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        getData()
-        observeData()
-
-        val epoxyRecyclerView = view?.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
-        epoxyRecyclerView?.setControllerAndBuildModels(epoxyController)
-    }
-
-    private fun observeData(){
         rentalViewModel.rentalRoomLiveData.observe(viewLifecycleOwner) {rentalResponse ->
             epoxyController.rental = rentalResponse
             if (rentalResponse == null) {
                 Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
             }else{
-                rental = Rental(rentalResponse.name, rentalResponse.price, rentalResponse.mileage, false, car, location, provider)
+                rental = Rental(0, rentalResponse.name, rentalResponse.price, rentalResponse.mileage, false, null, null, null)
             }
         }
 
@@ -82,7 +68,7 @@ class CreateRentalOverview : Fragment() {
                 Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
             }else{
-                car = Car(carResponse.constructionYear, carResponse.mileage, carResponse.model, engine)
+                car = Car(0, carResponse.constructionYear, carResponse.mileage, carResponse.model, null)
             }
         }
 
@@ -92,7 +78,7 @@ class CreateRentalOverview : Fragment() {
                 Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
             }else{
-                engine = Engine(engineResponse.power, engineSpec)
+                engine = Engine(0, engineResponse.power, null)
             }
         }
 
@@ -102,11 +88,33 @@ class CreateRentalOverview : Fragment() {
                 Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
             }else{
-                engineSpec = EngineSpec(engineSpecResponse.engineType, engineSpecResponse.fuelType, engineSpecResponse.fuelUsePerKm, engineSpecResponse.fuelPrice)
+                engineSpec = EngineSpec(0, engineSpecResponse.engineType, engineSpecResponse.fuelType, engineSpecResponse.fuelUsePerKm, engineSpecResponse.fuelPrice)
             }
         }
 
+        locationViewModel.locationRoomLiveData.observe(viewLifecycleOwner) {locationResponse ->
+            epoxyController.location = locationResponse
+            if (locationResponse == null){
+                Toast.makeText(requireActivity(), HomeProviderActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
+                return@observe
+            }else{
+                location = Location(0, locationResponse.city, locationResponse.address, locationResponse.longitude, locationResponse.latitude)
+            }
+        }
+        return inflater.inflate(R.layout.create_rental_overview_fragment, container, false)
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        getData()
+
+
+        val epoxyRecyclerView = view?.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
+        epoxyRecyclerView?.setControllerAndBuildModels(epoxyController)
+    }
+
+
 
     private fun getData() {
         // Retrieve location and car from Room database
@@ -125,10 +133,59 @@ class CreateRentalOverview : Fragment() {
 
     private fun onContinue() {
         engineSpecViewModel.createEngineSpec(engineSpec)
-        engineViewModel.createEngine(engine)
-        carViewModel.createCar(car)
-        locationViewModel.createLocation(location)
-        findNavController().navigate(R.id.create_rental_overview_to_dashboard)
+        engineSpecViewModel.engineSpecCreateResult.observe(viewLifecycleOwner){engineS ->
+            if (engineS == null){
+                Toast.makeText(requireActivity(), "Failed to insert engineS", Toast.LENGTH_LONG).show()
+                return@observe
+            }else{
+                engineSpec = EngineSpec(engineS.engineSpecId, engineS.engineType, engineS.fuelType, engineS.fuelUsePerKm, engineS.fuelPrice)
+                locationViewModel.createLocation(location)
+                locationViewModel.locationResourceResult.observe(viewLifecycleOwner){locations ->
+                    if (locations == null){
+                        Toast.makeText(requireActivity(), "Failed to insert location", Toast.LENGTH_LONG).show()
+                        return@observe
+                    }else{
+                        location = Location(locations.locationId, locations.city, locations.address, locations.longitude, locations.latitude)
+
+                        var paramEngine = Engine(engine.motorNumber, engine.power, engineSpec)
+                        engineViewModel.createEngine(paramEngine)
+                        engineViewModel.engineResourceResult.observe(viewLifecycleOwner){engines ->
+                            if (engines == null){
+                                Toast.makeText(requireActivity(), "Failed to insert engine", Toast.LENGTH_LONG).show()
+                                return@observe
+                            }else{
+                                engine = Engine(engines.motorNumber, engines.power, engineSpec)
+
+                                var paramEngine = Car(car.registrationNr, car.constructionYear, car.mileage, car.model, engine)
+                                carViewModel.createCar(paramEngine)
+                                carViewModel.carResourceResult.observe(viewLifecycleOwner){cars ->
+                                    if (cars == null){
+                                        Toast.makeText(requireActivity(), "Failed to insert car", Toast.LENGTH_LONG).show()
+                                        return@observe
+                                    }else{
+                                        car = Car(cars.registrationNr, cars.constructionYear, cars.mileage, cars.model, engine)
+
+                                        var paramRental = Rental(rental.rentalId, rental.name, rental.price, rental.mileage, rental.inUse, car, location, null)
+                                        rentalViewModel.createRental(paramRental)
+                                        rentalViewModel.rentalListLiveData.observe(viewLifecycleOwner){rentals ->
+                                            if (rentals == null){
+                                                Toast.makeText(requireActivity(), "Failed to insert rental", Toast.LENGTH_LONG).show()
+                                                return@observe
+                                            }else{
+                                                findNavController().navigate(R.id.create_rental_overview_to_dashboard)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
     }
 
 }

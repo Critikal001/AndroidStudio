@@ -13,7 +13,6 @@ import com.example.rentmycar.data.room.LocationRoom
 import kotlinx.coroutines.launch
 
 class LocationViewModel :ViewModel() {
-    private val locationRepository = LocationRepository()
 
     private val _locationListLiveData = MutableLiveData<List<LocationRequest>?>()
     val locationListLiveData: LiveData<List<LocationRequest>?> = _locationListLiveData
@@ -31,7 +30,7 @@ class LocationViewModel :ViewModel() {
 
     fun getLocationList(id: Int) {
         viewModelScope.launch {
-            val response = locationRepository.getLocationList()
+            val response = LocationRepository.getLocationList()
             _locationListLiveData.postValue(response)
         }
     }
@@ -40,22 +39,24 @@ class LocationViewModel :ViewModel() {
 
     fun saveLocation(context: Context, locationRoom: LocationRoom) {
         viewModelScope.launch {
-            val response = locationRepository.saveLocation(context, locationRoom)
+            val response = LocationRepository.saveLocation(context, locationRoom)
             _locationResult.value = response.toInt()
         }
     }
 
     fun getLocation(context: Context, locationId: Int) {
         viewModelScope.launch {
-            val response = locationRepository.getLocation(context, locationId)
+            val response = LocationRepository.getLocation(context, locationId)
             _locationRoomLiveData.postValue(response)
         }
     }
 
     fun createLocation(location: Location) {
         viewModelScope.launch {
-            val response = locationRepository.createLocation(location)
-            _locationCreateResult.postValue(response)
+            LocationRepository.createLocation(location){
+                _locationCreateResult.postValue(it?.body())
+
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ import com.example.rentmycar.R
 import com.example.rentmycar.data.room.LocationRoom
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
 import com.example.rentmycar.ui.view.fragment.createRental.CreateCarFragmentDirections
+import com.example.rentmycar.ui.view.fragment.createRental.CreateEngineSpecFragmentDirections
 import com.example.rentmycar.ui.viewmodel.LocationViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -91,7 +92,7 @@ class CreateLocation : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListe
             if (address != null) {
                 val location: LocationRoom = parseAddress(address!!)
                 viewModel.saveLocation(requireContext(), location)
-                findNavController().navigate(R.id.create_location_to_rental_overview)
+
             }
         }
     }

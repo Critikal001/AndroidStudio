@@ -129,8 +129,8 @@ class RentalOverviewController(
 
         override fun ModelEngineSpecDetailBinding.bind() {
             fuelTypeLine.text = engineSpec?.fuelType
-            fuelUsePerKm.text = engineSpec?.fuelUsePerKm.toString()
-            fuelPrice.text = engineSpec?.fuelPrice.toString()
+            fuelUsePerKmLine.text = engineSpec?.fuelUsePerKm.toString()
+            fuelPriceLine.text = engineSpec?.fuelPrice.toString()
         }
     }
 

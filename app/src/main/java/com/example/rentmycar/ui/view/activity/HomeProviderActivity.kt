@@ -60,6 +60,7 @@ class HomeProviderActivity : AppCompatActivity(), MyDrawerController {
         val navController = findNavController(R.id.nav_host_fragment_content_provider)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+    
 
     override fun setDrawer_Locked() {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)

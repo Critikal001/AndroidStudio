@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.rentmycar.R
 import com.example.rentmycar.ui.view.activity.MyDrawerController
-import com.example.rentmycar.ui.viewmodel.RentalDetails
 import kotlinx.android.synthetic.main.fragment_car_detail.*
 import kotlinx.android.synthetic.main.fragment_car_detail.input_fuel_price
 import kotlinx.android.synthetic.main.fragment_car_detail.input_fuel_type

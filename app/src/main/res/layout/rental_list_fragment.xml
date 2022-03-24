@@ -22,37 +22,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageRentalList"
-        android:layout_width="409dp"
-        android:layout_height="341dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewRental"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/img" />
-
-    <TextView
-        android:id="@+id/nomBorne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
-        android:fontFamily="@font/gothambook"
-        android:text="Borne de Bab El Oued"
-        android:textSize="@dimen/appbar_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageRentalList" />
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewRental"
-        android:layout_width="0dp"
-        android:layout_height="530dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/epoxyRecyclerView"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"
+        app:itemSpacing="0dp"
+        tools:itemCount="12"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

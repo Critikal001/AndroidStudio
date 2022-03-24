@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class CarRequest(
     @Json(name = "registrationNr")
-    val registrationNr: String,
+    val registrationNr: Int,
 
     @Json(name = "constructionYear")
     val constructionYear: Int,

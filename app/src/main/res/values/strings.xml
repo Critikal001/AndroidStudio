@@ -26,6 +26,8 @@
     <string name="settings">Settings</string>
     <string name="logout">logout</string>
     <string name="car_list">Car list</string>
+    <string name="details_engine">Details Engine</string>
+    <string name="no_car_available">no car available</string>
 
 
     // Strings for Provider
@@ -100,7 +102,7 @@
     <string name="registering">registering</string>
     <string name="create_an_account">create an account</string>
     <string name="invalid_payment_method">invalid payment method</string>
-<string name="paid_at">paid at</string>
+    <string name="paid_at">paid at</string>
     <string name="reservation_overview">Reservation</string>
     <string name="error_get_timeslots">Unable to retrieve timeslots. Try again later.</string>
     <string name="reservation_number">Reservation Number:</string>

@@ -18,8 +18,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.rentmycar.MainActivity
 import com.example.rentmycar.R
 import com.example.rentmycar.databinding.ActivityHomeCustomerBinding
-import com.example.rentmycar.databinding.ActivityHomeProviderBinding
-import com.example.rentmycar.utils.Utils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_customer.*

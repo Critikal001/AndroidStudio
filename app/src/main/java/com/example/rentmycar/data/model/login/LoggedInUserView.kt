@@ -1,7 +1,7 @@
 package com.example.rentmycar.data.model.login
 
 /**
- * User details post authentication that is exposed to the UI
+ * com.example.rentmycar.data.room.User details post authentication that is exposed to the UI
  */
 data class LoggedInUserView(
     val displayName: String

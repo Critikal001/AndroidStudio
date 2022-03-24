@@ -6,21 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.EngineType
 import com.example.rentmycar.data.room.EngineSpecRoom
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
 
-import com.example.rentmycar.ui.viewmodel.RentalDetails
-import com.example.rentmycar.ui.viewmodel.RentalViewModel
 import com.example.rentmyengineSpec.ui.viewmodel.EngineSpecViewModel
 import kotlinx.android.synthetic.main.fragment_create_engine_spec.*
 import kotlinx.android.synthetic.main.fragment_create_rental.*

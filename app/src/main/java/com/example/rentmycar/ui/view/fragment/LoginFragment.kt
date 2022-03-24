@@ -2,83 +2,81 @@ package com.example.rentmycar.ui.view.fragment
 
 import android.content.Context
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-
 import android.widget.Toast
-import com.example.rentmycar.R
-import com.example.rentmycar.data.model.login.LoggedInUserView
-import com.example.rentmycar.databinding.FragmentLoginBinding
-import com.example.rentmycar.ui.view.activity.LoginActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.rentmycar.AppPreference
 
-import com.example.rentmycar.ui.viewmodel.LoginViewModel
-import com.example.rentmycar.ui.viewmodel.factory.LoginViewModelFactory
-import com.example.rentmycar.utils.sharedPrefFile
-import com.example.rentmyuser.data.repositories.LoginRepository
+import com.example.rentmycar.R
+import com.example.rentmycar.databinding.FragmentLoginBinding
+import com.example.rentmycar.sharedPrefFile
+import com.example.rentmycar.ui.view.activity.HomeProviderActivity
+import com.example.rentmycar.ui.view.activity.LoginActivity
+import com.example.rentmycar.ui.viewmodel.UserViewModel
+
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.password
+
 
 
 class  LoginFragment : Fragment() {
-    val repository: LoginRepository = LoginRepository()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        connectButton.setOnClickListener {
-
-            val userName = username.text.toString()
-            val passWord = password.text.toString()
-
-            if (userName.isEmpty()) {
-                username.error = "Email RequuserNameired"
-                username.requestFocus()
-
-            }
-            if (passWord.isEmpty()) {
-                password.error = "Password Required"
-                password.requestFocus()
-
-            }
-
-
-            repository.login(requireActivity(), userName, passWord)
-            // val intent = Intent(this, HomeActivity::class.java)
-            // startActivity(intent)
-
-        }
+    private val preference = AppPreference(LoginActivity.context)
+    private val viewModel: UserViewModel by lazy {
+        ViewModelProvider(this)[UserViewModel::class.java]
     }
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       return inflater.inflate(R.layout.fragment_login, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        val view = binding.root
 
-}
+        start()
+
+        binding.loginButton.setOnClickListener {
+            val userName: String = username.text.toString()
+            val userPassword: String = password.text.toString()
+
+            if (userName.isEmpty()) {
+                username.error = "Email Required"
+                username.requestFocus()
+                return@setOnClickListener
+            }
+            if (userPassword.isEmpty()) {
+                password.error = "Password Required"
+                password.requestFocus()
+                return@setOnClickListener
+            }
+            viewModel.userLogin(requireContext(), userName, userPassword)
+        }
+        return view
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
-        val sharedPref = requireActivity().getSharedPreferences(
+    fun start() {
+        val sharedPref = LoginActivity.context.getSharedPreferences(
             sharedPrefFile, Context.MODE_PRIVATE
         )
 
-
-
         val con = sharedPref.getBoolean("connected",false)
         if (con){
-            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            val intent = Intent(requireContext(),HomeProviderActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
         }
-    }
 
+    }
 
 }

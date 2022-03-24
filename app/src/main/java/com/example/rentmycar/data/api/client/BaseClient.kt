@@ -1,7 +1,7 @@
 package com.example.rentmycar.data.api.client
 
 import com.example.rentmycar.data.api.request.SimpleResponse
-import com.example.rentmycar.data.api.request.UserRequest
+import retrofit2.Call
 import retrofit2.Response
 
 abstract class BaseClient {

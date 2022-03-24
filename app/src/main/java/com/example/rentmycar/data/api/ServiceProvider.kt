@@ -5,7 +5,9 @@ import com.example.rentmycar.data.api.request.*
 import com.example.rentmycar.data.model.api.post.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Call
 import retrofit2.Response
+
 
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -28,7 +30,7 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 // Here we define how Retrofit interacts with the webservice
-// we create 'suspend' fun, so we can call the function from a coroutine scope
+// we create 'suspend' fun, so we can Response the function from a coroutine scope
 
 interface ServiceProvider {
     //    // All getters from the api
@@ -39,8 +41,14 @@ interface ServiceProvider {
     fun getLocation(): Response<List<LocationRequest>>
 
 
-    @GET("user/get-user")
-    fun getUser(@Body userName: String): Response<UserRequest>
+    @GET("user/get-user/{userName}")
+    fun getUser(@Path("userName") userName : String): Call<UserRequest>
+
+    @GET("rental/get-rental-by-id/{rentalId}")
+    fun getRentalById(@Path("rentalId") rentalId : Integer): Call<RentalRequest>
+
+    @GET("rentalplan/get-rentalplan/{rentalplanId}")
+    fun getRentalPlan(@Path("rentalplanId") rentalplanId : Integer): Call<RentalPlan>
 
     @GET("rental/get-by-provider")
     fun getRentalByProvider(): Response<List<RentalRequest>>
@@ -77,7 +85,7 @@ interface ServiceProvider {
     @POST("car/create-car")
     fun createCar(
         @Body car: Car
-    ):Response<CarRequest>
+    ):Call<CarRequest>
 
     
     @POST("car/update-car")
@@ -101,19 +109,19 @@ interface ServiceProvider {
     @POST("engine/create-engine")
     fun createEngine(
         @Body engine: Engine
-    ) :Response<EngineRequest>
+    ) :Call<EngineRequest>
     
     
     @POST("engine/create-enginespec")
     fun createEngineSpec(
-        @Body engineSpec: EngineSpec): Response<EngineSpecRequest>
+        @Body engineSpec: EngineSpec): Call<EngineSpecRequest>
 
 
     
     @POST("location/create-location")
     fun createLocation(
         @Body location: Location
-    ) :Response<LocationRequest>
+    ) :Call<LocationRequest>
     
     
     @POST("provider/create-provider")
@@ -130,8 +138,12 @@ interface ServiceProvider {
     @POST("rental/create-rental")
     fun createRental(
         @Body rental: Rental
-    ) :Response<RentalRequest>
-    
+    ) :Call<RentalRequest>
+
+    @POST("rentalplan/create-rentalplan")
+    fun createRentalPlan(
+        @Body rental: Rental
+    ) :Call<RentalPlan>
     
     @POST("rental/update-rental")
     fun updateRental(
@@ -150,7 +162,14 @@ interface ServiceProvider {
     @POST("user/create-user")
     fun createUser(
         @Body user: User
-    ) : Response<UserRequest>
+    ) : Call<UserRequest>
+
+    @POST("image/create-image")
+    fun createImage(
+        @Body images: Images
+    ) : Call<Images>
+
+
     
     object RentalApi {
         val retrofitService: ServiceProvider by lazy {

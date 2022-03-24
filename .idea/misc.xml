@@ -7,6 +7,9 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable-v24/ic_menu_hamburger.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/create_rental.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_back.xml" value="0.37604166666666666" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_baseline_electric_car_24.xml" value="0.221875" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_baseline_fcev.xml" value="0.221875" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_baseline_local_gas_station_24.xml" value="0.221875" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_home.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_show_password.xml" value="0.37604166666666666" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_user.xml" value="0.3764102564102564" />
@@ -20,6 +23,7 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/app_bar_customer.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/app_bar_home.xml" value="0.22" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/app_bar_provider.xml" value="0.1" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/book_rental_button.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/content_customer_layout.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/content_provider_layout.xml" value="0.13165266106442577" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/create_rental_overview_fragment.xml" value="0.1" />
@@ -31,24 +35,34 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_create_location.xml" value="0.2959349593495935" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_create_rental.xml" value="0.2523364485981308" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_customer_dashboard.xml" value="0.3020833333333333" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_location_detail.xml" value="0.254981884057971" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_location_list.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_login.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_sign_up.xml" value="0.15719063545150502" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/header.xml" value="0.1" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/loading.xml" value="0.1" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_button.xml" value="0.1" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_car_detail.xml" value="0.22" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_car_details_location.xml" value="0.254981884057971" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_car_details_title.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_car_header.xml" value="0.254981884057971" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_dropdown_list_item.xml" value="0.140625" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_engine_detail.xml" value="0.25" />
-        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_engine_spec_detail.xml" value="0.1" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_engine_spec_detail.xml" value="0.22" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_item_images.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_local_exception.xml" value="0.1" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_location_detail.xml" value="0.1" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_map.xml" value="0.254981884057971" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_rental_detail.xml" value="0.22" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_rental_details_data.xml" value="0.254981884057971" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_reservation_create_buttons.xml" value="0.15353260869565216" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_reservation_create_header.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/model_reservation_create_payment_method.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_detail_fragment.xml" value="0.254981884057971" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_fragment.xml" value="0.17806484295845998" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_layout.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_list_fragment.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/rental_list_item.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/menu/menu_customer_layout.xml" value="0.3605128205128205" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/menu/menu_layout.xml" value="0.20677083333333332" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/menu/menu_provider_layout.xml" value="0.20677083333333332" />

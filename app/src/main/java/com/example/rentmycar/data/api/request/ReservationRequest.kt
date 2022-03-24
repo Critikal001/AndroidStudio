@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class ReservationRequest(
     @Json(name = "returnLocation")
-    val returnLocation: String,
+    val returnLocation: Int,
 
     @Json(name = "drivingKm")
     val drivingKm: Int,

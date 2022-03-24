@@ -15,7 +15,7 @@ import com.example.rentmycar.data.room.RentalRoom
 import kotlinx.coroutines.launch
 
 class RentalViewModel : ViewModel() {
-    private val rentalRepository = RentalRepository()
+
     val _rentalListLiveData = MutableLiveData<List<RentalRequest>?>()
     val rentalListLiveData: LiveData<List<RentalRequest>?> = _rentalListLiveData
 
@@ -28,11 +28,14 @@ class RentalViewModel : ViewModel() {
     private val _rentalCreateResult = MutableLiveData<RentalRequest?>()
     val rentalResourceResult: LiveData<RentalRequest?> = _rentalCreateResult
 
+    private val _rentalDetailResult = MutableLiveData<RentalRequest?>()
+    val rentalDetailResult: LiveData<RentalRequest?> = _rentalCreateResult
+
 
 
     fun getRentalList() {
         viewModelScope.launch {
-            val response = rentalRepository.getRentalList()
+            val response = RentalRepository.getRentalList()
             _rentalListLiveData.postValue(response)
         }
     }
@@ -41,22 +44,32 @@ class RentalViewModel : ViewModel() {
 
     fun saveRental(context: Context, rentalRoom: RentalRoom) {
         viewModelScope.launch {
-            val response = rentalRepository.saveRental(context, rentalRoom)
+            val response = RentalRepository.saveRental(context, rentalRoom)
             _rentalResult.value = response.toInt()
         }
     }
 
     fun getRental(context: Context, rentalId: Int) {
         viewModelScope.launch {
-            val response = rentalRepository.getRental(context, rentalId)
+            val response = RentalRepository.getRental(context, rentalId)
             _rentalRoomLiveData.postValue(response)
         }
     }
 
     fun createRental(rental: Rental) {
         viewModelScope.launch {
-            val response = rentalRepository.createRental(rental)
-            _rentalCreateResult.postValue(response)
+            RentalRepository.createRental(rental){
+                _rentalCreateResult.postValue(it?.body())
+            }
+
+        }
+    }
+
+    fun getRentalById(rentalId: Integer){
+        viewModelScope.launch{
+            RentalRepository.getRentalById(rentalId){
+                _rentalDetailResult.postValue(it?.body())
+            }
         }
     }
 }

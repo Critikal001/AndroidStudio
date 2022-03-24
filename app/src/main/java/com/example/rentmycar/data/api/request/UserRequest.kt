@@ -3,7 +3,7 @@ package com.example.rentmycar.data.api.request
 import com.squareup.moshi.Json
 
 data class UserRequest(
-    val userId: String,
+    val userId: Int,
     val userName: String,
     val lastName: String,
     val firstName: String,
@@ -15,6 +15,5 @@ data class UserRequest(
     val phoneNumber: String?,
     val iban: String?,
     val passWord: String,
-    val email: String,
     val userRole: Int
 )

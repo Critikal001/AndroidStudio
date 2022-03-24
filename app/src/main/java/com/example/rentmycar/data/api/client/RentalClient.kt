@@ -7,33 +7,31 @@ import retrofit2.Response
 
 class RentalClient(private val serviceProvider: ServiceProvider): BaseClient() {
 
-    suspend fun createEngineSpec(engineSpec: EngineSpec): SimpleResponse<EngineSpecRequest>? {
-        return safeApiCall { serviceProvider.createEngineSpec(engineSpec) }
-    }
-
-    suspend fun createEngine(engine: Engine): SimpleResponse<EngineRequest>? {
-        return safeApiCall { serviceProvider.createEngine(engine) }
-    }
-
-    suspend fun createCar(car: Car): SimpleResponse<CarRequest>? {
-        return safeApiCall { serviceProvider.createCar(car) }
-    }
-
-    suspend fun createRental(rental: Rental): SimpleResponse<RentalRequest>? {
-        return safeApiCall { serviceProvider.createRental(rental) }
-    }
-
-    suspend fun createLocation(location: Location): SimpleResponse<LocationRequest>? {
-        return safeApiCall { serviceProvider.createLocation(location) }
-    }
+//    suspend fun createEngineSpec(engineSpec: EngineSpec): SimpleResponse<EngineSpecRequest>? {
+//        return safeApiCall { serviceProvider.createEngineSpec(engineSpec) }
+//    }
+//
+//    suspend fun createEngine(engine: Engine): SimpleResponse<EngineRequest>? {
+//        return safeApiCall { serviceProvider.createEngine(engine) }
+//    }
+//
+//    suspend fun createCar(car: Car): SimpleResponse<CarRequest>? {
+//        return safeApiCall { serviceProvider.createCar(car) }
+//    }
+//
+//    suspend fun createRental(rental: Rental): SimpleResponse<RentalRequest>? {
+//        return safeApiCall { serviceProvider.createRental(rental) }
+//    }
+//
+//    suspend fun createLocation(location: Location): SimpleResponse<LocationRequest>? {
+//        return safeApiCall { serviceProvider.createLocation(location) }
+//    }
 
     suspend fun createProvider(provider: Provider): SimpleResponse<ProviderRequest>? {
         return safeApiCall { serviceProvider.createProvider(provider) }
     }
 
-     fun createUser(user: User): SimpleResponse<UserRequest>? {
-        return safeApiCall { serviceProvider.createUser(user) }
-    }
+
 
     suspend fun getEngineSpec(): SimpleResponse<List<EngineSpecRequest>>?{
         return safeApiCall { serviceProvider.getEngineSpec() }
@@ -43,9 +41,6 @@ class RentalClient(private val serviceProvider: ServiceProvider): BaseClient() {
         return safeApiCall { serviceProvider.getRental() }
     }
 
-    fun getUser(userName :String): SimpleResponse<UserRequest>?{
-        return safeApiCall { serviceProvider.getUser(userName) }
-    }
 
     fun getLocation(): SimpleResponse<List<LocationRequest>>? {
         return safeApiCall { serviceProvider.getLocation() }

@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 
 class EngineViewModel : ViewModel() {
-    private val engineRepository = EngineRepository()
 
     private val _engineListLiveData = MutableLiveData<List<EngineRequest>?>()
     val engineListLiveData: LiveData<List<EngineRequest>?> = _engineListLiveData
@@ -31,7 +30,7 @@ class EngineViewModel : ViewModel() {
 
     fun getEngineList(id: Int) {
         viewModelScope.launch {
-            val response = engineRepository.getEngineList()
+            val response = EngineRepository.getEngineList()
             _engineListLiveData.postValue(response)
         }
     }
@@ -40,22 +39,24 @@ class EngineViewModel : ViewModel() {
 
     fun saveEngine(context: Context, engineRoom: EngineRoom) {
         viewModelScope.launch {
-            val response = engineRepository.saveEngine(context, engineRoom)
+            val response = EngineRepository.saveEngine(context, engineRoom)
             _engineResult.value = response.toInt()
         }
     }
 
     fun getEngine(context: Context, engineId: Int) {
         viewModelScope.launch {
-            val response = engineRepository.getEngine(context, engineId)
+            val response = EngineRepository.getEngine(context, engineId)
             _engineRoomLiveData.postValue(response)
         }
     }
 
     fun createEngine(engine: Engine) {
         viewModelScope.launch {
-            val response = engineRepository.createEngine(engine)
-            _engineCreateResult.postValue(response)
+            EngineRepository.createEngine(engine){
+                _engineCreateResult.postValue(it?.body())
+
+            }
         }
     }
 }

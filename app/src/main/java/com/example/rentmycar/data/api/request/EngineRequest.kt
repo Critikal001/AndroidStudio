@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class EngineRequest(
     @Json(name = "motorNumber")
-    val motorNumber: String,
+    val motorNumber: Int,
 
     @Json(name = "power")
     val power: Double,

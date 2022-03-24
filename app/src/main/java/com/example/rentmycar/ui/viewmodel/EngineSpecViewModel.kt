@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 
 class EngineSpecViewModel: ViewModel() {
-    private val engineSpecRepository = EngineSpecRepository()
+
 
     private val _engineSpecListLiveData = MutableLiveData<List<EngineSpecRequest>?>()
     val engineSpecListLiveData: LiveData<List<EngineSpecRequest>?> = _engineSpecListLiveData
@@ -27,13 +27,13 @@ class EngineSpecViewModel: ViewModel() {
     val engineSpecRoomLiveData: LiveData<EngineSpecRoom?> = _engineSpecRoomLiveData
 
     private val _engineSpecCreateResult = MutableLiveData<EngineSpecRequest?>()
-    val engineSpecResourceResult: LiveData<EngineSpecRequest?> = _engineSpecCreateResult
+    val engineSpecCreateResult: LiveData<EngineSpecRequest?> = _engineSpecCreateResult
 
 
 
     fun getEngineSpecById(id: Int) {
         viewModelScope.launch {
-            val response = engineSpecRepository.getEngineSpecList()
+            val response = EngineSpecRepository.getEngineSpecList()
             _engineSpecListLiveData.postValue(response)
         }
     }
@@ -42,22 +42,24 @@ class EngineSpecViewModel: ViewModel() {
 
     fun saveEngineSpec(context: Context, engineSpecRoom: com.example.rentmycar.data.room.EngineSpecRoom) {
         viewModelScope.launch {
-            val response = engineSpecRepository.saveEngineSpec(context, engineSpecRoom)
+            val response = EngineSpecRepository.saveEngineSpec(context, engineSpecRoom)
             _engineSpecResult.value = response.toInt()
         }
     }
 
     fun getEngineSpec(context: Context, engineSpecId: Int) {
         viewModelScope.launch {
-            val response = engineSpecRepository.getEngineSpec(context, engineSpecId)
+            val response = EngineSpecRepository.getEngineSpec(context, engineSpecId)
             _engineSpecRoomLiveData.postValue(response)
         }
     }
 
     fun createEngineSpec(engineSpec: EngineSpec) {
         viewModelScope.launch {
-            val response = engineSpecRepository.createEngineSpec(engineSpec)
-            _engineSpecCreateResult.postValue(response)
+            EngineSpecRepository.createEngineSpec(engineSpec){
+                _engineSpecCreateResult.postValue(it?.body())
+
+            }
         }
     }
 

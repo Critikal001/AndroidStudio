@@ -3,6 +3,9 @@ package com.example.rentmycar.data.model.api.post
 import com.squareup.moshi.Json
 
 data class User(
+    @Json(name = "userId")
+    val userId: Int?,
+
     @Json(name = "userName")
     val userName: String,
 

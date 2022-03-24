@@ -1,6 +1,5 @@
 package com.example.rentmycar.ui.view.fragment
 
-import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,29 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.rentmycar.R
-import com.example.rentmycar.databinding.RentalListFragmentBinding
-import com.example.rentmycar.ui.adapter.RentalListAdapter
-import com.example.rentmycar.ui.view.activity.HomeProviderActivity
-import com.example.rentmycar.ui.view.activity.MyDrawerController
-import com.example.rentmycar.ui.view.fragment.createRental.CreateRentalFragmentDirections
-import com.example.rentmycar.ui.viewmodel.RentalDetails
+import com.example.rentmycar.ui.controllers.RentalListController
+import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
 import com.example.rentmycar.ui.viewmodel.RentalViewModel
-import com.example.rentmycar.ui.viewmodel.ReservationDetails
-import com.example.rentmycar.utils.sharedPrefFile
+
 import kotlinx.android.synthetic.main.rental_list_fragment.*
 
 
 class RentalListFragment : Fragment() {
     private  val viewModel: RentalViewModel by lazy {
         ViewModelProvider(this)[RentalViewModel::class.java]  }
-    private var myDrawerController: MyDrawerController? = null
-    private var token : String = ""
-    private var userID : String = ""
-    private var _binding: RentalListFragmentBinding? = null
+    private val controller = RentalListController(::onCarSelected)
 
-    private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,20 +31,29 @@ class RentalListFragment : Fragment() {
         return inflater.inflate(R.layout.rental_list_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.recyclerViewRental.layoutManager = LinearLayoutManager(requireActivity())
 
-        viewModel.rentalListLiveData.observe(viewLifecycleOwner, {checkList()} )
-        backButtonRentalList.setOnClickListener { this.findNavController().navigate(R.id.action_ListeVehiculeFragment_pop) }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        viewModel.rentalListLiveData.observe(viewLifecycleOwner){ rentals ->
+            controller.rentals = rentals
+            if (rentals == null){
+                Toast.makeText(requireActivity(), HomeCustomerActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
+                return@observe
+            }
+        }
+        viewModel.getRentalList()
+       // backButtonRentalList.setOnClickListener { this.findNavController().navigate(R.id.action_ListeVehiculeFragment_pop) }
+
+        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
+        epoxyRecyclerView.setControllerAndBuildModels(controller)
     }
 
-    fun checkList() {
-        val data = viewModel._rentalListLiveData.value
-        val vm = ViewModelProvider(requireActivity())[RentalDetails::class.java]
-        val vmRes = ViewModelProvider(requireActivity())[ReservationDetails::class.java]
-        binding.recyclerViewRental.adapter = RentalListAdapter(requireActivity(), data!!, vm, vmRes)
+    private fun onCarSelected(id: Int) {
+        val directions =
+            RentalListFragmentDirections.carListFragmentToCarDetailFragment(id)
+        findNavController().navigate(directions)
     }
+
 
 }
