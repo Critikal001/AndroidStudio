@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rentmycar.data.api.request.LocationRequest
+
 import com.example.rentmycar.data.model.api.post.Location
 import com.example.rentmycar.data.repositories.LocationRepository
 
@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 
 class LocationViewModel :ViewModel() {
 
-    private val _locationListLiveData = MutableLiveData<List<LocationRequest>?>()
-    val locationListLiveData: LiveData<List<LocationRequest>?> = _locationListLiveData
+    private val _locationListLiveData = MutableLiveData<List<Location>?>()
+    val locationListLiveData: LiveData<List<Location>?> = _locationListLiveData
 
     private val _locationResult = MutableLiveData<Int>()
     val locationResult: LiveData<Int> get() = _locationResult
@@ -23,8 +23,8 @@ class LocationViewModel :ViewModel() {
     private val _locationRoomLiveData = MutableLiveData<LocationRoom?>()
     val locationRoomLiveData: LiveData<LocationRoom?> = _locationRoomLiveData
 
-    private val _locationCreateResult = MutableLiveData<LocationRequest?>()
-    val locationResourceResult: LiveData<LocationRequest?> = _locationCreateResult
+    private val _locationCreateResult = MutableLiveData<Location?>()
+    val locationResourceResult: LiveData<Location?> = _locationCreateResult
 
 
 

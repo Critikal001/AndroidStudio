@@ -18,18 +18,18 @@ import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
 import com.example.rentmycar.ui.viewmodel.ReservationViewModel
 
 
-class CreateReservationFragment : Fragment() {
+//class CreateReservationFragment : Fragment() {
 //
 //    private val epoxyController = ReservationEpoxyController(::onBtnBackClicked, ::onBtnPayClicked, ::dropdownFieldBinding)
-//    private val safeArgs: ReservationCreateFragmentArgs by navArgs()
+//    private val safeArgs: CreateReservationFragmentArgs by navArgs()
 //    private lateinit var autoCompleteTextView: AutoCompleteTextView
 //    private var paymentMethods: Array<String> = emptyArray()
 //    private val viewModel: ReservationViewModel by lazy {
 //        ViewModelProvider(this)[ReservationViewModel::class.java]
 //    }
 //
-//    private val paymentViewModel: PaymentViewModel by lazy {
-//        ViewModelProvider(this)[PaymentViewModel::class.java]
+//    private val viewmodel: ReservationViewModel by lazy {
+//        ViewModelProvider(this)[ReservationViewModel::class.java]
 //    }
 //
 //    override fun onCreateView(
@@ -50,7 +50,7 @@ class CreateReservationFragment : Fragment() {
 //            epoxyController.isDetailsView = safeArgs.isDetailsView
 //
 //            if (reservation == null) {
-//                Toast.makeText(requireActivity(), RentMyCarApplication.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
+//                Toast.makeText(requireActivity(), HomeCustomerActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
 //                return@observe
 //            }
 //        }
@@ -63,7 +63,7 @@ class CreateReservationFragment : Fragment() {
 //    }
 //
 //    private fun onBtnBackClicked() {
-//        val directions = ReservationCreateFragmentDirections.actionReservationCreateFragmentToCarListFragment()
+//        val directions = CreateReservationFragmentDirections.actionReservationCreateFragmentToCarListFragment()
 //        findNavController().navigate(directions)
 //    }
 //
@@ -71,7 +71,7 @@ class CreateReservationFragment : Fragment() {
 //        val paymentMethod = mapPaymentMethodToEnumValue(autoCompleteTextView.text.toString())
 //
 //        if (!paymentMethods.contains(paymentMethod)) {
-//            autoCompleteTextView.error = RentMyCarApplication.context.getString(R.string.payment_method_empty)
+//            autoCompleteTextView.error = HomeCustomerActivity.context.getString(R.string.payment_method_empty)
 //        }
 //        autoCompleteTextView.error = null
 //
@@ -79,7 +79,7 @@ class CreateReservationFragment : Fragment() {
 //            reservation = ReservationNumberRequest(reservationNumber),
 //            paymentMethod = paymentMethod
 //        )
-//        paymentViewModel.postPayment(paymentRequest)
+//        viewmodel.postPayment(paymentRequest)
 //    }
 //
 //    private fun dropdownFieldBinding(autoCompleteTextView: AutoCompleteTextView) {
@@ -90,10 +90,10 @@ class CreateReservationFragment : Fragment() {
 //    }
 //
 //    private fun observePayment() {
-//        paymentViewModel.paymentLiveData.observe(viewLifecycleOwner) { payment ->
+//        viewmodel.paymentLiveData.observe(viewLifecycleOwner) { payment ->
 //            if (payment != null) {
 //                val directions =
-//                    ReservationCreateFragmentDirections.actionReservationCreateFragmentToReservationPaymentFragment(paymentId = payment.id)
+//                    CreateReservationFragmentDirections.actionReservationCreateFragmentToReservationPaymentFragment(paymentId = payment.id)
 //                findNavController().navigate(directions)
 //            }
 //        }
@@ -123,5 +123,5 @@ class CreateReservationFragment : Fragment() {
 //        return paymentEnumType
 //    }
 //
-
-}
+//
+//}

@@ -28,25 +28,28 @@ class RentalListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.rental_list_fragment, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel.rentalListLiveData.observe(viewLifecycleOwner){ rentals ->
             controller.rentals = rentals
             if (rentals == null){
                 Toast.makeText(requireActivity(), HomeCustomerActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
             }
+
         }
-        viewModel.getRentalList()
+
+        viewModel.getRentalList(requireContext())
+        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerViewList)
+        epoxyRecyclerView.setControllerAndBuildModels(controller)
        // backButtonRentalList.setOnClickListener { this.findNavController().navigate(R.id.action_ListeVehiculeFragment_pop) }
 
-        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
-        epoxyRecyclerView.setControllerAndBuildModels(controller)
+
     }
 
     private fun onCarSelected(id: Int) {

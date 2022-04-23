@@ -31,23 +31,7 @@ class RentalOverviewController(
             }
         }
 
-    var engine: EngineRoom? = null
-        set(value) {
-            field = value
-            if (field != null) {
-                isLoading = false
-                requestModelBuild()
-            }
-        }
 
-    var engineSpec: EngineSpecRoom? = null
-        set(value) {
-            field = value
-            if (field != null) {
-                isLoading = false
-                requestModelBuild()
-            }
-        }
 
     var rental: RentalRoom? = null
         set(value) {
@@ -79,8 +63,7 @@ class RentalOverviewController(
 
         rentalModel(rental).id("rental").addTo(this)
         carModel(car).id("car").addTo(this)
-        engineModel(engine).id("engine").addTo(this)
-        engineSpecModel(engineSpec).id("engineSpec").addTo(this)
+
         locationModel(location).id("location").addTo(this)
 
         ButtonsEpoxyModel(clickContinue).id("buttons").addTo(this)
@@ -113,33 +96,14 @@ class RentalOverviewController(
         }
     }
 
-    data class engineModel(
-        val engine: EngineRoom?
-    ): ViewBindingKotlinModel<ModelEngineDetailBinding>(R.layout.model_engine_detail) {
 
-        override fun ModelEngineDetailBinding.bind() {
-            powerLine.text = engine?.power.toString()
-
-        }
-    }
-
-    data class engineSpecModel(
-        val engineSpec: EngineSpecRoom?
-    ): ViewBindingKotlinModel<ModelEngineSpecDetailBinding>(R.layout.model_engine_spec_detail) {
-
-        override fun ModelEngineSpecDetailBinding.bind() {
-            fuelTypeLine.text = engineSpec?.fuelType
-            fuelUsePerKmLine.text = engineSpec?.fuelUsePerKm.toString()
-            fuelPriceLine.text = engineSpec?.fuelPrice.toString()
-        }
-    }
 
     data class locationModel(
         val location: LocationRoom?
     ): ViewBindingKotlinModel<ModelLocationDetailBinding>(R.layout.model_location_detail) {
         override fun ModelLocationDetailBinding.bind() {
             cityLine.text = location?.city
-            addressLine.text = location?.address
+            addressLine.text = location?.houseNumber
         }
     }
 

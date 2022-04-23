@@ -6,7 +6,10 @@ import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import com.example.rentmycar.data.api.ServiceProvider
-import com.example.rentmycar.data.api.request.UserRequest
+
+import com.example.rentmycar.data.model.api.post.User
+
+
 
 import com.example.rentmycar.sharedPrefFile
 import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
@@ -38,15 +41,15 @@ class UserRepository {
             sharedPrefFile, Context.MODE_PRIVATE
         )
 
-        login.enqueue(object : Callback<UserRequest> {
+        login.enqueue(object : Callback<User> {
 
             @SuppressLint("RestrictedApi")
-            override fun onResponse(call: Call<UserRequest>, response: Response<UserRequest>) {
+            override fun onResponse(call: Call<User>, response: Response<User>) {
                 if (!response.isSuccessful()) {
                     val gson = Gson()
-                    val message: UserRequest = gson.fromJson(
+                    val message: User = gson.fromJson(
                         response.errorBody()!!.charStream(),
-                        UserRequest::class.java
+                        User::class.java
                     )
                     Toast.makeText(context, "Gebruikersnaam niet gevonden", Toast.LENGTH_LONG)
                         .show()
@@ -81,7 +84,7 @@ class UserRepository {
 
             }
 
-            override fun onFailure(call: Call<UserRequest>, t: Throwable) {
+            override fun onFailure(call: Call<User>, t: Throwable) {
                 Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
             }
         })
@@ -92,23 +95,23 @@ class UserRepository {
         user: com.example.rentmycar.data.model.api.post.User
     ) {
         val userResponse = client().getUser(user.userName)
-            userResponse.enqueue(object : Callback<UserRequest>{
-                override fun onResponse(call: Call<UserRequest>, response: Response<UserRequest>) {
-                    val request = client().createUser(user)
+            userResponse.enqueue(object : Callback<User>{
+                override fun onResponse(call: Call<User>, response: Response<User>) {
+                    val request  = client().createUser(user)
 
                     val sharedPref = context.getSharedPreferences(
                         sharedPrefFile, Context.MODE_PRIVATE
                     )
-                    request.enqueue(object : Callback<UserRequest> {
+                    request.enqueue(object : Callback<User> {
                         override fun onResponse(
-                            call: Call<UserRequest>,
-                            response: Response<UserRequest>
+                            call: Call<User>,
+                            response: Response<User>
                         ) {
                             if (!response.isSuccessful()) {
                                 val gson = Gson()
-                                val message: UserRequest = gson.fromJson(
+                                val message: User = gson.fromJson(
                                     response.errorBody()!!.charStream(),
-                                    UserRequest::class.java
+                                    User::class.java
                                 )
                                 Toast.makeText(
                                     context,
@@ -136,7 +139,7 @@ class UserRepository {
                             }
                         }
 
-                        override fun onFailure(call: Call<UserRequest>, t: Throwable) {
+                        override fun onFailure(call: Call<User>, t: Throwable) {
                             Toast.makeText(
                                 context,
                                 "Un erreur cest produit",
@@ -146,7 +149,7 @@ class UserRepository {
                     })
                 }
 
-                override fun onFailure(call: Call<UserRequest>, t: Throwable) {
+                override fun onFailure(call: Call<User>, t: Throwable) {
                     Toast.makeText(
                         context,
                         "Un erreur cest produit",

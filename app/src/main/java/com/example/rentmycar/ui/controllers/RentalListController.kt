@@ -4,14 +4,15 @@ import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.example.rentmycar.R
-import com.example.rentmycar.data.api.request.CarRequest
-import com.example.rentmycar.data.api.request.RentalRequest
-import com.example.rentmycar.data.model.LocalException
+
 import com.example.rentmycar.data.model.api.post.EngineType
+import com.example.rentmycar.data.model.api.post.LocalException
+import com.example.rentmycar.data.model.api.post.Rental
 import com.example.rentmycar.databinding.ModelItemImagesBinding
 import com.example.rentmycar.databinding.RentalListItemBinding
+import com.example.rentmycar.ui.epoxy.EmptyListEpoxyModel
 import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
-import com.rentmycar.rentmycar.epoxy.EmptyListEpoxyModel
+
 import com.rentmycar.rentmycar.epoxy.HeaderEpoxyModel
 import com.rentmycar.rentmycar.epoxy.LoadingEpoxyModel
 import com.rentmycar.rentmycar.epoxy.ViewBindingKotlinModel
@@ -29,7 +30,7 @@ class RentalListController(
             }
         }
 
-    var rentals: List<RentalRequest>? = emptyList()
+    var rentals: List<Rental?> = emptyList()
         set(value) {
             field = value
             isLoading = false
@@ -38,15 +39,17 @@ class RentalListController(
 
 
     override fun buildModels() {
+
         if (isLoading) {
             LoadingEpoxyModel().id("loading").addTo(this)
             return
         }
+        Thread.sleep(1500);
 
         HeaderEpoxyModel(HomeCustomerActivity.context.getString(R.string.choose_a_car))
             .id("header").addTo(this)
 
-        if (rentals!!.isEmpty()) {
+        if (rentals.isEmpty()) {
             val localException = LocalException(
                 HomeCustomerActivity.context.getString(R.string.no_cars_found),
                 HomeCustomerActivity.context.getString(R.string.no_cars_available)
@@ -55,11 +58,11 @@ class RentalListController(
             return
         }
 
-        rentals!!.forEach { rental ->
-            if (rental?.inUse != true) {
-                CarListItemModel(rental!!, onCarSelected).id("header_{$rental.id}").addTo(this)
+        rentals.forEach { rental ->
+            if (rental?.inUse == false) {
+                CarListItemModel(rental, onCarSelected).id("header_{$rental.id}").addTo(this)
 
-                var items = rental.images !!.map { resource ->
+                var items = rental.images?.map { resource ->
                     ImagesItemModel(
                         rental.rentalId,
                         resource.filePath,
@@ -67,7 +70,7 @@ class RentalListController(
                     ).id(resource.id)
                 }
 
-                if (items.isEmpty()) {
+                if (items?.isEmpty() == true) {
                     items = listOf(
                         ImagesItemModel(
                             rental.rentalId,
@@ -76,27 +79,33 @@ class RentalListController(
                         ).id("no_image"))
                 }
 
-                CarouselModel_()
-                    .id("images_carousel_{${rental.rentalId}")
-                    .padding(
-                        Carousel.Padding.dp(8,0,8,0,8)
-                    )
-                    .models(items)
-                    .numViewsToShowOnScreen(1f)
-                    .addTo(this)
+                if (items != null) {
+                    CarouselModel_()
+                        .id("images_carousel_{${rental.rentalId}")
+                        .padding(
+                            Carousel.Padding.dp(8, 0, 8, 0, 8)
+                        )
+                        .models(items)
+                        .numViewsToShowOnScreen(1f)
+                        .addTo(this)
+                }
 
 
             }
         }
+
+
+
+
     }
     data class CarListItemModel(
-        val rental: RentalRequest,
+        val rental: Rental,
         val onCarSelected: (Int) -> Unit
     ): ViewBindingKotlinModel<RentalListItemBinding>(R.layout.rental_list_item) {
 
         override fun RentalListItemBinding.bind() {
             titleTextView.text = rental.name
-            when(rental.car.engine?.engineSpec?.engineType) {
+            when(rental.car?.engineType) {
                 EngineType.BEVEngine -> {
                     carTypeImageView.setImageResource(R.drawable.ic_baseline_electric_car_24)
                 }

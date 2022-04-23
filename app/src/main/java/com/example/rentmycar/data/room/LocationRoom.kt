@@ -9,15 +9,11 @@ data class LocationRoom(
     @Json(name = "id")
     val id : Int,
 
-    @Json(name = "city")
-    val city: String,
-
-    @Json(name = "address")
-    val address: String,
-
-    @Json(name = "longitude")
+    val street: String?,
+    val houseNumber: String?,
+    val postalCode: String?,
+    val city: String?,
+    val country: String?,
+    val latitude: Double,
     val longitude: Double,
-
-    @Json(name = "latitude")
-    val latitude: Double
 )

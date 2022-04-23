@@ -82,6 +82,7 @@
     <string name="fuelUsePerKm">fuelUsePerKm</string>
     <string name="fuelPrice">fuelPrice</string>
     <string name="address">address</string>
+    <string name="create_rental_avability">create rental availability</string>
     <string name="city">city</string>
     <string name="continue_btn">continue</string>
     <string name="error_put_user">error_put_user</string>

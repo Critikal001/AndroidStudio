@@ -5,56 +5,60 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
+import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.rentmycar.R
+import com.example.rentmycar.ui.controllers.RentalAvaibilityController
+import com.example.rentmycar.ui.viewmodel.AvailabilityViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CarAvaibilityFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CarAvaibilityFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val safeArgs: CarAvaibilityFragmentArgs by navArgs()
+    private val epoxyController = RentalAvaibilityController(::timeslotSelected)
+    private lateinit var viewModel: AvailabilityViewModel
+    private var selectedTimeslots: MutableList<TimeslotIdRequest> = mutableListOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_car_avaibility, container, false)
+        return inflater.inflate(R.layout.fragment_car_availability, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CarAvaibilityFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CarAvaibilityFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (selectedTimeslots.size == 0) {
+            btnBookNow.isEnabled = false
+        }
+
+        viewModel =
+            ViewModelProvider(this, AvailabilityViewModelFactory(carId = safeArgs.carId))[AvailabilityViewModel::class.java]
+
+        viewModel.availabilityPagedListLiveData.observe(viewLifecycleOwner) { pagedList ->
+            epoxyController.submitList(pagedList)
+        }
+
+        // Store selected timeslots as parcelable and continue to insurance selection with this data
+        btnBookNow.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("selectedTimeslots", ArrayList<TimeslotIdRequest>(selectedTimeslots))
+            bundle.putInt("rentalPlanId", safeArgs.rentalPlanId)
+
+            val insuranceFragment = InsuranceSelectFragment()
+            insuranceFragment.arguments = bundle
+
+            val fragmentTransaction = childFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.availability_layout, insuranceFragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+        }
+
+        view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView).setController(epoxyController)
+    }
+
+    private fun timeslotSelected(id: Int) {
+        selectedTimeslots.add(TimeslotIdRequest(id = id))
+        btnBookNow.isEnabled = true
     }
 }

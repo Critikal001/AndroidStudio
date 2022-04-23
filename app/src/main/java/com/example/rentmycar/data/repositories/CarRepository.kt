@@ -4,8 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
-import com.example.rentmycar.data.api.request.CarRequest
-import com.example.rentmycar.data.api.request.RentalRequest
+
 import com.example.rentmycar.data.model.api.post.Car
 import com.example.rentmycar.data.model.api.post.Rental
 import com.example.rentmycar.data.room.CarRoom
@@ -18,12 +17,12 @@ import retrofit2.Response
 
 class CarRepository {
     companion object {
-        private fun client() = ServiceProvider.RentalApi.rentalClient
+
         private fun api() = ServiceProvider.RentalApi.retrofitService
         private fun dao(context: Context) = RentMyCarDatabase.getInstance(context).carDao()
 
-//    suspend fun getcarList(): List<CarRequest>? {
-//        var carList : List<CarRequest>? = null
+//    suspend fun getcarList(): List<Car>? {
+//        var carList : List<Car>? = null
 //        val request = client().getCar()
 //        if (request!!.failed || !request.isSuccessful) {
 //            return carList
@@ -60,11 +59,11 @@ class CarRepository {
         }
 
 
-        suspend fun createCar(car: Car, onResult: (Response<CarRequest>?) -> Unit) {
+        suspend fun createCar(car: Car, onResult: (Response<Car>?) -> Unit) {
             var call = api().createCar(car)
 
-            call.enqueue(object : Callback<CarRequest> {
-                override fun onResponse(call: Call<CarRequest>, response: Response<CarRequest>) {
+            call.enqueue(object : Callback<Car> {
+                override fun onResponse(call: Call<Car>, response: Response<Car>) {
 
 
                     if (!response.isSuccessful) {
@@ -74,7 +73,7 @@ class CarRepository {
                     onResult(response)
                 }
 
-                override fun onFailure(call: Call<CarRequest>, t: Throwable) {
+                override fun onFailure(call: Call<Car>, t: Throwable) {
                     onResult(null)
                 }
             })

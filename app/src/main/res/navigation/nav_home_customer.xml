@@ -24,8 +24,7 @@
         tools:layout="@layout/rental_detail_fragment">
 
         <argument android:name="rentalId"
-            app:argType="int"
-            android:defaultValue="-1"/>
+            app:argType="integer" />
 
         <action
             android:id="@+id/action_carDetailsFragment_to_locationDetailsFragment"
@@ -71,18 +70,7 @@
         android:label="fragment_location_list"
         tools:layout="@layout/fragment_location_list" />
 
-    <fragment
-        android:id="@+id/carDetailFragment"
-        android:name="com.example.rentmycar.ui.view.fragment.CarDetailFragment"
-        android:label="fragment_car_detail"
-        tools:layout="@layout/fragment_car_detail" >
-        <action
-            android:id="@+id/action_carDetailFragment_to_rental_detail_fragment"
-            app:destination="@id/rental_detail_fragment" />
-        <action
-            android:id="@+id/action_carDetailFragment_to_rentalListFragment"
-            app:destination="@id/rental_list_fragment" />
-    </fragment>
+
 
     <fragment
         android:id="@+id/locationDetailFragment"
@@ -107,6 +95,25 @@
         <action android:id="@+id/action_carAvailabilityFragment_to_reservationCreateFragment"
             app:destination="@+id/reservationCreateFragment"
  />
+    </fragment>
+    <fragment android:id="@+id/reservationCreateFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.CreateReservationFragment"
+        android:label="@string/reservation_overview"
+        tools:layout="@layout/fragment_create__reservation_fragment">
+
+        <argument android:name="reservationNumber"
+            app:argType="string"
+            android:defaultValue=""/>
+
+
+
+        <action android:id="@+id/action_reservationCreateFragment_to_carListFragment"
+            app:destination="@+id/carListFragment"
+           />
+
+        <action android:id="@+id/action_reservationCreateFragment_to_reservationPaymentFragment"
+            app:destination="@+id/reservationPaymentFragment"
+           />
     </fragment>
 
 </navigation>

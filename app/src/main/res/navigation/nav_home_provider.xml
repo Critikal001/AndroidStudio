@@ -23,48 +23,16 @@
         tools:layout="@layout/fragment_create_car" >
         <action
             android:id="@+id/create_car_to_engine"
-            app:destination="@id/createEngineFragment" />
+            app:destination="@id/rentalPlanCreateFragment" />
         <argument
             android:name="rentalId"
             app:argType="integer" />
     </fragment>
 
 
-    <fragment
-        android:id="@+id/createEngineFragment"
-        android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateEngineFragment"
-        android:label="fragment_create_engine"
-        tools:layout="@layout/fragment_create_engine" >
-        <action
-            android:id="@+id/create_engine_to_enginespec"
-            app:destination="@id/createEngineSpecFragment" />
-        <argument
-            android:name="rentalId"
-            app:argType="integer" />
-        <argument
-            android:name="carId"
-            app:argType="integer" />
 
-    </fragment>
 
-    <fragment
-        android:id="@+id/createEngineSpecFragment"
-        android:name="com.example.rentmycar.ui.view.fragment.createRental.CreateEngineSpecFragment"
-        android:label="fragment_create_engine_spec"
-        tools:layout="@layout/fragment_create_engine_spec">
-    <action
-        android:id="@+id/create_enginespec_to_create_location"
-        app:destination="@id/createLocation" />
-        <argument
-            android:name="rentalId"
-            app:argType="integer" />
-        <argument
-            android:name="carId"
-            app:argType="integer" />
-        <argument
-            android:name="engineId"
-            app:argType="integer"  />
-    </fragment>
+
 
 
     <fragment
@@ -94,11 +62,9 @@
             android:name="carId"
             app:argType="integer" />
         <argument
-            android:name="engineId"
-            app:argType="integer"  />
-        <argument
-            android:name="engineSpecId"
+            android:name="rentalPlanId"
             app:argType="integer" />
+
     </fragment>
 
     <fragment
@@ -115,15 +81,29 @@
         <argument
             android:name="carId"
             app:argType="integer" />
-        <argument
-            android:name="engineId"
-            app:argType="integer"  />
-        <argument
-            android:name="engineSpecId"
-            app:argType="integer" />
+
         <argument
             android:name="locationId"
             app:argType="integer"/>
+        <argument
+            android:name="rentalPlanId"
+            app:argType="integer" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/rentalPlanCreateFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.RentalPlanCreateFragment"
+        android:label="fragment_rental_plan_create"
+        tools:layout="@layout/fragment_rental_plan_create" >
+        <argument
+            android:name="rentalId"
+            app:argType="integer" />
+        <argument
+            android:name="carId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_rentalPlanCreateFragment_to_createLocation"
+            app:destination="@id/createLocation" />
     </fragment>
 
 

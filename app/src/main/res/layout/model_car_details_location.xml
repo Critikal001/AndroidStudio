@@ -34,7 +34,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/title"
         app:layout_constraintStart_toEndOf="@+id/title"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
         app:tint="@color/black"
         android:clickable="true"
         android:focusable="true"/>
@@ -51,7 +50,7 @@
         android:paddingHorizontal="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:drawableLeft="@drawable/ic_baseline_house_24"
+
         app:drawableTint="@color/black"
         android:drawablePadding="8dp"/>
 
@@ -81,7 +80,6 @@
         android:text="@string/postal_code"
         android:paddingHorizontal="8dp"
         android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/ic_baseline_local_post_office_24"
         app:drawableTint="@color/black"
         android:gravity="center"/>
 
@@ -110,7 +108,6 @@
         android:text="@string/city"
         android:paddingHorizontal="8dp"
         android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/ic_baseline_location_city_24"
         app:drawableTint="@color/black"
         android:gravity="center"/>
 
@@ -140,7 +137,6 @@
         android:paddingBottom="8dp"
         android:paddingHorizontal="8dp"
         android:drawablePadding="8dp"
-        android:drawableLeft="@drawable/ic_baseline_flag_24"
         app:drawableTint="@color/black"
         android:gravity="center"/>
 

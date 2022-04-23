@@ -4,8 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
-import com.example.rentmycar.data.api.request.EngineSpecRequest
-import com.example.rentmycar.data.api.request.LocationRequest
+
 import com.example.rentmycar.data.model.api.post.EngineSpec
 import com.example.rentmycar.data.model.api.post.Location
 import com.example.rentmycar.data.room.LocationRoom
@@ -18,19 +17,19 @@ import retrofit2.Response
 
 class LocationRepository {
     companion object {
-        private fun client() = ServiceProvider.RentalApi.rentalClient
+        private fun client() = ServiceProvider.RentalApi.retrofitService
         private fun dao(context: Context) = RentMyCarDatabase.getInstance(context).locationDao()
         private fun api() = ServiceProvider.RentalApi.retrofitService
 
 
-        suspend fun getLocationList(): List<LocationRequest>? {
-            var locationList: List<LocationRequest>? = null
+        suspend fun getLocationList(): List<Location>? {
+            var locationList: List<Location>? = null
             val request = client().getLocation()
-            if (request!!.failed || !request.isSuccessful) {
+            if (!request.isSuccessful) {
                 return locationList
             }
             if (request != null) {
-                locationList = request.body
+//                locationList = request.body
             }
 
             return locationList
@@ -63,14 +62,14 @@ class LocationRepository {
 
         suspend fun createLocation(
             location: Location,
-            onResult: (Response<LocationRequest>?) -> Unit
+            onResult: (Response<Location>?) -> Unit
         ) {
             var call = api().createLocation(location)
 
-            call.enqueue(object : Callback<LocationRequest> {
+            call.enqueue(object : Callback<Location> {
                 override fun onResponse(
-                    call: Call<LocationRequest>,
-                    response: Response<LocationRequest>
+                    call: Call<Location>,
+                    response: Response<Location>
                 ) {
 
 
@@ -81,7 +80,7 @@ class LocationRepository {
                     onResult(response)
                 }
 
-                override fun onFailure(call: Call<LocationRequest>, t: Throwable) {
+                override fun onFailure(call: Call<Location>, t: Throwable) {
                     onResult(null)
                 }
             })

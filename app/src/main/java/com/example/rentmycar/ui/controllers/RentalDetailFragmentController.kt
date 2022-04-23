@@ -2,21 +2,20 @@ package com.example.rentmycar.ui.controllers
 
 import android.graphics.Color
 import android.view.View
-import androidx.recyclerview.widget.ConcatAdapter
 import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.example.rentmycar.AppPreference
 import com.example.rentmycar.R
-import com.example.rentmycar.data.api.request.LocationRequest
-import com.example.rentmycar.data.api.request.RentalRequest
-import com.example.rentmycar.data.model.LocalException
+
 import com.example.rentmycar.data.model.api.post.EngineType
+import com.example.rentmycar.data.model.api.post.LocalException
 import com.example.rentmycar.data.model.api.post.Location
 import com.example.rentmycar.data.model.api.post.Rental
 import com.example.rentmycar.databinding.*
+import com.example.rentmycar.ui.epoxy.EmptyListEpoxyModel
 import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
-import com.rentmycar.rentmycar.epoxy.EmptyListEpoxyModel
+
 import com.rentmycar.rentmycar.epoxy.LoadingEpoxyModel
 import com.rentmycar.rentmycar.epoxy.ViewBindingKotlinModel
 import com.squareup.picasso.Picasso
@@ -38,7 +37,7 @@ class RentalDetailFragmentController(
             }
         }
 
-    var rental: RentalRequest? = null
+    var rental: Rental? = null
         set(value) {
             field = value
             if (field != null) {
@@ -62,7 +61,7 @@ class RentalDetailFragmentController(
             return
         }
 
-        if(preference.getUserId() != rental!!.user.userId) {
+        if(preference.getUserId() != rental?.user?.userId) {
             hideEditButtons = true
         }
 
@@ -71,25 +70,29 @@ class RentalDetailFragmentController(
 
         ).id("header").addTo(this)
 
-        var items = rental!!.images!!.map { resource ->
+        var items = rental?.images?.map { resource ->
             ImagesItemModel(resource.filePath).id(resource.id)
         }
 
-        if (items.isEmpty()) {
-            items = listOf(
-                ImagesItemModel(
-                    "https://i.ibb.co/gMTHyGk/4104f9a97970.png"
-                ).id("no_image"))
+        if (items == null) {
+
+                items = listOf(
+                    ImagesItemModel(
+                        "https://i.ibb.co/gMTHyGk/4104f9a97970.png"
+                    ).id("no_image"))
+
         }
 
-        CarouselModel_()
-            .id("images_carousel")
-            .padding(
-                Carousel.Padding.dp(8,0,8,0,8)
-            )
-            .models(items)
-            .numViewsToShowOnScreen(1f)
-            .addTo(this)
+        if (items != null) {
+            CarouselModel_()
+                .id("images_carousel")
+                .padding(
+                    Carousel.Padding.dp(8,0,8,0,8)
+                )
+                .models(items)
+                .numViewsToShowOnScreen(1f)
+                .addTo(this)
+        }
 
         if (rental?.inUse == false) {
             ActionButtonEpoxyModel(rental, onBookNowBtnClicked).id("btn_action").addTo(this)
@@ -117,14 +120,14 @@ class RentalDetailFragmentController(
 
 
     data class TitleModel(
-        val rental: RentalRequest
+        val rental: Rental
 
     ) : ViewBindingKotlinModel<ModelCarDetailsTitleBinding>(R.layout.model_car_details_title) {
 
         override fun ModelCarDetailsTitleBinding.bind() {
             carTextView.text = rental.name
 
-            when(rental.car?.engine?.engineSpec?.engineType) {
+            when(rental.car?.engineType) {
                 EngineType.BEVEngine -> {
                     carTypeTextView.text = HomeCustomerActivity.context.getString(R.string.car_type_bev)
                     carTypeImageView.setImageResource(R.drawable.ic_baseline_electric_car_24)
@@ -182,16 +185,16 @@ class RentalDetailFragmentController(
     }
 
     data class LocationEpoxyModel(
-        val location: LocationRequest?,
+        val location: Location?,
         private val hideEditButton: Boolean,
         val onEditLocationBtnClicked: (Int) -> Unit
     ): ViewBindingKotlinModel<ModelCarDetailsLocationBinding>(R.layout.model_car_details_location) {
 
         override fun ModelCarDetailsLocationBinding.bind() {
-            addressLine.text = location?.address
-            postalCodeLine.text = location?.city
-            cityLine.text = location?.address
-            countryLine.text = location?.city
+            addressLine.text = location?.street
+            postalCodeLine.text = location?.postalCode
+            cityLine.text = location?.city
+            countryLine.text = location?.country
 
             if (hideEditButton) {
                 locationEditImageView.visibility = View.GONE
@@ -207,7 +210,7 @@ class RentalDetailFragmentController(
     }
 
     class TitleEpoxyModel(
-        val rental: RentalRequest,
+        val rental: Rental,
         private val hideEditButton: Boolean,
         val onEditCarBtnClicked: (Int) -> Unit
     ): ViewBindingKotlinModel<ModelCarHeaderBinding>(R.layout.model_car_header) {
@@ -227,14 +230,14 @@ class RentalDetailFragmentController(
     }
 
     data class ActionButtonEpoxyModel(
-        val rental: RentalRequest?,
+        val rental: Rental?,
         val onBookNowBtnClicked: (Int) -> Unit
     ): ViewBindingKotlinModel<BookRentalButtonBinding>(R.layout.book_rental_button) {
         override fun BookRentalButtonBinding.bind() {
 
             btnBookNow.setOnClickListener {
                 if (rental?.rentalId != null) {
-                    rental.rentalPlan!!.id?.let { it1 -> onBookNowBtnClicked(rental.rentalId) }
+                     onBookNowBtnClicked(rental.rentalId)
                 }
             }
         }

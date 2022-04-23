@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rentmycar.data.api.request.CarRequest
+
 import com.example.rentmycar.data.model.api.post.Car
 import com.example.rentmycar.data.repositories.CarRepository
 import com.example.rentmycar.data.room.CarRoom
@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 class CarViewModel :ViewModel() {
 
 
-    private val _carListLiveData = MutableLiveData<List<CarRequest>?>()
-    val carListLiveData: LiveData<List<CarRequest>?> = _carListLiveData
+    private val _carListLiveData = MutableLiveData<List<Car>?>()
+    val carListLiveData: LiveData<List<Car>?> = _carListLiveData
 
     private val _carResult = MutableLiveData<Int>()
     val carResult: LiveData<Int> get() = _carResult
@@ -24,8 +24,8 @@ class CarViewModel :ViewModel() {
     private val _carRoomLiveData = MutableLiveData<CarRoom?>()
     val carRoomLiveData: LiveData<CarRoom?> = _carRoomLiveData
 
-    private val _carCreateResult = MutableLiveData<CarRequest?>()
-    val carResourceResult: LiveData<CarRequest?> = _carCreateResult
+    private val _carCreateResult = MutableLiveData<Car?>()
+    val carResourceResult: LiveData<Car?> = _carCreateResult
 
 
 

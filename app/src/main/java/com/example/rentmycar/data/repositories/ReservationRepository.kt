@@ -10,7 +10,7 @@ import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
 
 
 class ReservationRepository {
-    private fun client() = ServiceProvider.RentalApi.rentalClient
+    private fun client() = ServiceProvider.RentalApi.retrofitService
 //
 //    suspend fun postReservation(reservation: Reservation): Reservation? {
 //        val runningRental = RunningRental(

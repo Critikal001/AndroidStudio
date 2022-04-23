@@ -20,8 +20,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.rentmycar.R
 import com.example.rentmycar.data.room.LocationRoom
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
-import com.example.rentmycar.ui.view.fragment.createRental.CreateCarFragmentDirections
-import com.example.rentmycar.ui.view.fragment.createRental.CreateEngineSpecFragmentDirections
+
 import com.example.rentmycar.ui.viewmodel.LocationViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -65,11 +64,11 @@ class CreateLocation : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListe
                 return@observe
             }
 
-            val directions = CreateLocationDirections.createLocationToRentalOverview(rentalId = safeArgs.rentalId, carId = safeArgs.carId, engineId = safeArgs.engineId, engineSpecId = safeArgs.engineSpecId, locationId = locationResult.toInt())
+            val directions = CreateLocationDirections.createLocationToRentalOverview(rentalId = safeArgs.rentalId, carId = safeArgs.carId, rentalPlanId = safeArgs.rentalPlanId,locationId = locationResult.toInt())
             findNavController().navigate(directions)
         }
 
-        checkPermissions()
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
@@ -101,8 +100,11 @@ class CreateLocation : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListe
 
         return LocationRoom(
             id = 0,
-            address.locality,
+            address.thoroughfare,
             address.featureName,
+            address.postalCode,
+            address.locality,
+            address.countryName,
             address.latitude,
             address.longitude,
 
@@ -146,6 +148,7 @@ class CreateLocation : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListe
     // Permission alreeady checked in onViewCreated()
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
+        checkPermissions()
         mMap = googleMap
         googleMap.isMyLocationEnabled = true
         with(mMap!!.uiSettings) {

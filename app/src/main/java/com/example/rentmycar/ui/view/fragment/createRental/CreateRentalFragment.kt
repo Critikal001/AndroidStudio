@@ -15,7 +15,7 @@ import com.example.rentmycar.data.room.RentalRoom
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
 import com.example.rentmycar.ui.viewmodel.RentalViewModel
 import kotlinx.android.synthetic.main.fragment_create_car.*
-import kotlinx.android.synthetic.main.fragment_create_engine.*
+
 import kotlinx.android.synthetic.main.fragment_create_rental.*
 
 class CreateRentalFragment : Fragment() {

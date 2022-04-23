@@ -1,23 +1,22 @@
 package com.example.rentmycar.ui.viewmodel
-import android.content.ContentValues.TAG
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rentmycar.data.api.request.RentalRequest
+
 
 import com.example.rentmycar.data.model.api.post.*
 import com.example.rentmycar.data.repositories.RentalRepository
 
 import com.example.rentmycar.data.room.RentalRoom
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
 
 class RentalViewModel : ViewModel() {
 
-    val _rentalListLiveData = MutableLiveData<List<RentalRequest>?>()
-    val rentalListLiveData: LiveData<List<RentalRequest>?> = _rentalListLiveData
+    val _rentalListLiveData = MutableLiveData<List<Rental?>>()
+    val rentalListLiveData: LiveData<List<Rental?>> = _rentalListLiveData
 
     private val _rentalResult = MutableLiveData<Int>()
     val rentalResult: LiveData<Int> get() = _rentalResult
@@ -25,18 +24,21 @@ class RentalViewModel : ViewModel() {
     private val _rentalRoomLiveData = MutableLiveData<RentalRoom?>()
     val rentalRoomLiveData: LiveData<RentalRoom?> = _rentalRoomLiveData
 
-    private val _rentalCreateResult = MutableLiveData<RentalRequest?>()
-    val rentalResourceResult: LiveData<RentalRequest?> = _rentalCreateResult
+    private val _rentalCreateResult = MutableLiveData<Rental?>()
+    val rentalCreateResult: LiveData<Rental?> = _rentalCreateResult
 
-    private val _rentalDetailResult = MutableLiveData<RentalRequest?>()
-    val rentalDetailResult: LiveData<RentalRequest?> = _rentalCreateResult
+    private val _rentalDetailResult = MutableLiveData<Rental?>()
+    val rentalDetailResult: LiveData<Rental?> = _rentalDetailResult
+
+    private val _rentalImageResult = MutableLiveData<Images>()
+    val rentalImageResult: LiveData<Images> = _rentalImageResult
 
 
 
-    fun getRentalList() {
+    fun getRentalList(context: Context) {
         viewModelScope.launch {
-            val response = RentalRepository.getRentalList()
-            _rentalListLiveData.postValue(response)
+            val request = RentalRepository.getRentalList(context)
+            _rentalListLiveData.postValue(request)
         }
     }
 
@@ -65,10 +67,18 @@ class RentalViewModel : ViewModel() {
         }
     }
 
-    fun getRentalById(rentalId: Integer){
+    fun getRentalById(rentalId: Int){
         viewModelScope.launch{
             RentalRepository.getRentalById(rentalId){
                 _rentalDetailResult.postValue(it?.body())
+           }
+        }
+    }
+
+    fun uploadImage(id : Int,image: MultipartBody.Part) {
+        viewModelScope.launch {
+            RentalRepository.uploadImage(id, image){
+                _rentalImageResult.postValue(it?.body())
             }
         }
     }

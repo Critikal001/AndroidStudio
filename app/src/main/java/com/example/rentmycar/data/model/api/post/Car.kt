@@ -15,8 +15,19 @@ data class Car(
     @Json(name = "model")
     val model: String,
 
-    @Json(name = "engine")
-    val engine: Engine?
+    @Json(name = "power")
+    val power: Double,
 
+    @Json(name = "engineType")
+    val engineType: EngineType,
+
+    @Json(name = "fuelType")
+    val fuelType: String,
+
+    @Json(name = "fuelUsePerKm")
+    val fuelUsePerKm: Double,
+
+    @Json(name = "fuelPrice")
+    val fuelPrice: Double,
 
 )

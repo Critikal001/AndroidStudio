@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 data class Rental(
     @Json(name = "rentalId")
-    val rentalId: Int?,
+    val rentalId: Int,
 
     @Json(name = "name")
     val name: String,
@@ -25,13 +25,13 @@ data class Rental(
     val location: Location?,
 
     @Json(name = "provider")
-    val provider: Provider?,
+    val user: User?,
 
     @Json(name = "images")
     val images: List<Images>?,
 
-    @Json(name = "rentalPlan")
-    val rentalPlan: RentalPlan?
+    @Json(name = "selectedSlots")
+    val selectedSlots: List<SelectedTimeSlot>?,
 
 
 )

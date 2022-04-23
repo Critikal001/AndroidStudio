@@ -3,13 +3,13 @@
     <item android:title="@string/rental">
         <menu>
             <group android:checkableBehavior="single">
-                <item android:id="@+id/rental_list_fragment"
+                <item android:id="@+id/carListFragment"
                     android:title="@string/rental_list_fragment"
                     android:icon="@drawable/create_rental"/>
-                <item android:id="@+id/reservation_list_fragment"
+                <item android:id="@+id/reservationListFragment"
                     android:title="@string/reservations"
                     android:icon="@drawable/ic_home"/>
-                <item android:id="@+id/location_list_fragment"
+                <item android:id="@+id/locationListFragment"
                     android:title="@string/rental_location"
                     android:icon="@drawable/location"/>
             </group>

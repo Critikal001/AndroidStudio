@@ -1,8 +1,10 @@
-package com.rentmycar.rentmycar.epoxy
+package com.example.rentmycar.ui.epoxy
 
 import com.example.rentmycar.R
-import com.example.rentmycar.data.model.LocalException
+import com.example.rentmycar.data.model.api.post.LocalException
+
 import com.example.rentmycar.databinding.ModelLocalExceptionBinding
+import com.rentmycar.rentmycar.epoxy.ViewBindingKotlinModel
 
 
 class EmptyListEpoxyModel(
