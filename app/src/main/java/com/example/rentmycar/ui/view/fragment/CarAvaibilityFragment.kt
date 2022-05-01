@@ -11,6 +11,8 @@ import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.rentmycar.R
 import com.example.rentmycar.ui.controllers.RentalAvaibilityController
 import com.example.rentmycar.ui.viewmodel.AvailabilityViewModel
+import com.example.rentmycar.ui.viewmodel.factory.AvailabilityViewModelFactory
+import kotlinx.android.synthetic.main.book_rental_button.*
 
 class CarAvaibilityFragment : Fragment() {
     private val safeArgs: CarAvaibilityFragmentArgs by navArgs()
@@ -22,7 +24,7 @@ class CarAvaibilityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_car_availability, container, false)
+        return inflater.inflate(R.layout.fragment_car_avaibility, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,10 +35,10 @@ class CarAvaibilityFragment : Fragment() {
         }
 
         viewModel =
-            ViewModelProvider(this, AvailabilityViewModelFactory(carId = safeArgs.carId))[AvailabilityViewModel::class.java]
+            ViewModelProvider(this, AvailabilityViewModelFactory(rentalId = safeArgs.rentalId))[AvailabilityViewModel::class.java]
 
-        viewModel.availabilityPagedListLiveData.observe(viewLifecycleOwner) { pagedList ->
-            epoxyController.submitList(pagedList)
+        viewModel.timeslotLiveData.observe(viewLifecycleOwner) { pagedList ->
+            epoxyController.rental = pagedList
         }
 
         // Store selected timeslots as parcelable and continue to insurance selection with this data
