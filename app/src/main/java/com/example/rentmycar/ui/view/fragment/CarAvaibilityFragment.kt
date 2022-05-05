@@ -49,7 +49,7 @@ class CarAvaibilityFragment : Fragment() {
         }
         viewModel.getRentalById()
 
-        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerViewList)
+        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerViewAvab)
         epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
 

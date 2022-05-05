@@ -7,14 +7,13 @@ import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.airbnb.epoxy.EpoxyModel
 import com.example.rentmycar.R
-import com.example.rentmycar.data.model.api.post.LocalException
-import com.example.rentmycar.data.model.api.post.Rental
-import com.example.rentmycar.data.model.api.post.SelectedTimeSlot
-import com.example.rentmycar.data.model.api.post.TimeSlot
+import com.example.rentmycar.data.model.api.post.*
 import com.example.rentmycar.databinding.ModelCarAvailabilityTimeslotBinding
 import com.example.rentmycar.databinding.ModelCarAvailabilityTitleBinding
+import com.example.rentmycar.databinding.RentalListItemBinding
 import com.example.rentmycar.ui.epoxy.EmptyListEpoxyModel
 import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
+import com.rentmycar.rentmycar.epoxy.HeaderEpoxyModel
 import com.rentmycar.rentmycar.epoxy.LoadingEpoxyModel
 import com.rentmycar.rentmycar.epoxy.ViewBindingKotlinModel
 import java.text.SimpleDateFormat
@@ -45,12 +44,16 @@ class RentalAvaibilityController  (
         }
 
     override fun buildModels() {
+
         if (isLoading) {
             LoadingEpoxyModel().id("loading").addTo(this)
             return
         }
 
-        if (rental == null) {
+        HeaderEpoxyModel("Choose a time")
+            .id("header").addTo(this)
+
+        if (rental != null) {
             val localException = LocalException(
                 HomeCustomerActivity.context.getString(R.string.no_car_found),
                 HomeCustomerActivity.context.getString(R.string.no_car_available)
@@ -60,7 +63,7 @@ class RentalAvaibilityController  (
         }
 
             rental?.selectedSlots?.forEach { timeslot ->
-                TimeslotEpoxyModel(timeslot.id,
+                CarListItemModel(
                         timeslot,
                         timeslotSelected)
             }
@@ -85,6 +88,25 @@ class RentalAvaibilityController  (
             }
         }
     }
+
+    data class CarListItemModel(
+        val timeSlot: SelectedTimeSlot,
+        val timeslotSelected: (Int) -> Unit
+    ): ViewBindingKotlinModel<RentalListItemBinding>(R.layout.rental_list_item) {
+
+        override fun RentalListItemBinding.bind() {
+            val formattedStartAt = timeSlot.timeSlot?.startAt
+            val formattedEndAt = timeSlot.timeSlot?.endAt
+            titleTextView.text = "${timeSlot.date} : $formattedStartAt-$formattedEndAt"
+
+            root.setOnClickListener {
+                timeslotSelected(timeSlot.id
+                )
+            }
+        }
+    }
+
+
 
 
 

@@ -15,7 +15,7 @@
         <com.airbnb.epoxy.EpoxyRecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/epoxyRecyclerViewList"
+            android:id="@+id/epoxyRecyclerViewAvab"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="1"
             app:itemSpacing="0dp"
