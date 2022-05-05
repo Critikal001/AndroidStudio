@@ -16,7 +16,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.rentmycar"
-        minSdk 21
+        minSdk 28
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -108,6 +108,7 @@ dependencies {
         exclude group: "org.jetbrains.kotlinx", module: "kotlinx-coroutines-debug"
     }
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     // retrofit
     implementation 'androidx.core:core-ktx:1.7.0'

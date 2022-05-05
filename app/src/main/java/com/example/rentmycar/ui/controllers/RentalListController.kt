@@ -44,7 +44,7 @@ class RentalListController(
             LoadingEpoxyModel().id("loading").addTo(this)
             return
         }
-        Thread.sleep(1500);
+        Thread.sleep(2000);
 
         HeaderEpoxyModel(HomeCustomerActivity.context.getString(R.string.choose_a_car))
             .id("header").addTo(this)

@@ -9,6 +9,7 @@ import com.airbnb.epoxy.EpoxyModel
 import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.LocalException
 import com.example.rentmycar.data.model.api.post.Rental
+import com.example.rentmycar.data.model.api.post.SelectedTimeSlot
 import com.example.rentmycar.data.model.api.post.TimeSlot
 import com.example.rentmycar.databinding.ModelCarAvailabilityTimeslotBinding
 import com.example.rentmycar.databinding.ModelCarAvailabilityTitleBinding
@@ -57,45 +58,34 @@ class RentalAvaibilityController  (
             EmptyListEpoxyModel(localException).id("emptyList").addTo(this)
             return
         }
-        rental?.selectedSlots?.map {rental->
-            TimeslotGridTitleEpoxyModel(rental.date)
-            TimeslotGridItemEpoxyModel(rental.id,
-            rental.timeSlot,
-                timeslotSelected)
-        }
+
+            rental?.selectedSlots?.forEach { timeslot ->
+                TimeslotEpoxyModel(timeslot.id,
+                        timeslot,
+                        timeslotSelected)
+            }
 
 
     }
 
-    data class TimeslotGridTitleEpoxyModel(
-        val title: String
-    ): ViewBindingKotlinModel<ModelCarAvailabilityTitleBinding>(R.layout.model_car_availability_title) {
-
-        override fun ModelCarAvailabilityTitleBinding.bind() {
-            titleTextView.text = title
-        }
-
-    }
-
-    data class TimeslotGridItemEpoxyModel(
+    data class TimeslotEpoxyModel(
         val id: Int,
-        val timeSlot: TimeSlot,
+        val timeSlot: SelectedTimeSlot,
         val timeslotSelected: (Int) -> Unit
-    ): ViewBindingKotlinModel<ModelCarAvailabilityTimeslotBinding>(R.layout.model_car_availability_timeslot) {
-
-
-        override fun ModelCarAvailabilityTimeslotBinding.bind() {
-            val formattedStartAt = timeSlot.startAt
-            val formattedEndAt = timeSlot.endAt
-            timeslotCheckbox.text = HomeCustomerActivity.context.getString(R.string.timeslot_start_end, formattedStartAt, formattedEndAt)
+    ):ViewBindingKotlinModel<ModelCarAvailabilityTimeslotBinding>(R.layout.model_car_availability_timeslot){
+        override fun ModelCarAvailabilityTimeslotBinding.bind(){
+            val formattedStartAt = timeSlot.timeSlot?.startAt
+            val formattedEndAt = timeSlot.timeSlot?.endAt
+            timeslotCheckbox.text = "${timeSlot.date} : $formattedStartAt-$formattedEndAt"
 
 
 
             timeslotCheckbox.setOnClickListener {
-                timeslotSelected(id)
+                timeslotSelected(timeSlot.id)
             }
         }
-
-
     }
+
+
+
 }

@@ -14,6 +14,7 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_home.xml" value="0.3764102564102564" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_show_password.xml" value="0.37604166666666666" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_user.xml" value="0.3764102564102564" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/ic_yellow_half_circle.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/location.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/logout.xml" value="0.22291666666666668" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/drawable/person.xml" value="0.22291666666666668" />
@@ -38,9 +39,11 @@
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_create_location.xml" value="0.2959349593495935" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_create_rental.xml" value="0.2523364485981308" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_customer_dashboard.xml" value="0.3020833333333333" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_info_reservation.xml" value="0.22" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_location_detail.xml" value="0.254981884057971" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_location_list.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_login.xml" value="0.17806484295845998" />
+        <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_paymend_end.xml" value="0.3625" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_rental_plan_create.xml" value="0.25" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/fragment_sign_up.xml" value="0.15719063545150502" />
         <entry key="..\:/Users/pep/Documents/GitHub/AndroidStudio/app/src/main/res/layout/header.xml" value="0.1" />

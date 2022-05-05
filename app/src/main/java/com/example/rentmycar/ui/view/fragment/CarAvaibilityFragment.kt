@@ -5,11 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.airbnb.epoxy.EpoxyRecyclerView
 import com.example.rentmycar.R
 import com.example.rentmycar.ui.controllers.RentalAvaibilityController
+import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
+import com.example.rentmycar.ui.view.fragment.createRental.CreateRentalFragmentDirections
 import com.example.rentmycar.ui.viewmodel.AvailabilityViewModel
 import com.example.rentmycar.ui.viewmodel.factory.AvailabilityViewModelFactory
 import kotlinx.android.synthetic.main.book_rental_button.*
@@ -18,7 +22,7 @@ class CarAvaibilityFragment : Fragment() {
     private val safeArgs: CarAvaibilityFragmentArgs by navArgs()
     private val epoxyController = RentalAvaibilityController(::timeslotSelected)
     private lateinit var viewModel: AvailabilityViewModel
-    private var selectedTimeslots: MutableList<TimeslotIdRequest> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,37 +34,28 @@ class CarAvaibilityFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (selectedTimeslots.size == 0) {
-            btnBookNow.isEnabled = false
-        }
+
 
         viewModel =
             ViewModelProvider(this, AvailabilityViewModelFactory(rentalId = safeArgs.rentalId))[AvailabilityViewModel::class.java]
 
-        viewModel.timeslotLiveData.observe(viewLifecycleOwner) { pagedList ->
-            epoxyController.rental = pagedList
+        viewModel.rentalDetailResult.observe(viewLifecycleOwner) { pagedList ->
+            if (pagedList == null){
+                Toast.makeText(requireActivity(), HomeCustomerActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
+                return@observe
+            }else {
+                epoxyController.rental = pagedList
+            }
         }
+        viewModel.getRentalById()
 
-        // Store selected timeslots as parcelable and continue to insurance selection with this data
-        btnBookNow.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putParcelableArrayList("selectedTimeslots", ArrayList<TimeslotIdRequest>(selectedTimeslots))
-            bundle.putInt("rentalPlanId", safeArgs.rentalPlanId)
-
-            val insuranceFragment = InsuranceSelectFragment()
-            insuranceFragment.arguments = bundle
-
-            val fragmentTransaction = childFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.availability_layout, insuranceFragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
-        view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView).setController(epoxyController)
+        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerViewList)
+        epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
 
-    private fun timeslotSelected(id: Int) {
-        selectedTimeslots.add(TimeslotIdRequest(id = id))
-        btnBookNow.isEnabled = true
+    private fun timeslotSelected(timeSlotId: Int) {
+        val directions = CarAvaibilityFragmentDirections.actionCarAvailabilityFragmentToReservationCreateFragment(safeArgs.rentalId, timeSlotId)
+        findNavController().navigate(directions)
+
     }
 }

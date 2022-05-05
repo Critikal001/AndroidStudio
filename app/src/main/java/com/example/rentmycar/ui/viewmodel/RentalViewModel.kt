@@ -37,8 +37,9 @@ class RentalViewModel : ViewModel() {
 
     fun getRentalList(context: Context) {
         viewModelScope.launch {
-            val request = RentalRepository.getRentalList(context)
-            _rentalListLiveData.postValue(request)
+            RentalRepository.getRentalList(context){
+            _rentalListLiveData.postValue(it?.body())
+            }
         }
     }
 

@@ -36,38 +36,29 @@ class RentalRepository {
 
 
 
-        fun getRentalList(context: Context): MutableList<Rental> {
-//            val call = api().getRentalById(5)
-              val call = api().getRentalList()
-            var rentalList = mutableListOf<Rental>()
+        fun getRentalList(context: Context, onResult: (Response<List<Rental>>?) -> Unit) {
 
-
-//                call.enqueue(object : Callback<Rental> {
-//                    override fun onResponse(
-//                        call: Call<Rental>,
-//                        response: Response<Rental>,
-//                    ) {
-//                        val response = response.body()
-//                        reservations.postValue(listOf(response!!))
-//                    }
-//
-//                    override fun onFailure(call: Call<Rental>, t: Throwable) {}
-//                })
-
+            val call = api().getRentalList()
             call.enqueue(object : Callback<List<Rental>> {
                 override fun onResponse(
                     call: Call<List<Rental>>,
                     response: Response<List<Rental>>,
                 ) {
-                    response.body()?.forEach { item ->
-                        rentalList.add(item)
+
+
+                    if (!response.isSuccessful) {
+
+                        onResult(null)
                     }
+                    onResult(response)
                 }
 
-                override fun onFailure(call: Call<List<Rental>>, t: Throwable) {}
+                override fun onFailure(call: Call<List<Rental>>, t: Throwable) {
+                    onResult(null)
+                }
             })
-            return rentalList
         }
+
 
 
 
@@ -98,7 +89,7 @@ class RentalRepository {
         }
 
 
-        suspend fun createRental(rental: Rental, onResult: (Response<Rental>?) -> Unit) {
+         fun createRental(rental: Rental, onResult: (Response<Rental>?) -> Unit) {
             var call = api().createRental(rental)
 
             call.enqueue(object : Callback<Rental> {

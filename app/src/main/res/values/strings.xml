@@ -309,7 +309,9 @@
     <string name="no_insurance_types_available">There are currently no insurances available</string>
     <string name="no_insurance_types_found">No insurance found</string>
     <string name="error_post_reservation">Could not create reservation. Try again later.</string>
-
+    <string name="paymentDone">Payment Done</string>
+    <string name="thankYouPayment">Thank You For Your Payment</string>
+    <string name="done">Done</string>
     <string-array name="car_types">
         <item>Verbrandingsmotor (ICE)</item>
         <item>Volledig Elektrisch (BEV)</item>

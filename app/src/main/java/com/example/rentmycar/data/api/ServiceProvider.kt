@@ -121,10 +121,10 @@ interface ServiceProvider {
     ) :Response<Rental>
     
     
-    @POST("runningRental/rent-car")
+    @POST("reservation/rent-car")
     fun createReservation(
-        @Body runningRental: RunningRental,
-    ) :Response<Reservation>
+        @Body reservation: Reservation,
+    ) :Call<Reservation>
 
     @POST("runningRental/rent-car")
     fun getRental() :Response<List<Rental>>

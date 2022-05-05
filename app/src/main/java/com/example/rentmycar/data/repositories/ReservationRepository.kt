@@ -4,30 +4,42 @@ import android.app.DownloadManager
 import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
+import com.example.rentmycar.data.model.api.post.Rental
 import com.example.rentmycar.data.model.api.post.Reservation
-import com.example.rentmycar.data.model.api.post.RunningRental
+
 import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ReservationRepository {
-    private fun client() = ServiceProvider.RentalApi.retrofitService
-//
-//    suspend fun postReservation(reservation: Reservation): Reservation? {
-//        val runningRental = RunningRental(
-//            returnLocation = reservation.status.toString(),
-//            drivingKm = reservation.price.toInt(),
-//            rental = reservation.status,
-//        )
-//        val request = client().createReservation(runningRental)
-//
-//        if (request.failed || !request.isSuccessful) {
-//            Toast.makeText(HomeCustomerActivity.context, HomeCustomerActivity.context.getString(R.string.error_post_reservation), Toast.LENGTH_LONG).show()
-//            return null
-//        }
-//
-//        return request
-//
-//    }
+    companion object
+    {
+        private fun client() = ServiceProvider.RentalApi.retrofitService
+
+        fun postReservation(reservation: Reservation, onResult: (Response<Reservation>?) -> Unit) {
+            var call = client().createReservation(reservation)
+
+            call.enqueue(object : Callback<Reservation> {
+                override fun onResponse(
+                    call: Call<Reservation>,
+                    response: Response<Reservation>,
+                ) {
+
+
+                    if (!response.isSuccessful) {
+
+                        onResult(null)
+                    }
+                    onResult(response)
+                }
+
+                override fun onFailure(call: Call<Reservation>, t: Throwable) {
+                    onResult(null)
+                }
+            })
+        }
 //
 //    suspend fun getTimeslotsByReservation(reservationNumber: String): List<GetAvailabilityResponse> {
 //        val request = client().getTimeslotsByReservation(reservationNumber)
@@ -75,4 +87,6 @@ class ReservationRepository {
 //        }
 //        return reservationList
 //    }
+    }
+
 }

@@ -48,7 +48,7 @@ class CarViewModel :ViewModel() {
 
     fun createCar(car: Car) {
         viewModelScope.launch {
-            val response = CarRepository.createCar(car){
+            CarRepository.createCar(car){
                 _carCreateResult.postValue(it?.body())
             }
 

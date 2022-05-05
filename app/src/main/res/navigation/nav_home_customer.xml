@@ -93,17 +93,22 @@
            />
 
         <action android:id="@+id/action_carAvailabilityFragment_to_reservationCreateFragment"
-            app:destination="@+id/reservationCreateFragment"
+            app:destination="@+id/infoReservationFragment"
  />
     </fragment>
-    <fragment android:id="@+id/reservationCreateFragment"
-        android:name="com.example.rentmycar.ui.view.fragment.CreateReservationFragment"
-        android:label="@string/reservation_overview"
-        tools:layout="@layout/fragment_create__reservation_fragment">
+    <fragment android:id="@+id/infoReservationFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.InfoReservationFragment"
+        android:label="fragment_info_reservation"
+        tools:layout="@layout/fragment_info_reservation" >
 
-        <argument android:name="reservationNumber"
-            app:argType="string"
-            android:defaultValue=""/>
+        <argument android:name="rentalId"
+            app:argType="integer"
+            />
+
+        <argument android:name="selectedSlotId"
+            app:argType="integer"
+            />
+
 
 
 
@@ -112,8 +117,14 @@
            />
 
         <action android:id="@+id/action_reservationCreateFragment_to_reservationPaymentFragment"
-            app:destination="@+id/reservationPaymentFragment"
+            app:destination="@+id/paymendEndFragment"
            />
     </fragment>
+    <fragment
+        android:id="@+id/paymendEndFragment"
+        android:name="com.example.rentmycar.ui.view.fragment.PaymendEndFragment"
+        android:label="fragment_paymend_end"
+        tools:layout="@layout/fragment_paymend_end" />
+
 
 </navigation>

@@ -5,6 +5,8 @@ import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
 import com.example.rentmycar.data.model.api.post.Car
+import com.example.rentmycar.data.model.api.post.SelectedTimeSlot
+import com.example.rentmycar.data.model.api.post.TimeSlot
 import com.example.rentmycar.data.room.RentMyCarDatabase
 import com.example.rentmycar.data.room.RentalPlan
 import com.example.rentmycar.ui.view.activity.HomeProviderActivity
@@ -46,5 +48,45 @@ class RentalPlanRepository {
             })
         }
 
+        fun createTimeslots(timeslots: List<SelectedTimeSlot>, rentalId : Int, onResult: (Response<SelectedTimeSlot>?) -> Unit){
+            val request = client().createSelectedTimeslot(rentalId, timeslots)
+
+            request.enqueue(object : Callback<SelectedTimeSlot> {
+                override fun onResponse(call: Call<SelectedTimeSlot>, response: Response<SelectedTimeSlot>) {
+
+
+                    if (!response.isSuccessful) {
+
+                        onResult(null)
+                    }
+                    onResult(response)
+                }
+
+                override fun onFailure(call: Call<SelectedTimeSlot>, t: Throwable) {
+                    onResult(null)
+                }
+            })
+        }
+
+
+        fun getTimeslots(onResult: (Response<List<TimeSlot>>?) -> Unit){
+            val request = client().getTimeslots()
+
+            request.enqueue(object : Callback<List<TimeSlot>> {
+                override fun onResponse(call: Call<List<TimeSlot>>, response: Response<List<TimeSlot>>) {
+
+
+                    if (!response.isSuccessful) {
+
+                        onResult(null)
+                    }
+                    onResult(response)
+                }
+
+                override fun onFailure(call: Call<List<TimeSlot>>, t: Throwable) {
+                    onResult(null)
+                }
+            })
+        }
     }
 }

@@ -1,22 +1,5 @@
 package com.example.rentmycar.ui.view.fragment
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.airbnb.epoxy.EpoxyRecyclerView
-import com.example.rentmycar.R
-import com.example.rentmycar.ui.controllers.ReservationEpoxyController
-import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
-import com.example.rentmycar.ui.viewmodel.ReservationViewModel
-
 
 //class CreateReservationFragment : Fragment() {
 //

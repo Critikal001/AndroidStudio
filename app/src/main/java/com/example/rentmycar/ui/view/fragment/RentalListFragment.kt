@@ -28,18 +28,23 @@ class RentalListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        viewModel.getRentalList(requireContext())
         return inflater.inflate(R.layout.rental_list_fragment, container, false)
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         viewModel.rentalListLiveData.observe(viewLifecycleOwner){ rentals ->
-            controller.rentals = rentals
+
             if (rentals == null){
                 Toast.makeText(requireActivity(), HomeCustomerActivity.context.getString(R.string.network_call_failed), Toast.LENGTH_LONG).show()
                 return@observe
+            }else{
+                controller.rentals = rentals
+
             }
 
         }
