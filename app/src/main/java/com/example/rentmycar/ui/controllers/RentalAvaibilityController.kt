@@ -53,7 +53,16 @@ class RentalAvaibilityController  (
         HeaderEpoxyModel("Choose a time")
             .id("header").addTo(this)
 
-        if (rental != null) {
+        rental?.selectedSlots?.forEach { timeslot ->
+            if(LocalDate.parse(timeslot.date) == LocalDate.now()) {
+                TimeslotEpoxyModel(
+                    rental!!.rentalId,
+                    timeslot,
+                    timeslotSelected)
+            }
+        }
+
+        if (rental == null) {
             val localException = LocalException(
                 HomeCustomerActivity.context.getString(R.string.no_car_found),
                 HomeCustomerActivity.context.getString(R.string.no_car_available)
@@ -61,13 +70,6 @@ class RentalAvaibilityController  (
             EmptyListEpoxyModel(localException).id("emptyList").addTo(this)
             return
         }
-
-            rental?.selectedSlots?.forEach { timeslot ->
-                CarListItemModel(
-                        timeslot,
-                        timeslotSelected)
-            }
-
 
     }
 
@@ -89,22 +91,6 @@ class RentalAvaibilityController  (
         }
     }
 
-    data class CarListItemModel(
-        val timeSlot: SelectedTimeSlot,
-        val timeslotSelected: (Int) -> Unit
-    ): ViewBindingKotlinModel<RentalListItemBinding>(R.layout.rental_list_item) {
-
-        override fun RentalListItemBinding.bind() {
-            val formattedStartAt = timeSlot.timeSlot?.startAt
-            val formattedEndAt = timeSlot.timeSlot?.endAt
-            titleTextView.text = "${timeSlot.date} : $formattedStartAt-$formattedEndAt"
-
-            root.setOnClickListener {
-                timeslotSelected(timeSlot.id
-                )
-            }
-        }
-    }
 
 
 
