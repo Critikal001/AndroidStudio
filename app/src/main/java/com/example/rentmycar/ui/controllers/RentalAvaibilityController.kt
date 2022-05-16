@@ -54,12 +54,12 @@ class RentalAvaibilityController  (
             .id("header").addTo(this)
 
         rental?.selectedSlots?.forEach { timeslot ->
-            if(LocalDate.parse(timeslot.date) == LocalDate.now()) {
+//            if(LocalDate.parse(timeslot.date) == LocalDate.now()) {
                 TimeslotEpoxyModel(
                     rental!!.rentalId,
                     timeslot,
                     timeslotSelected)
-            }
+//            }
         }
 
         if (rental == null) {
