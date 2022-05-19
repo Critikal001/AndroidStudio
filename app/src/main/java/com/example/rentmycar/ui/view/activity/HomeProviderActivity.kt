@@ -2,6 +2,7 @@ package com.example.rentmycar.ui.view.activity
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
@@ -13,9 +14,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.example.rentmycar.MainActivity
 import com.example.rentmycar.R
 import com.example.rentmycar.databinding.ActivityHomeProviderBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.internal.NavigationMenuItemView
 import com.google.android.material.navigation.NavigationView
 
 
@@ -54,6 +57,12 @@ class HomeProviderActivity : AppCompatActivity(), MyDrawerController {
                 )
             )
             navView.setupWithNavController(navController)
+
+            val button : NavigationMenuItemView = findViewById(R.id.logout)
+            button.setOnClickListener {
+                val i = Intent(this, MainActivity::class.java)
+                startActivity(i)
+            }
         }
     }
     override fun onSupportNavigateUp(): Boolean {

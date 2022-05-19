@@ -10,12 +10,14 @@ import com.example.rentmycar.R
 import com.example.rentmycar.data.model.api.post.*
 import com.example.rentmycar.databinding.ModelCarAvailabilityTimeslotBinding
 import com.example.rentmycar.databinding.ModelCarAvailabilityTitleBinding
+import com.example.rentmycar.databinding.ModelItemImagesBinding
 import com.example.rentmycar.databinding.RentalListItemBinding
 import com.example.rentmycar.ui.epoxy.EmptyListEpoxyModel
 import com.example.rentmycar.ui.view.activity.HomeCustomerActivity
 import com.rentmycar.rentmycar.epoxy.HeaderEpoxyModel
 import com.rentmycar.rentmycar.epoxy.LoadingEpoxyModel
 import com.rentmycar.rentmycar.epoxy.ViewBindingKotlinModel
+import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -25,6 +27,9 @@ import java.util.*
 class RentalAvaibilityController  (
     private val timeslotSelected: (Int) -> Unit
 ): EpoxyController() {
+    val today : MutableList<SelectedTimeSlot> = mutableListOf()
+    val tomorrow : MutableList<SelectedTimeSlot> = mutableListOf()
+    val dayAfter : MutableList<SelectedTimeSlot> = mutableListOf()
 
     var isLoading: Boolean = true
         set(value) {
@@ -54,12 +59,42 @@ class RentalAvaibilityController  (
             .id("header").addTo(this)
 
         rental?.selectedSlots?.forEach { timeslot ->
-//            if(LocalDate.parse(timeslot.date) == LocalDate.now()) {
-                TimeslotEpoxyModel(
-                    rental!!.rentalId,
-                    timeslot,
-                    timeslotSelected)
-//            }
+            if(LocalDate.parse(timeslot.date) == LocalDate.now()) {
+                today.add(timeslot)
+            }
+
+            if(LocalDate.parse(timeslot.date) == LocalDate.now().plusDays(1)) {
+                tomorrow.add(timeslot)
+            }
+
+            if(LocalDate.parse(timeslot.date) == LocalDate.now().plusDays(3)) {
+                dayAfter.add(timeslot)
+            }
+
+        }
+
+        TimeslotGridTitleEpoxyModel(LocalDate.now().toString()).id("Title").addTo(this)
+        today.forEach{ timeSlot->
+            TimeslotEpoxyModel(
+                rental!!.rentalId,
+                timeSlot,
+                timeslotSelected).id("header_{$timeSlot.id}").addTo(this)
+        }
+
+        TimeslotGridTitleEpoxyModel(LocalDate.now().plusDays(1).toString()).id("Title").addTo(this)
+        tomorrow.forEach{ timeSlot->
+            TimeslotEpoxyModel(
+                rental!!.rentalId,
+                timeSlot,
+                timeslotSelected).id("header_{$timeSlot.id}").addTo(this)
+        }
+
+        TimeslotGridTitleEpoxyModel(LocalDate.now().plusDays(2).toString()).id("Title").addTo(this)
+        dayAfter.forEach{ timeSlot->
+            TimeslotEpoxyModel(
+                rental!!.rentalId,
+                timeSlot,
+                timeslotSelected).id("header_{$timeSlot.id}").addTo(this)
         }
 
         if (rental == null) {
@@ -70,7 +105,6 @@ class RentalAvaibilityController  (
             EmptyListEpoxyModel(localException).id("emptyList").addTo(this)
             return
         }
-
     }
 
     data class TimeslotEpoxyModel(
@@ -81,19 +115,19 @@ class RentalAvaibilityController  (
         override fun ModelCarAvailabilityTimeslotBinding.bind(){
             val formattedStartAt = timeSlot.timeSlot?.startAt
             val formattedEndAt = timeSlot.timeSlot?.endAt
-            timeslotCheckbox.text = "${timeSlot.date} : $formattedStartAt-$formattedEndAt"
-
-
-
+            timeslotCheckbox.text = "$formattedStartAt-$formattedEndAt"
             timeslotCheckbox.setOnClickListener {
                 timeslotSelected(timeSlot.id)
             }
         }
     }
 
+    data class TimeslotGridTitleEpoxyModel(
+        val title: String
+    ): ViewBindingKotlinModel<ModelCarAvailabilityTitleBinding>(R.layout.model_car_availability_title) {
 
-
-
-
-
+        override fun ModelCarAvailabilityTitleBinding.bind() {
+            titleTextView.text = title
+        }
+    }
 }

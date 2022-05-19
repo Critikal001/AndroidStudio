@@ -15,7 +15,7 @@ import okhttp3.MultipartBody
 
 class RentalViewModel : ViewModel() {
 
-    val _rentalListLiveData = MutableLiveData<List<Rental?>>()
+    private val _rentalListLiveData = MutableLiveData<List<Rental?>>()
     val rentalListLiveData: LiveData<List<Rental?>> = _rentalListLiveData
 
     private val _rentalResult = MutableLiveData<Int>()

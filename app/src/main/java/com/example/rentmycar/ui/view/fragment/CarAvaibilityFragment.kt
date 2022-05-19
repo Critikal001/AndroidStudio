@@ -24,17 +24,11 @@ class CarAvaibilityFragment : Fragment() {
     private lateinit var viewModel: AvailabilityViewModel
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_car_avaibility, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
 
         viewModel =
             ViewModelProvider(this, AvailabilityViewModelFactory(rentalId = safeArgs.rentalId))[AvailabilityViewModel::class.java]
@@ -48,8 +42,19 @@ class CarAvaibilityFragment : Fragment() {
             }
         }
         viewModel.getRentalById()
+        return inflater.inflate(R.layout.fragment_car_avaibility, container, false)
+    }
 
-        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerViewAvab)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+
+
+
+        val epoxyRecyclerView = view.findViewById<EpoxyRecyclerView>(R.id.epoxyRecyclerView)
         epoxyRecyclerView.setControllerAndBuildModels(epoxyController)
     }
 

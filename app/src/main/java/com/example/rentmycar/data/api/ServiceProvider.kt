@@ -58,13 +58,19 @@ interface ServiceProvider {
     @GET("rental/get-by-provider")
     fun getRentalByProvider(): Response<List<Rental>>
 
+    @GET("rent/{id}/")
+    suspend fun getCarById(
+        @Path("id") id: Int
+    ): Response<Car>
+
     @GET("rental/get-rental-by-car")
     fun getRentalByCar(): Response<List<Rental>>
 
     @GET("rental/get-rental-list")
     fun getRentalList(): Call<List<Rental>>
 
-
+    @GET("reservation/get-reservation-list")
+    fun getReservationList(): Call<List<Reservation>>
     //All deletes from the api
     @DELETE("car/delete-car/{id}")               
     fun deleteCar(

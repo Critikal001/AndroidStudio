@@ -1,6 +1,7 @@
 package com.example.rentmycar.data.repositories
 
 import android.app.DownloadManager
+import android.content.Context
 import android.widget.Toast
 import com.example.rentmycar.R
 import com.example.rentmycar.data.api.ServiceProvider
@@ -14,8 +15,7 @@ import retrofit2.Response
 
 
 class ReservationRepository {
-    companion object
-    {
+    companion object {
         private fun client() = ServiceProvider.RentalApi.retrofitService
 
         fun postReservation(reservation: Reservation, onResult: (Response<Reservation>?) -> Unit) {
@@ -39,54 +39,36 @@ class ReservationRepository {
                     onResult(null)
                 }
             })
+
         }
-//
-//    suspend fun getTimeslotsByReservation(reservationNumber: String): List<GetAvailabilityResponse> {
-//        val request = client().getTimeslotsByReservation(reservationNumber)
-//
-//        if (request.failed || !request.isSuccessful) {
-//            return emptyList()
-//        }
-//        return request.body
-//    }
-//
-//    suspend fun getReservation(reservationNumber: String): Reservation? {
-//        val request = client().getReservation(reservationNumber)
-//
-//        if (request.failed || !request.isSuccessful) {
-//            Toast.makeText(RentMyCarApplication.context,
-//                RentMyCarApplication.context.getString(R.string.error_get_reservation), Toast.LENGTH_LONG).show()
-//            return null
-//        }
-//
-//        return ReservationMapper.buildFrom(
-//            response = request.body,
-//            product = request.body.product,
-//            availability = getTimeslotsByReservation(request.body.reservationNumber))
-//    }
-//
-//    suspend fun getReservationList(status: String?): List<Reservation?> {
-//        val reservationList = mutableListOf<Reservation>()
-//        val request = client().getReservationList(status)
-//
-//        if (request.failed || !request.isSuccessful) {
-//            return emptyList()
-//        }
-//
-//        request.body.forEach { item ->
-//
-//            val availability = getTimeslotsByReservation(item.reservationNumber)
-//
-//            val reservation: Reservation = ReservationMapper.buildFrom(
-//                response = item,
-//                product = item.product,
-//                availability = availability
-//            )
-//
-//            reservationList.add(reservation)
-//        }
-//        return reservationList
-//    }
+
+
+        fun getReservationList(
+
+            onResult: (Response<List<Reservation>>?) -> Unit
+        ) {
+
+            val call = client().getReservationList()
+            call.enqueue(object : Callback<List<Reservation>> {
+                override fun onResponse(
+                    call: Call<List<Reservation>>,
+                    response: Response<List<Reservation>>,
+                ) {
+
+
+                    if (!response.isSuccessful) {
+
+                        onResult(null)
+                    }
+                    onResult(response)
+                }
+
+                override fun onFailure(call: Call<List<Reservation>>, t: Throwable) {
+                    onResult(null)
+                }
+            })
+        }
+
     }
 
 }

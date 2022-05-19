@@ -1,5 +1,6 @@
 package com.example.rentmycar.ui.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +16,9 @@ class ReservationViewModel : ViewModel(){
     private val _reservationLiveData = MutableLiveData<Reservation?>()
     val reservationLiveData: LiveData<Reservation?> = _reservationLiveData
 
+    private val _reservationListLiveData = MutableLiveData<List<Reservation?>>()
+    val reservationListLiveData: LiveData<List<Reservation?>> = _reservationListLiveData
+
     fun createReservation(reservation: Reservation) {
         viewModelScope.launch {
             ReservationRepository.postReservation(reservation){
@@ -24,4 +28,12 @@ class ReservationViewModel : ViewModel(){
         }
     }
 
+
+    fun getRentalList() {
+        viewModelScope.launch {
+            ReservationRepository.getReservationList(){
+                _reservationListLiveData.postValue(it?.body())
+            }
+        }
+    }
 }

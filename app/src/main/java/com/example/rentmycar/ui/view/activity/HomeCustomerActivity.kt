@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
+import android.widget.Button
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -22,6 +23,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home_customer.*
 import kotlinx.android.synthetic.main.app_bar_customer.view.*
+import android.content.Intent
+import com.google.android.material.internal.NavigationMenuItemView
+
 
 class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -58,8 +62,19 @@ class HomeCustomerActivity : AppCompatActivity(), MyDrawerController {
                 )
             )
             navView.setupWithNavController(navController)
+
+            val button : NavigationMenuItemView = findViewById(R.id.logout)
+            button.setOnClickListener {
+                val i = Intent(this, MainActivity::class.java)
+                startActivity(i)
+            }
         }
     }
+
+
+
+
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_provider)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
